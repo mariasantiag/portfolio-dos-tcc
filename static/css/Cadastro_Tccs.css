@@ -1,0 +1,89 @@
+/*  Geral  */
+body {
+    background-color: #f8f9fa; /* fundo claro neutro */
+    font-family: Arial, sans-serif;
+    color: #000000;
+  }
+  
+  /*  HEADER  */
+  header {
+    background: linear-gradient(to right , #AA0608, #E82626);
+    padding: 0.6rem 1rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Barra de pesquisa */
+  .search-bar {
+    max-width: 300px;
+    flex: 1;
+  }
+  
+  .search-bar input {
+    border: 1px solid #E82626;
+  }
+  
+  /* Botões de ícones (filtro + perfil) */
+  header div {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+  }
+  
+  .icon-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .icon-btn:hover {
+    color: #FF5858;
+  }
+  
+  /*  Formulário */
+  .form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .form-control, .form-select {
+    border: 1px solid #B1AEAE;
+    transition: border-color 0.2s;
+  }
+  .form-control:focus, .form-select:focus {
+    border-color: #E82626;
+    box-shadow: 0 0 0 0.2rem rgba(232,38,38,0.25);
+  }
+  
+  /*  Botões  */
+  .btn-primary {
+    background-color: #E82626;
+    border-color: #E82626;
+  }
+  .btn-primary:hover {
+    background-color: #AA0608;
+    border-color: #AA0608;
+  }
+  
+  .btn-secondary {
+    background-color: #B1AEAE;
+    border-color: #B1AEAE;
+    color: #000;
+  }
+  .btn-secondary:hover {
+    background-color: #FF5858;
+    border-color: #FF5858;
+    color: #fff;
+  }
+  
