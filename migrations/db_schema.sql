@@ -38,3 +38,30 @@ create table tbAdmin (
     nome VARCHAR(80) NOT NULL,
     codigo INT primary key
 );
+
+SELECT 
+    tcc.titulo,
+    tcc.autor,
+    tcc.descricao,
+    tcc.data,
+    tcc.palavrachave1,
+    tcc.palavrachave2,
+    tcc.palavrachave3,
+    tcc.codigo AS tcc_codigo,
+    orientador.nome AS orientador_nome,
+    curso.nome AS curso_nome
+FROM 
+    tbTcc tcc
+INNER JOIN 
+    tbOrientador orientador ON tcc.cod_orientador = orientador.cod_orientador
+INNER JOIN 
+    tbCurso curso ON tcc.cod_curso = curso.cod_curso;
+
+
+SELECT 
+    curso.nome AS curso_nome,
+    orientador.nome AS orientador_nome
+FROM 
+    tbCurso curso
+INNER JOIN 
+    tbOrientador orientador ON curso.cod_orientador = orientador.cod_orientador;
