@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Curso e Orientador</title>
+</head>
+<body>
+
+  <header>
+    <h1>Cadastro Curso e Orientador</h1>
+  </header>
+
+  <main>
+    <section>
+      <form action="#" method="post">
+        
+        <!-- dados curso -->
+        <fieldset>
+          <legend>Curso</legend>
+          <div>
+            <label for="curso-nome">Nome</label>
+            <input type="text" id="curso-nome" name="curso_nome" required>
+          </div>
+          <div>
+            <label for="curso-codigo">Código</label>
+            <input type="text" id="curso-codigo" name="curso_codigo" required>
+          </div>
+        </fieldset>
+
+        <!-- dados orientador -->
+        <fieldset>
+          <legend>Orientadores</legend>
+          <div>
+            <label for="orientador-nome">Nome</label>
+            <input type="text" id="orientador-nome" name="orientador_nome" required>
+          </div>
+          <div>
+            <label for="curso-responsavel">Curso responsável</label>
+            <input type="text" id="curso-responsavel" name="curso_responsavel" required>
+          </div>
+          <div>
+            <label for="orientador-codigo">Código</label>
+            <input type="text" id="orientador-codigo" name="orientador_codigo" required>
+          </div>
+        </fieldset>
+
+        <!-- botão -->
+        <div>
+          <button type="submit">Cadastrar</button>
+        </div>
+
+      </form>
+    </section>
+  </main>
+
+</body>
+</html>
