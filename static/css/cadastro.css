@@ -1,0 +1,44 @@
+body, html {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Aumenta o tamanho do ícone */
+.bi-person-circle {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Centraliza o título */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Centraliza os inputs */
+.form-container {
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+    display: block;
+    justify-content: center;
+
+}
+
+.btn-secondary{
+    background-color: #E82626;
+}
+
+.btn-secondary:hover{
+    background-color: #AA0608;
+}
+
