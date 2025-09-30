@@ -3,41 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro Curso e Orientador</title>
+  <title>Cadastro de Curso e Orientador</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/cadastro-curso-orientador.css">
+
 </head>
+
 <body>
 
   <!-- cabeçalho -->
   <header>
-    <h1>Cadastro Curso e Orientador</h1>
+    <h1 class="fw-bold text-primary">Cadastro de Curso e Orientador</h1>
   </header>
 
   <!-- conteúdo principal -->
-  <main>
-    <section>
-      <form action="#" method="post">
+  <main class="container">
+    <section class="card p-4">
+      <form id="cadastroForm" novalidate>
 
-        <!-- dados do Curso -->
-        <fieldset>
-          <legend>Curso</legend>
-          <div>
-            <label for="curso-nome">Nome</label>
-            <input type="text" id="curso-nome" name="curso_nome" required>
+        <!-- curso -->
+        <fieldset class="mb-3">
+          <legend class="fw-semibold">Curso</legend>
+          <div class="mb-3">
+            <label for="curso-nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="curso-nome" name="curso_nome" required>
+            <div class="invalid-feedback">Informe o nome do curso.</div>
           </div>
         </fieldset>
 
-        <!-- dados do Orientador -->
-        <fieldset>
-          <legend>Orientadores</legend>
-          <div>
-            <label for="orientador-nome">Nome</label>
-            <input type="text" id="orientador-nome" name="orientador_nome" required>
+        <!-- professor -->
+        <fieldset class="mb-3">
+          <legend class="fw-semibold">Orientadores</legend>
+          <div class="mb-3">
+            <label for="orientador-nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="orientador-nome" name="orientador_nome" required>
+            <div class="invalid-feedback">Informe o nome do orientador.</div>
           </div>
         </fieldset>
 
-        <!-- botão de cadastro -->
-        <div>
-          <button type="submit">Cadastrar</button>
+        <!-- botão -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary px-4">Cadastrar</button>
         </div>
 
       </form>
