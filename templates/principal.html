@@ -73,15 +73,53 @@
       
 
     <main class="info_ _principal">
+        
         <section class="sec__destaques">
             <div class="tittle__destaque">
-                <p>Destaques</p>
+                <h2>Destaques</h2>
             </div>
+            
+            <div class="grid__destaque">
+                <div class="card__destaque"></div>
+                <div class="card__destaque"></div>
+            </div>
+              
         </section>
 
         <section class="sec__recentes">
-            <div class="tittle__recentes"></div>
+            <div class="tittle__recentes">
+                <h2>Recentes</h2>
+            </div>
+
+            <div class="grid__recentes">
+                <div class="card__recentes">
+                    <!-- texto dos cards - informações dos TCC's -->
+                    <p></p>
+                
+                    <!-- Dropdown três pontinhos -->
+                    <div class="dropdown card-dropdown">
+                        <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
+                            <li><a class="dropdown-item" href="#">Editar</a></li>
+                            <li><a class="dropdown-item" href="#">Excluir</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
         </section>
+
+        <!-- Botão flutuante "+" -->
+        <div class="add__tcc dropdown">
+            <i class="bi bi-plus-circle fs-1" role="button" id="dropdownAddButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAddButton">
+                <li><a class="dropdown-item" href="#">Adicionar TCC</a></li>
+                <li><a class="dropdown-item" href="#">Importar TCC</a></li>
+                <li><a class="dropdown-item" href="#">Nova Categoria</a></li>
+            </ul>
+        </div>
+
+
     </main>
 </body>
 
