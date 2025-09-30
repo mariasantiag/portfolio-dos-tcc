@@ -1,0 +1,101 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f4f4f4; 
+    margin: 0;
+    padding: 0;
+  }
+  
+  /*  centralizado */
+  .login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* card de login */
+  .card {
+    width: 100%;
+    max-width: 420px;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease-in-out;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* cabeçalho */
+  .card h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: #AA0608;
+    margin-bottom: 20px;
+  }
+  
+  /* label */
+  .form-label {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* inputs */
+  .form-control {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s;
+  }
+  .form-control:focus {
+    border-color: #AA0608;
+    box-shadow: 0 0 6px rgba(170, 6, 8, 0.4);
+    outline: none;
+  }
+  
+  /* botões */
+  .btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 10px 16px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* login */
+  .btn-primary {
+    background-color: #AA0608;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: #8a0506;
+  }
+  
+  /* voltar */
+  .btn-secondary {
+    background-color: #555;
+    border: none;
+  }
+  .btn-secondary:hover {
+    background-color: #333;
+  }
+  
+  /* cadastro */
+  .btn-outline-success {
+    border: 2px solid #AA0608;
+    color: #AA0608;
+  }
+  .btn-outline-success:hover {
+    background-color: #AA0608;
+    color: #fff;
+  }
+  
+  /* feedback inválido */
+  .invalid-feedback {
+    font-size: 0.9rem;
+    color: #AA0608;
+  }
+  
+  
