@@ -17,20 +17,53 @@
     <body>
       
       <!-- HEADER -->
-      <header class="d-flex justify-content-between align-items-center ">
-        <!-- Barra de pesquisa -->
-        <div class="input-group search-bar">
-          <span class="input-group-text"><i class="bi bi-search"></i></span>
-          <input type="text" class="form-control" placeholder="Pesquisar">
+      <header class="header bg-light p-2">
+        <!-- container-fluid e row →  dividi os elementos em colunas. -->
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            
+            <!-- Campo de pesquisa  -->
+             <!-- busca ocupa mais espaço no mobile. -->
+            <div class="col-8 col-md-6">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </div>
+      
+            <!-- Ícones  -->
+             <!-- ícones ocupam menos espaço e ficam alinhados à direita. -->
+              <!-- isso força ícone filtro + ícone perfil a ficarem lado a lado, alinhados verticalmente e com espaço (gap-3) entre eles. -->
+            <div class="col-4 col-md-6 d-flex justify-content-end align-items-center gap-3">
+                <!-- Dropdown do filtro -->
+                <div class="dropdown">
+                    <i class="bi bi-funnel fs-3 text-white" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Página Inicial</a></li>
+                        <li><a class="dropdown-item" href="#">Ano</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Dropdown do login/perfil -->
+                <div class="dropdown">
+                    <button class="btn rounded-circle" id="dropdownLogin" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle fs-3 text-white"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownLogin">
+                        <li><a class="dropdown-item" href="#">Entrar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+      
+          </div>
         </div>
-        
-        <!-- Filtro e profile -->
-        <div>
-            <button class="icon-btn"><i class="bi bi-funnel"></i></button>
-            <button class="icon-btn"><i class="bi bi-person-circle"></i></button>
-    </div>
-  
       </header>
+      
+    
       
       <!-- Formulário central -->
       <div class="form-container">

@@ -1,65 +1,82 @@
+/* root */
+:root {
+  --cor01: #ffffff;
+  --cor02: #000000;
+  --cor-gradiente: linear-gradient(to right, #AA0608, #E82626);
+  --cor03: #AA0608;
+  --cor04: #E82626;
+  --cor05: #FF5858;
+  --cor06: #B1AEAE;
+}
+
+/* header */
+.header {
+  width: 100%;
+  height: auto;
+  display: flex;
+  background: var(--cor-gradiente);
+  padding: 10px 20px;
+}
+
+/* espaçamento do input-group */
+.mb-3 {
+  margin-bottom: 0 !important; /* zerei aqui para o header não ficar alto demais */
+}
+
+/* campo de busca */
+.form-control {
+  background-color: var(--cor01);
+}
+
+/* botão da busca */
+.input-group .btn {
+  background-color: var(--cor01);
+  border: none;
+}
+
+.input-group .btn:hover {
+  background-color: var(--cor02);
+  color: var(--cor01);
+}
+
+/* ícones */
+.bi-funnel,
+.bi-person-circle {
+  font-size: 30px;
+  color: var(--cor01);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block !important;
+  right: 10px !important;
+  
+}
+
 /*  Geral  */
 body {
     background-color: #f8f9fa; /* fundo claro neutro */
     font-family: Arial, sans-serif;
     color: #000000;
   }
-  
-  /*  HEADER  */
-  header {
-    background: linear-gradient(to right , #AA0608, #E82626);
-    padding: 0.6rem 1rem;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: auto;
-    width: 100%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  /* Barra de pesquisa */
-  .search-bar {
-    max-width: 300px;
-    flex: 1;
-  }
-  
-  .search-bar input {
-    border: 1px solid #E82626;
-  }
-  
-  /* Botões de ícones (filtro + perfil) */
-  header div {
-    display: flex;
-    align-items: center;
-    gap: 10px; 
-  }
-  
-  .icon-btn {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.4rem;
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-  .icon-btn:hover {
-    color: #FF5858;
-  }
-  
   /*  Formulário */
   .form-container {
     max-width: 600px;
     margin: 40px auto;
-    padding: 25px;
+    padding: 30px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   }
   
+
+
   .form-control, .form-select {
+    width: 100%;
+    padding: 10px;
+    /* margin-bottom: 20px; */
     border: 1px solid #B1AEAE;
     transition: border-color 0.2s;
+    
   }
   .form-control:focus, .form-select:focus {
     border-color: #E82626;
