@@ -10,11 +10,12 @@
 }
 
 /* 🌐 Geral */
-body {
-  background-color: #f4f4f4; /* mesmo fundo dos outros */
-  font-family: 'Roboto', sans-serif;
+body, html {
+  height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
   color: var(--cor02);
 }
 
@@ -29,75 +30,34 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* espaçamento input-group */
-.mb-3 {
-  margin-bottom: 0 !important;
-}
-
-/* campo de busca */
-.form-control {
-  background-color: var(--cor01);
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s;
-}
-.form-control:focus {
-  border-color: var(--cor03);
-  box-shadow: 0 0 6px rgba(170, 6, 8, 0.4);
-  outline: none;
-}
-
-/* botão de busca */
-.input-group .btn {
-  background-color: var(--cor01);
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-}
-.input-group .btn:hover {
-  background-color: var(--cor02);
-  color: var(--cor01);
-}
-
-/* ícones */
-.bi-funnel,
-.bi-person-circle {
-  font-size: 30px;
-  color: var(--cor01);
-  cursor: pointer;
-}
-
-/* dropdown */
-.dropdown:hover .dropdown-menu {
-  display: block !important;
-  right: 10px !important;
-  border-radius: 8px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
-
 /* 📝 Formulário */
 .form-container {
   max-width: 700px;
   margin: 50px auto;
   padding: 30px;
-  background-color: #fff;
+  background-color: var(--cor01);
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .form-container input,
-.form-container select {
+.form-container select,
+.form-container textarea {
   margin-bottom: 15px;
 }
 
-.form-control, .form-select {
+.form-control,
+.form-select,
+textarea.form-control {
   border: 2px solid #ddd;
   border-radius: 8px;
   padding: 10px;
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s;
 }
-.form-control:focus, .form-select:focus {
+
+.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
   border-color: var(--cor04);
   box-shadow: 0 0 6px rgba(232, 38, 38, 0.4);
   outline: none;
