@@ -3,22 +3,20 @@ use dbTcc;
 
 
 create table tbOrientador (
-	nome VARCHAR(80) not null,
+	nome_orientador VARCHAR(80) not null,
     cod_curso INT,
     cod_orientador INT auto_increment primary key
 );
 
 
 create table tbCurso (
-	nome VARCHAR(80) not null,
+	nome_curso VARCHAR(80) not null,
     cod_curso INT auto_increment primary key,
     cod_orientador INT,
     FOREIGN KEY (cod_orientador) REFERENCES tbOrientador(cod_orientador)
 );
 
-create table tbDestaque (
-	destaque varchar(3) PRIMARY KEY
-);
+
 
 
 
