@@ -68,12 +68,13 @@ body {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   }
   
-
+.form-container input{
+  margin-bottom: 10px;
+}
 
   .form-control, .form-select {
     width: 100%;
     padding: 10px;
-    /* margin-bottom: 20px; */
     border: 1px solid #B1AEAE;
     transition: border-color 0.2s;
     
