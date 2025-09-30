@@ -16,6 +16,12 @@ create table tbCurso (
     FOREIGN KEY (cod_orientador) REFERENCES tbOrientador(cod_orientador)
 );
 
+create table tbDestaque (
+	destaque varchar(3) PRIMARY KEY
+);
+
+
+
 create table tbTcc (
 	titulo VARCHAR(200) NOT NULL,
     autor VARCHAR(2000) NOT NULL,
@@ -25,9 +31,11 @@ create table tbTcc (
     palavrachave1 varchar (20),
     palavrachave2 varchar (20),
     palavrachave3 varchar (20),
+    destaque varchar (3),
     codigo INT auto_increment primary key,
     cod_curso int,
     FOREIGN KEY (cod_curso) REFERENCES tbCurso(cod_curso),
+    FOREIGN KEY (destaque) REFERENCES tbDestaque(destaque),
     FOREIGN KEY (cod_orientador) REFERENCES tbOrientador(cod_orientador)
 );
 
@@ -65,3 +73,10 @@ FROM
     tbCurso curso
 INNER JOIN 
     tbOrientador orientador ON curso.cod_orientador = orientador.cod_orientador;
+    
+    
+    
+SELECT *
+FROM tbTcc AS t
+INNER JOIN tbDestaque AS d
+  ON t.destaque = d.destaque;
