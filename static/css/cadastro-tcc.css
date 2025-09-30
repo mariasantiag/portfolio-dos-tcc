@@ -1,0 +1,136 @@
+/* 🎨 Variáveis de cor */
+:root {
+  --cor01: #ffffff;
+  --cor02: #000000;
+  --cor-gradiente: linear-gradient(to right, #AA0608, #E82626);
+  --cor03: #AA0608; /* vermelho escuro */
+  --cor04: #E82626; /* vermelho claro */
+  --cor05: #FF5858; /* vermelho destaque */
+  --cor06: #B1AEAE; /* cinza */
+}
+
+/* 🌐 Geral */
+body {
+  background-color: #f4f4f4; /* mesmo fundo dos outros */
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--cor02);
+}
+
+/* 🔝 Header */
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--cor-gradiente);
+  padding: 12px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* espaçamento input-group */
+.mb-3 {
+  margin-bottom: 0 !important;
+}
+
+/* campo de busca */
+.form-control {
+  background-color: var(--cor01);
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s;
+}
+.form-control:focus {
+  border-color: var(--cor03);
+  box-shadow: 0 0 6px rgba(170, 6, 8, 0.4);
+  outline: none;
+}
+
+/* botão de busca */
+.input-group .btn {
+  background-color: var(--cor01);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.input-group .btn:hover {
+  background-color: var(--cor02);
+  color: var(--cor01);
+}
+
+/* ícones */
+.bi-funnel,
+.bi-person-circle {
+  font-size: 30px;
+  color: var(--cor01);
+  cursor: pointer;
+}
+
+/* dropdown */
+.dropdown:hover .dropdown-menu {
+  display: block !important;
+  right: 10px !important;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* 📝 Formulário */
+.form-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.form-container input,
+.form-container select {
+  margin-bottom: 15px;
+}
+
+.form-control, .form-select {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--cor04);
+  box-shadow: 0 0 6px rgba(232, 38, 38, 0.4);
+  outline: none;
+}
+
+/* 🔘 Botões */
+.btn {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--cor04);
+  border: none;
+}
+.btn-primary:hover {
+  background-color: var(--cor03);
+}
+
+.btn-secondary {
+  background-color: var(--cor06);
+  border: none;
+  color: var(--cor02);
+}
+.btn-secondary:hover {
+  background-color: var(--cor05);
+  color: var(--cor01);
+}
+
+/* ⚠️ Feedback inválido */
+.invalid-feedback {
+  font-size: 0.9rem;
+  color: var(--cor03);
+}
