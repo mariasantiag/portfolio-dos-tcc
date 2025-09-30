@@ -10,7 +10,11 @@ HTML/CSS: Estruturação e estilização das páginas.
 JavaScript: Interatividade no frontend.
 
 🔧 Funcionalidades
+
 Cadastro de trabalhos de conclusão de curso com informações detalhadas.
+
 Sistema de busca eficiente utilizando palavras-chave.
+
 Filtros por área de estudo, ano e orientador.
+
 Interface amigável e responsiva.
