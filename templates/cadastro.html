@@ -24,22 +24,22 @@
 
                 <i class="bi bi-person-circle"></i>
     
-                <form>
+                <form action="/post/cadastrarusuario", method="POST">
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Godofredo Stocco da Silva">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Godofredo Stocco da Silva" name="nome">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="godofredo.stocco@email.com">
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="godofredo.stocco@email.com" name="email">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput3" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="formGroupExampleInput3" placeholder="">
+                        <input type="password" class="form-control" id="formGroupExampleInput3" placeholder="" name="senha">
                     </div>
                     
-                    <button type="button" class="btn btn-secondary">Voltar</button>
-                    <button type="button" class="btn btn-secondary">Cadastrar-se</button>
+                    <a href="/paginalogin"><button type="button" class="btn btn-secondary">Voltar</button></a>
+                    <button type="submit" class="btn btn-secondary">Cadastrar-se</button>
                 </form>
             </div>
         </div>
