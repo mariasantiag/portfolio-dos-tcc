@@ -40,9 +40,9 @@ create table tbTcc (
 
 create table tbAdmin (
 	login VARCHAR(80) NOT NULL,
-    senha INT NOT NULL,
+    senha VARCHAR(100) NOT NULL,
     nome VARCHAR(80) NOT NULL,
-    codigo INT primary key
+    codigo INT primary key auto_increment
 );
 
 SELECT 
