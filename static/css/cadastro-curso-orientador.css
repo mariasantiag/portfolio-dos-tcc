@@ -1,0 +1,104 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f4f4f4; 
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* centralização container */
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+  }
+
+  /* card central */
+  .card {
+    width: 100%;
+    max-width: 550px;
+    border: none;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease-in-out;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* cabeçalho */
+  header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #E82626; 
+    margin-bottom: 25px;
+  }
+  
+  .titulo-principal {
+    color: #AA0608 !important;
+  }
+  
+  /* legendas dos fieldsets */
+  fieldset {
+    border: 2px solid #AA0608;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+  }
+  fieldset:hover {
+    box-shadow: 0 0 12px rgba(170, 6, 8, 0.2);
+  }
+  legend {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #AA0608;
+    padding: 0 8px;
+  }
+  
+  /* labels */
+  .form-label {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* inputs */
+  .form-control {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s;
+  }
+  .form-control:focus {
+    border-color: #AA0608;
+    box-shadow: 0 0 6px rgba(170, 6, 8, 0.4);
+    outline: none;
+  }
+  
+  /* botões */
+  .btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 10px 18px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* botão principal */
+  .btn-primary {
+    background-color: #E82626;
+    border-color: #AA0608;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: #AA0608;
+  }
+  
+  /* mensagens de erro */
+  .invalid-feedback {
+    font-size: 0.9rem;
+    color: #AA0608;
+  }
+  
