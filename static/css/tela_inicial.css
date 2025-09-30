@@ -10,46 +10,49 @@
   }
 
 /* header */
-.header{
+/* header */
+.header {
     width: 100%;
     height: auto;
     display: flex;
-    background: var(--cor-gradiente)
-}
-
-.mb-3 {
-    margin-bottom: 1rem !important;
-    width: 400px;
-    padding: 20px;
-    top: 10px;
-}
-
-.form-control{
+    background: var(--cor-gradiente);
+    padding: 10px 20px;
+  }
+  
+  /* espaçamento do input-group */
+  .mb-3 {
+    margin-bottom: 0 !important; /* zerei aqui para o header não ficar alto demais */
+  }
+  
+  /* campo de busca */
+  .form-control {
     background-color: var(--cor01);
-}
-
-.input-group .btn {
+  }
+  
+  /* botão da busca */
+  .input-group .btn {
     background-color: var(--cor01);
-}
-
-.input-group .btn:hover {
+    border: none;
+  }
+  
+  .input-group .btn:hover {
     background-color: var(--cor02);
-}
-
-.bi-funnel{
-    font-size: 40px;
-    position: relative;
-    left: 1340px;
-    top: 15px;
+    color: var(--cor01);
+  }
+  
+  /* ícones */
+  .bi-funnel,
+  .bi-person-circle {
+    font-size: 30px;
     color: var(--cor01);
 }
 
-.bi-person-circle{
-    font-size: 55px;
-    color: var(--cor01);
-    position: relative;
-    left: 1370px;
-    top: 3px;
+.dropdown:hover .dropdown-menu {
+    display: block !important;
+    right: 10px !important;
+    
 }
+
+
 
 /* body */
