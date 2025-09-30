@@ -30,6 +30,15 @@ body, html {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+.header h1 {
+  color: var(--cor01);
+  font-weight: bold;
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+
 /* 📝 Formulário */
 .form-container {
   max-width: 700px;
@@ -39,6 +48,7 @@ body, html {
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
+
 
 .form-container input,
 .form-container select,

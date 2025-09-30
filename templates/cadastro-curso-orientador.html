@@ -12,17 +12,23 @@
 
 <body>
 
-  <!-- cabeçalho -->
-  <header>
-    <h1 class="fw-bold texto-principal">Cadastro de Curso e Orientador</h1>
+  <!-- HEADER PADRONIZADO -->
+  <header class="header">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col text-center">
+          <h1 class="text-white fw-bold">Cadastro de Curso e Orientador</h1>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- conteúdo principal -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <main class="container">
     <section class="card p-4">
       <form id="cadastroForm" novalidate>
 
-        <!-- curso -->
+        <!-- Curso -->
         <fieldset class="mb-3">
           <legend class="fw-semibold">Curso</legend>
           <div class="mb-3">
@@ -32,7 +38,7 @@
           </div>
         </fieldset>
 
-        <!-- professor -->
+        <!-- Orientadores -->
         <fieldset class="mb-3">
           <legend class="fw-semibold">Orientadores</legend>
           <div class="mb-3">
@@ -42,7 +48,7 @@
           </div>
         </fieldset>
 
-        <!-- botão -->
+        <!-- Botão -->
         <div class="text-center">
           <button type="submit" class="btn btn-primary px-4">Cadastrar</button>
         </div>

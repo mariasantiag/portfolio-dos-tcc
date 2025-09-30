@@ -5,9 +5,27 @@ body {
     padding: 0;
   }
   
-  /*  centralizado */
+  .header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E82626; /* vermelho */
+    padding: 12px 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .header h1 {
+    color: #ffffff;
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  
+  /* Centralização do card login */
   .login-container {
-    min-height: 100vh;
+    min-height: calc(100vh - 70px); 
     display: flex;
     justify-content: center;
     align-items: center;

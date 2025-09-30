@@ -13,6 +13,25 @@ body {
     padding: 40px 20px;
   }
 
+  /* HEADER PADRONIZADO */
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #E82626; /* vermelho */
+    padding: 12px 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .header h1 {
+    color: #ffffff;
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  
+
   /* card central */
   .card {
     width: 100%;
