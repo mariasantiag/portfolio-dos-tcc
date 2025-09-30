@@ -30,10 +30,10 @@ create table tbTcc (
     palavrachave2 varchar (20),
     palavrachave3 varchar (20),
     destaque varchar (3),
+    pdf_nome VARCHAR(255),
     codigo INT auto_increment primary key,
     cod_curso int,
     FOREIGN KEY (cod_curso) REFERENCES tbCurso(cod_curso),
-    FOREIGN KEY (destaque) REFERENCES tbDestaque(destaque),
     FOREIGN KEY (cod_orientador) REFERENCES tbOrientador(cod_orientador)
 );
 
@@ -54,8 +54,8 @@ SELECT
     tcc.palavrachave2,
     tcc.palavrachave3,
     tcc.codigo AS tcc_codigo,
-    orientador.nome AS orientador_nome,
-    curso.nome AS curso_nome
+    orientador.nome_orientador ,
+    curso.nome_curso
 FROM 
     tbTcc tcc
 INNER JOIN 
@@ -65,16 +65,11 @@ INNER JOIN
 
 
 SELECT 
-    curso.nome AS curso_nome,
-    orientador.nome AS orientador_nome
+    curso.nome_curso,
+    orientador.nome_orientador
 FROM 
     tbCurso curso
 INNER JOIN 
     tbOrientador orientador ON curso.cod_orientador = orientador.cod_orientador;
     
     
-    
-SELECT *
-FROM tbTcc AS t
-INNER JOIN tbDestaque AS d
-  ON t.destaque = d.destaque;
