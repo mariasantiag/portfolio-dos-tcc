@@ -66,20 +66,21 @@ body {
   
   /* login */
   .btn-primary {
-    background-color: #AA0608;
+    background-color: #E82626;
+    border-color: #AA0608;
     border: none;
   }
   .btn-primary:hover {
-    background-color: #8a0506;
+    background-color: #AA0608;
   }
   
   /* voltar */
   .btn-secondary {
-    background-color: #555;
+    background-color: #E82626;
     border: none;
   }
   .btn-secondary:hover {
-    background-color: #333;
+    background-color: #AA0608;
   }
   
   /* cadastro */
