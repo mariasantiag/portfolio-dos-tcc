@@ -46,6 +46,10 @@
               </div>
             </div>
       
+            {% if session.usuario %}
+            <span class="header__user">Olá, {{session.nome}}</span>
+            {% endif %}
+
             <!-- Ícones  -->
              <!-- ícones ocupam menos espaço e ficam alinhados à direita. -->
               <!-- isso força ícone filtro + ícone perfil a ficarem lado a lado, alinhados verticalmente e com espaço (gap-3) entre eles. -->
@@ -65,7 +69,7 @@
                         <i class="bi bi-person-circle fs-3 text-white"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownLogin">
-                        <li><a class="dropdown-item" href="#">Entrar</a></li>
+                        <li><a class="dropdown-item" href="/paginalogin">Entrar</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Sair</a></li>
                     </ul>
@@ -117,10 +121,12 @@
         <!-- Botão flutuante "+" -->
         <div class="add__tcc dropdown__add">
             <i class="bi bi-plus-circle fs-1" role="button" id="dropdownAddButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+            {% if session.usuario %}
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAddButton">
                 <li><a class="dropdown-item" href="/paginacadastrotcc">Adicionar TCC</a></li>
-                <li><a class="dropdown-item" href="#">Adicionar Orientador e Curso</a></li>
+                <li><a class="dropdown-item" href="/paginaorientadorcurso">Adicionar Orientador e Curso</a></li>
             </ul>
+            {% endif %}
         </div>
 
 

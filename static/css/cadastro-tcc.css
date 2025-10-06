@@ -89,6 +89,17 @@ textarea.form-control:focus {
   color: var(--cor01);
 }
 
+.btn-third {
+  background-color: var(--cor06);
+  border: none;
+  color: var(--cor02);
+}
+.btn-third:hover {
+  background-color: var(--cor05);
+  color: var(--cor01);
+}
+
+
 /* ⚠️ Feedback inválido */
 .invalid-feedback {
   font-size: 0.9rem;

@@ -24,18 +24,18 @@
   
   <!-- FORMULÁRIO -->
   <div class="form-container">
-    <form>
+    <form action="/post/cadastrar/tcc" method="POST">
       <!-- Título -->
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Título" required>
+        <input name="titulo" type="text" class="form-control" placeholder="Título" required>
       </div>
       <!-- Autores -->
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Nome dos autores" required>
+        <input name="autores" type="text" class="form-control" placeholder="Nome dos autores" required>
       </div>
       <!-- Orientador -->
       <div class="mb-3">
-        <select class="form-select" required>
+        <select name="orientador" class="form-select" required>
           <option selected disabled>Selecione o orientador</option>
           <option value="ivo">Ivo</option>
           <option value="alex">Alex</option>
@@ -44,7 +44,7 @@
       </div>
       <!-- Curso -->
       <div class="mb-3">
-        <select class="form-select" required>
+        <select name="curso" class="form-select" required>
           <option selected disabled>Selecione o curso</option>
           <option value="ds">Desenvolvimento de Sistemas</option>
           <option value="logistica">Logística</option>
@@ -53,36 +53,34 @@
       </div>
       <!-- Data -->
       <div class="mb-3">
-        <input type="date" class="form-control" required>
+        <input name="data" type="date" class="form-control" required>
       </div>
       <!-- Descrição -->
       <div class="mb-3">
-        <textarea class="form-control" rows="3" placeholder="Descrição"></textarea>
+        <textarea name="Descricao" class="form-control" rows="3" placeholder="Descrição"></textarea>
       </div>
       <!-- Curso em Destaque -->
       <div class="mb-3">
-        <select class="form-select" required>
-          <option selected disabled>Curso em destaque?</option>
-          <option value="sim">Sim</option>
-          <option value="nao">Não</option>
-        </select>
+        <label for="cursoDestaque" class="form-label">Curso em Destaque?</label>
+        <input name="destaque" type="text" class="form-control" id="cursoDestaque" placeholder="Responda com 'Sim' ou 'Não'">
       </div>
       <!-- Arquivo PDF -->
       <div class="mb-3">
-        <input type="file" class="form-control" accept="application/pdf">
+        <input name="pdf" type="file" class="form-control" accept=".pdf" required>
       </div>
       <!-- Palavras-chave -->
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Palavra-chave 1">
+        <input name="chave1" type="text" class="form-control" placeholder="Palavra-chave 1">
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Palavra-chave 2">
+        <input name="chave2" type="text" class="form-control" placeholder="Palavra-chave 2">
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Palavra-chave 3">
+        <input name="chave3" type="text" class="form-control" placeholder="Palavra-chave 3">
       </div>
       <!-- Botões -->
       <div class="d-flex justify-content-between">
+        <a href="/paginainicial"><button type="button" class="btn btn-third">Voltar</button></a>
         <button type="reset" class="btn btn-secondary">Cancelar</button>
         <button type="submit" class="btn btn-primary">Confirmar</button>
       </div>
