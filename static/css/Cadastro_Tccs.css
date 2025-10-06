@@ -1,107 +1,106 @@
-/* root */
+/* 🎨 Variáveis de cor */
 :root {
   --cor01: #ffffff;
   --cor02: #000000;
   --cor-gradiente: linear-gradient(to right, #AA0608, #E82626);
-  --cor03: #AA0608;
-  --cor04: #E82626;
-  --cor05: #FF5858;
-  --cor06: #B1AEAE;
+  --cor03: #AA0608; /* vermelho escuro */
+  --cor04: #E82626; /* vermelho claro */
+  --cor05: #FF5858; /* vermelho destaque */
+  --cor06: #B1AEAE; /* cinza */
 }
 
-/* header */
+/* 🌐 Geral */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: var(--cor02);
+}
+
+/* 🔝 Header */
 .header {
   width: 100%;
-  height: auto;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   background: var(--cor-gradiente);
-  padding: 10px 20px;
+  padding: 12px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* espaçamento do input-group */
-.mb-3 {
-  margin-bottom: 0 !important; /* zerei aqui para o header não ficar alto demais */
+.header h1 {
+  color: var(--cor01);
+  font-weight: bold;
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
 }
 
-/* campo de busca */
-.form-control {
+
+/* 📝 Formulário */
+.form-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
   background-color: var(--cor01);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* botão da busca */
-.input-group .btn {
-  background-color: var(--cor01);
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+  margin-bottom: 15px;
+}
+
+.form-control,
+.form-select,
+textarea.form-control {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+  border-color: var(--cor04);
+  box-shadow: 0 0 6px rgba(232, 38, 38, 0.4);
+  outline: none;
+}
+
+/* 🔘 Botões */
+.btn {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--cor04);
   border: none;
 }
+.btn-primary:hover {
+  background-color: var(--cor03);
+}
 
-.input-group .btn:hover {
-  background-color: var(--cor02);
+.btn-secondary {
+  background-color: var(--cor06);
+  border: none;
+  color: var(--cor02);
+}
+.btn-secondary:hover {
+  background-color: var(--cor05);
   color: var(--cor01);
 }
 
-/* ícones */
-.bi-funnel,
-.bi-person-circle {
-  font-size: 30px;
-  color: var(--cor01);
+/* ⚠️ Feedback inválido */
+.invalid-feedback {
+  font-size: 0.9rem;
+  color: var(--cor03);
 }
-
-.dropdown:hover .dropdown-menu {
-  display: block !important;
-  right: 10px !important;
-  
-}
-
-/*  Geral  */
-body {
-    background-color: #f8f9fa; /* fundo claro neutro */
-    font-family: Arial, sans-serif;
-    color: #000000;
-  }
-  /*  Formulário */
-  .form-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-.form-container input{
-  margin-bottom: 10px;
-}
-
-  .form-control, .form-select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #B1AEAE;
-    transition: border-color 0.2s;
-    
-  }
-  .form-control:focus, .form-select:focus {
-    border-color: #E82626;
-    box-shadow: 0 0 0 0.2rem rgba(232,38,38,0.25);
-  }
-  
-  /*  Botões  */
-  .btn-primary {
-    background-color: #E82626;
-    border-color: #E82626;
-  }
-  .btn-primary:hover {
-    background-color: #AA0608;
-    border-color: #AA0608;
-  }
-  
-  .btn-secondary {
-    background-color: #B1AEAE;
-    border-color: #B1AEAE;
-    color: #000;
-  }
-  .btn-secondary:hover {
-    background-color: #FF5858;
-    border-color: #FF5858;
-    color: #fff;
-  }
-  
