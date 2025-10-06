@@ -16,126 +16,79 @@
     </head>
     <body>
       
-      <!-- HEADER -->
-      <header class="header bg-light p-2">
-        <!-- container-fluid e row →  dividi os elementos em colunas. -->
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            
-            <!-- Campo de pesquisa  -->
-             <!-- busca ocupa mais espaço no mobile. -->
-            <div class="col-8 col-md-6">
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                  <i class="bi bi-search"></i>
-                </button>
-              </div>
-            </div>
-      
-            <!-- Ícones  -->
-             <!-- ícones ocupam menos espaço e ficam alinhados à direita. -->
-              <!-- isso força ícone filtro + ícone perfil a ficarem lado a lado, alinhados verticalmente e com espaço (gap-3) entre eles. -->
-            <div class="col-4 col-md-6 d-flex justify-content-end align-items-center gap-3">
-                <!-- Dropdown do filtro -->
-                <div class="dropdown">
-                    <i class="bi bi-funnel fs-3 text-white" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Página Inicial</a></li>
-                        <li><a class="dropdown-item" href="#">Ano</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Dropdown do login/perfil -->
-                <div class="dropdown">
-                    <button class="btn rounded-circle" id="dropdownLogin" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle fs-3 text-white"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownLogin">
-                        <li><a class="dropdown-item" href="#">Entrar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Sair</a></li>
-                    </ul>
-                </div>
-            </div>
-      
-          </div>
+       <!-- HEADER -->
+  <header class="header bg-light p-2">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col">
+          <h2 class="text-white">Cadastro de TCCs</h2>
         </div>
-      </header>
-      
-    
-      
-      <!-- Formulário central -->
-      <div class="form-container">
-        <form>
-            <!-- Título -->
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Título">
-          </div>
-          <!-- Nome dos autores -->
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Nome dos autores">
-          </div>
-          <!-- Orientadores -->
-          <div class="mb-3">
-            <label class="form-check-label">Selecione os orientadores</label>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="Ivo" id="ivo">
-              <label class="form-check-label" for="ivo">Ivo</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="Alex" id="alex">
-              <label class="form-check-label" for="alex">Alex</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="Godofredo" id="godofredo">
-              <label class="form-check-label" for="godofredo">Godofredo</label>
-            </div>
-          </div>
-          <!-- Curso -->
-          <div class="mb-3">
-            <select class="form-select">
-              <option selected disabled>Selecione o curso</option>
-              <option>Desenvolvimento de Sistemas</option>
-              <option>Logistica</option>
-              <option>Eletromecanica</option>
-            </select>
-          </div>
-          <!-- Data -->
-          <div class="mb-3">
-            <input type="date" class="form-control">
-          </div>
-          <!-- Descrição -->
-          <div class="mb-3">
-            <textarea class="form-control" rows="3" placeholder="Descrição"></textarea>
-          </div>
-          <!-- Curso em Destaque -->
-          <div class="mb-3">
-            <label for="cursoDestaque" class="form-label">Curso em Destaque?</label>
-            <input type="text" class="form-control" id="cursoDestaque" placeholder="Responda com 'Sim' ou 'Não'">
-          </div>
-          
-          
-          <!-- Arquivo/PDF -->
-          <div class="mb-3">
-            <input type="file" class="form-control" accept="application/pdf">
-          </div>
-          <!-- Palavras chaves -->
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Palavra chave 1">
-          </div>
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Palavra chave 2">
-          </div>
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Palavra chave 3">
-          </div>
-          <!-- Buttons confirmar/cancelar -->
-          <div class="d-flex justify-content-between">
-            <button type="reset" class="btn btn-secondary">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Confirmar</button>
-          </div>
-        </form>
       </div>
+    </div>
+  </header>
+  
+  <!-- FORMULÁRIO -->
+  <div class="form-container">
+    <form>
+      <!-- Título -->
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Título" required>
+      </div>
+      <!-- Autores -->
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Nome dos autores" required>
+      </div>
+      <!-- Orientador -->
+      <div class="mb-3">
+        <select class="form-select" required>
+          <option selected disabled>Selecione o orientador</option>
+          <option value="ivo">Ivo</option>
+          <option value="alex">Alex</option>
+          <option value="godofredo">Godofredo</option>
+        </select>
+      </div>
+      <!-- Curso -->
+      <div class="mb-3">
+        <select class="form-select" required>
+          <option selected disabled>Selecione o curso</option>
+          <option value="ds">Desenvolvimento de Sistemas</option>
+          <option value="logistica">Logística</option>
+          <option value="eletro">Eletromecânica</option>
+        </select>
+      </div>
+      <!-- Data -->
+      <div class="mb-3">
+        <input type="date" class="form-control" required>
+      </div>
+      <!-- Descrição -->
+      <div class="mb-3">
+        <textarea class="form-control" rows="3" placeholder="Descrição"></textarea>
+      </div>
+      <!-- Curso em Destaque -->
+      <div class="mb-3">
+        <label for="cursoDestaque" class="form-label">Curso em Destaque?</label>
+        <input type="text" class="form-control" id="cursoDestaque" placeholder="Responda com 'Sim' ou 'Não'">
+      </div>
+      <!-- Arquivo PDF -->
+      <div class="mb-3">
+        <input type="file" class="form-control" accept="application/pdf">
+      </div>
+      <!-- Palavras-chave -->
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Palavra-chave 1">
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Palavra-chave 2">
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Palavra-chave 3">
+      </div>
+      <!-- Botões -->
+      <div class="d-flex justify-content-between">
+        <button type="reset" class="btn btn-secondary">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Confirmar</button>
+      </div>
+    </form>
+  </div>
 </body>
 </html>
