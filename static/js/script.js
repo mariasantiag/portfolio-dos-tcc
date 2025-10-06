@@ -1,4 +1,8 @@
+
+// Espera o carregamento completo da estrutura HTML da página (DOM) antes de executar a função que está dentro dele.
 document.addEventListener("DOMContentLoaded", function () {
+
+// função para colocar op Sweet Alert2 do "deleter" 
     const botaoExcluir = document.getElementById("btn__excluir");
   
     botaoExcluir.addEventListener("click", function (e) {
