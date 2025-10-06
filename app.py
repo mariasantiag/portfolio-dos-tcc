@@ -38,6 +38,10 @@ def post_usuario():
 def paginacadastrotcc():
     return render_template("cadastro-tcc.html")
 
+@app.route("/paginainicial")
+def paginaprincipal():
+    return render_template("principal.html")
+
 @app.route("/post/logar", methods=["POST"])
 def post_logar():
     login = request.form.get("login")
@@ -46,7 +50,7 @@ def post_logar():
     esta_logado = Usuario.logar(login, senha)
 
     if esta_logado:
-        return redirect("/paginacadastrotcc")
+        return redirect("/paginainicial")
     else:
         return redirect("/paginalogin")
     
