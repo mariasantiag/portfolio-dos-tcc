@@ -6,7 +6,7 @@ from data.conexao import Conexao
 class Tcc:
 
     # Função para registrar as informações no banco de dados
-    def registrar_tcc_no_banco(self, titulo, descricao, nome_pdf):
+    def registrar_tcc_no_banco(self, titulo, descricao, pdf_nome):
         try:
             # Criar conexão
             conexao = Conexao.criar_conexao()
@@ -25,7 +25,7 @@ class Tcc:
             # Dados do TCC
             dados_tcc = (
                 titulo, 'Autor do TCC', descricao, '2025-10-01',  # Data pode ser dinâmica
-                'Palavra chave 1', 'Palavra chave 2', 'Palavra chave 3', 'Destaques do TCC', nome_pdf
+                'Palavra chave 1', 'Palavra chave 2', 'Palavra chave 3', 'Destaques do TCC', pdf_nome
             )
 
             # Inserindo os dados nas tabelas: tbOrientador, tbCurso e tbTcc
@@ -49,12 +49,6 @@ class Tcc:
     # Função para salvar o PDF na pasta 'pdf' e registrar no banco de dados
     def salvar_tcc(self, titulo, descricao, pdf_path):
 
-         # Criar conexão
-        conexao = Conexao.criar_conexao()
-
-        # O cursor será responsável por manipular
-        cursor = conexao.cursor(dictionary=True)
-
         # Pasta onde os PDFs serão armazenados
         pasta_pdf = 'pdf'  # Assumindo que a pasta pdf já existe no seu projeto
         
@@ -76,9 +70,3 @@ class Tcc:
         
         print(f"TCC salvo com sucesso! PDF: {nome_pdf}")
 
-        cursor.close()
-        conexao.close()
-
-
-# Caminho do arquivo PDF
-pdf_path = '%s/%s/%s.pdf'
