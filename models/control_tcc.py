@@ -1,100 +1,84 @@
-# TESTE
+import os
+import shutil
+import mysql.connector
+from data.conexao import Conexao
 
-# import os
-# import shutil
-# import mysql.connector
-# from data.conexao import Conexao
+class Tcc:
 
-# class Tcc:
+    # Função para registrar as informações no banco de dados
+    def registrar_tcc_no_banco(self, titulo, descricao, nome_pdf):
+        try:
+            # Criar conexão
+            conexao = Conexao.criar_conexao()
 
-#     # Função para registrar as informações no banco de dados
-#     def registrar_tcc_no_banco(self, titulo, descricao, nome_pdf, banco_dados_info):
-#         try:
-#             # Criar conexão
-#             conexao = Conexao.criar_conexao()
+            # O cursor será responsável por manipular
+            cursor = conexao.cursor(dictionary=True)
 
-#             # O cursor será responsável por manipular
-#             cursor = conexao.cursor(dictionary=True)
-
-#             # Comandos SQL para inserir em diferentes tabelas
-#             sql_orientador = "INSERT INTO tbOrientador (nome_orientador) VALUES (%s)"
-#             sql_curso = "INSERT INTO tbCurso (nome_curso) VALUES (%s)"
-#             sql_tcc = """
-#                 INSERT INTO tbTcc (titulo, autor, descricao, data, palavrachave1, palavrachave2, palavrachave3, destaques, pdf_nome) 
-#                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-#             """
+            # Comandos SQL para inserir em diferentes tabelas
+            sql_orientador = "INSERT INTO tbOrientador (nome_orientador) VALUES (%s)"
+            sql_curso = "INSERT INTO tbCurso (nome_curso) VALUES (%s)"
+            sql_tcc = """
+                INSERT INTO tbTcc (titulo, autor, descricao, data, palavrachave1, palavrachave2, palavrachave3, destaques, pdf_nome) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """
             
-#             # Dados de exemplo para orientador e curso
-#             nome_orientador = "Nome do Orientador"  # Aqui você deve obter o nome do orientador real
-#             nome_curso = "Nome do Curso"  # Aqui você deve obter o nome do curso real
+            # Dados do TCC
+            dados_tcc = (
+                titulo, 'Autor do TCC', descricao, '2025-10-01',  # Data pode ser dinâmica
+                'Palavra chave 1', 'Palavra chave 2', 'Palavra chave 3', 'Destaques do TCC', nome_pdf
+            )
 
-#             # Dados do TCC
-#             dados_tcc = (
-#                 titulo, 'Autor do TCC', descricao, '2025-10-01',  # Data pode ser dinâmica
-#                 'Palavra chave 1', 'Palavra chave 2', 'Palavra chave 3', 'Destaques do TCC', nome_pdf
-#             )
+            # Inserindo os dados nas tabelas: tbOrientador, tbCurso e tbTcc
+            cursor.execute(sql_orientador)
+            cursor.execute(sql_curso)
+            cursor.execute(sql_tcc, dados_tcc)
 
-#             # Inserindo os dados nas tabelas: tbOrientador, tbCurso e tbTcc
-#             cursor.execute(sql_orientador, (nome_orientador,))
-#             cursor.execute(sql_curso, (nome_curso,))
-#             cursor.execute(sql_tcc, dados_tcc)
+            # Commit para salvar todas as inserções no banco
+            conexao.commit()
 
-#             # Commit para salvar todas as inserções no banco
-#             conexao.commit()
+            print(f"TCC '{titulo}' registrado no banco de dados.")
 
-#             print(f"TCC '{titulo}' registrado no banco de dados.")
+        except mysql.connector.Error as err:
+            print(f"Erro: {err}")
+            conexao.rollback()  # Caso haja erro, desfazemos as inserções
 
-#         except mysql.connector.Error as err:
-#             print(f"Erro: {err}")
-#             conexao.rollback()  # Caso haja erro, desfazemos as inserções
+        finally:
+            cursor.close()
+            conexao.close()
 
-#         finally:
-#             cursor.close()
-#             conexao.close()
+    # Função para salvar o PDF na pasta 'pdf' e registrar no banco de dados
+    def salvar_tcc(self, titulo, descricao, pdf_path):
 
-#     # Função para salvar o PDF na pasta 'pdf' e registrar no banco de dados
-#     def salvar_tcc(self, titulo, descricao, pdf_path, banco_dados_info):
-#         # Pasta onde os PDFs serão armazenados
-#         pasta_pdf = 'pdf'  # Assumindo que a pasta pdf já existe no seu projeto
+         # Criar conexão
+        conexao = Conexao.criar_conexao()
+
+        # O cursor será responsável por manipular
+        cursor = conexao.cursor(dictionary=True)
+
+        # Pasta onde os PDFs serão armazenados
+        pasta_pdf = 'pdf'  # Assumindo que a pasta pdf já existe no seu projeto
         
-#         # Cria a pasta se não existir
-#         if not os.path.exists(pasta_pdf):
-#             os.makedirs(pasta_pdf)
+        # Cria a pasta se não existir
+        if not os.path.exists(pasta_pdf):
+            os.makedirs(pasta_pdf)
         
-#         # Extrai o nome do arquivo PDF
-#         nome_pdf = os.path.basename(pdf_path)
+        # Extrai o nome do arquivo PDF
+        nome_pdf = os.path.basename(pdf_path)
         
-#         # Define o caminho completo para onde o PDF será movido
-#         caminho_pdf_destino = os.path.join(pasta_pdf, nome_pdf)
+        # Define o caminho completo para onde o PDF será movido
+        caminho_pdf_destino = os.path.join(pasta_pdf, nome_pdf)
         
-#         # Move o PDF para a pasta 'pdf'
-#         shutil.copy(pdf_path, caminho_pdf_destino)
+        # Move o PDF para a pasta 'pdf'
+        shutil.copy(pdf_path, caminho_pdf_destino)
 
-#         # Agora, registra as informações no banco de dados (incluindo o nome do PDF)
-#         self.registrar_tcc_no_banco(titulo, descricao, nome_pdf, banco_dados_info)  # Usando 'self' para chamar o método
+        # Agora, registra as informações no banco de dados (incluindo o nome do PDF)
+        self.registrar_tcc_no_banco(titulo, descricao, nome_pdf)  # Usando 'self' para chamar o método
         
-#         print(f"TCC salvo com sucesso! PDF: {nome_pdf}")
+        print(f"TCC salvo com sucesso! PDF: {nome_pdf}")
 
-# # Exemplo de uso:
+        cursor.close()
+        conexao.close()
 
-# # Caminho do arquivo PDF
-# pdf_path = 'caminho/do/arquivo.pdf'
 
-# # Dados para conexão com o banco de dados (você deve substituir por dados reais)
-# banco_dados_info = {
-#     'host': 'localhost',
-#     'user': 'seu_usuario',
-#     'password': 'sua_senha',
-#     'database': 'seu_banco_de_dados'
-# }
-
-# # Criando uma instância da classe Tcc
-# tcc = Tcc()
-
-# # Chamada para salvar o TCC
-# tcc.salvar_tcc(
-#     titulo='Título do TCC',
-#     descricao='Descrição do TCC',
-#     pdf_path=pdf_path,
-#     banco_dados_info=banco_dados_info
-# )
+# Caminho do arquivo PDF
+pdf_path = '%s/%s/%s.pdf'
