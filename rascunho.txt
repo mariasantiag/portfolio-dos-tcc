@@ -1,0 +1,6 @@
+responsividade das telas
+@media (max-width: 768px) {
+  .grid__destaque {
+    grid-template-columns: 1fr; /* fica só uma coluna no tela menor */
+  }
+}

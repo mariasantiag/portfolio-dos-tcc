@@ -12,10 +12,15 @@
         <!-- Link do JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous" defer></script>
 
         <!-- Link dos icones -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Link do Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+    <script src="/static/js/script.js" defer></script>
 
     <!-- Link do arquivo CSS -->
      <link rel="stylesheet" href="/static/css/tela_inicial.css">
@@ -71,7 +76,7 @@
         </div>
       </header>
       
-
+    <!-- body da página -->
     <main class="info_ _principal">
         
         <section class="sec__destaques">
@@ -101,7 +106,7 @@
                         <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
                             <li><a class="dropdown-item" href="#">Editar</a></li>
-                            <li><a class="dropdown-item" href="#">Excluir</a></li>
+                            <li><a class="dropdown-item" href="#" id="btn__excluir">Excluir</a></li>
                         </ul>
                     </div>
                 </div>
@@ -110,7 +115,7 @@
         </section>
 
         <!-- Botão flutuante "+" -->
-        <div class="add__tcc dropdown">
+        <div class="add__tcc dropdown__add">
             <i class="bi bi-plus-circle fs-1" role="button" id="dropdownAddButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAddButton">
                 <li><a class="dropdown-item" href="#">Adicionar TCC</a></li>

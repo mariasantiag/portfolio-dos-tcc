@@ -43,6 +43,7 @@
     border: none;
   }
   
+  /* ao passar o mouse no botão de busca */
   .input-group .btn:hover {
     background-color: var(--cor02);
     color: var(--cor01);
@@ -163,16 +164,18 @@ h2{
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.add__tcc i:hover {
+/* .add__tcc i:hover {
   transform: scale(1.1);
   background-color: var(--cor05);
   color: var(--cor01);
+} */
+
+/* Mover o dropdown para cima ao passar o mouse */
+.dropdown__add:hover .dropdown-menu {
+  transform: translateY(-10px); /* Ajuste o valor conforme necessário */
+  transition: transform 0.3s ease;
 }
 
 
-/* responsividade das telas */
-@media (max-width: 768px) {
-  .grid__destaque {
-    grid-template-columns: 1fr; /* fica só uma coluna no tela menor */
-  }
-}
+
+
