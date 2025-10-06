@@ -49,6 +49,20 @@ def paginacadastrotcc():
 def paginaorientadorcurso():
     return render_template("cadastro-curso-orientador.html")
 
+@app.route("/post/cadastraorientadorcurso", methods= ["POST"])
+def post_curso_orientador():
+    # Peguei as informações vinda do usuário
+    nome_curso = request.form.get("curso_nome")
+    nome_orientador = request.form.get("orientador_nome")
+   
+
+    # Cadastrando a mensagem usando a classe mensagem
+    Curso_orientador.cadastro_curso(nome_curso)
+    Curso_orientador.cadastro_orientador(nome_orientador)
+    
+    # Redireciona para o index
+    return redirect("/paginainicial")
+
 @app.route("/post/logar", methods=["POST"])
 def post_logar():
     login = request.form.get("login")
