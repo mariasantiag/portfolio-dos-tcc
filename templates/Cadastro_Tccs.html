@@ -16,11 +16,15 @@
     </head>
     <body>
       
-       <!-- HEADER -->
+      <!-- HEADER(cabeçalho da página) -->
   <header class="header bg-light p-2">
+     <!-- Container que ocupa toda a largura da tela -->
     <div class="container-fluid">
+      <!-- Linha com alinhamento vertical centralizado dos itens -->
       <div class="row align-items-center">
+              <!-- Coluna única (ocupa todo o espaço disponível) -->
         <div class="col">
+                <!-- Título principal do cabeçalho -->
           <h2 class="text-white">Cadastro de TCCs</h2>
         </div>
       </div>
@@ -29,18 +33,26 @@
   
   <!-- FORMULÁRIO -->
   <div class="form-container">
+    <!-- Definindo o inicio do formulário -->
     <form>
+
       <!-- Título -->
       <div class="mb-3">
+            <!-- Campo de texto para o título do TCC -->
         <input type="text" class="form-control" placeholder="Título" required>
       </div>
+
       <!-- Autores -->
       <div class="mb-3">
+              <!-- Campo de texto para o nome dos autores -->
         <input type="text" class="form-control" placeholder="Nome dos autores" required>
       </div>
+
       <!-- Orientador -->
       <div class="mb-3">
+              <!-- Menu de seleção  com opções de orientadores -->
         <select class="form-select" required>
+          <!-- Opções de orientadores  -->
           <option selected disabled>Selecione o orientador</option>
           <option value="ivo">Ivo</option>
           <option value="alex">Alex</option>
@@ -49,6 +61,7 @@
       </div>
       <!-- Curso -->
       <div class="mb-3">
+        <!-- Menu de seleção  com opções de cursos -->
         <select class="form-select" required>
           <option selected disabled>Selecione o curso</option>
           <option value="ds">Desenvolvimento de Sistemas</option>
@@ -58,23 +71,29 @@
       </div>
       <!-- Data -->
       <div class="mb-3">
+      <!-- Campo para escolher uma data (usando o seletor de data do navegador) -->
         <input type="date" class="form-control" required>
       </div>
       <!-- Descrição -->
       <div class="mb-3">
+        <!-- Caixa de texto  para a descrição do TCC -->
         <textarea class="form-control" rows="3" placeholder="Descrição"></textarea>
       </div>
       <!-- Curso em Destaque -->
       <div class="mb-3">
+        <!-- Rótulo (label) com texto explicativo -->
         <label for="cursoDestaque" class="form-label">Curso em Destaque?</label>
+        <!-- Campo de texto simples  -->
         <input type="text" class="form-control" id="cursoDestaque" placeholder="Responda com 'Sim' ou 'Não'">
       </div>
       <!-- Arquivo PDF -->
       <div class="mb-3">
+        <!-- Campo para enviar um arquivo (PDF) -->
         <input type="file" class="form-control" accept="application/pdf">
       </div>
       <!-- Palavras-chave -->
       <div class="mb-3">
+      <!-- Campos individuais para inserir palavras-chave relacionadas ao TCC -->
         <input type="text" class="form-control" placeholder="Palavra-chave 1">
       </div>
       <div class="mb-3">
@@ -85,7 +104,9 @@
       </div>
       <!-- Botões -->
       <div class="d-flex justify-content-between">
+        <!-- Botão que limpa todos os campos do formulário -->
         <button type="reset" class="btn btn-secondary">Cancelar</button>
+          <!-- Botão que envia os dados do formulário  -->
         <button type="submit" class="btn btn-primary">Confirmar</button>
       </div>
     </form>
