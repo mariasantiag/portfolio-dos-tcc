@@ -24,7 +24,7 @@
   
   <!-- FORMULÁRIO -->
   <div class="form-container">
-    <form action="/post/cadastrar/tcc" method="POST">
+    <form action="/post/cadastrar/tcc" method="POST" enctype="multipart/form-data">
       <!-- Título -->
       <div class="mb-3">
         <input name="titulo" type="text" class="form-control" placeholder="Título" required>
@@ -57,7 +57,7 @@
       </div>
       <!-- Descrição -->
       <div class="mb-3">
-        <textarea name="Descricao" class="form-control" rows="3" placeholder="Descrição"></textarea>
+        <textarea name="descricao" id="descricao" class="form-control" rows="3" placeholder="Descrição"></textarea>
       </div>
       <!-- Curso em Destaque -->
       <div class="mb-3">
@@ -66,7 +66,7 @@
       </div>
       <!-- Arquivo PDF -->
       <div class="mb-3">
-        <input name="pdf" type="file" class="form-control" accept=".pdf" required>
+        <input name="pdf" id="pdf" type="file" class="form-control" accept="application/pdf">
       </div>
       <!-- Palavras-chave -->
       <div class="mb-3">
