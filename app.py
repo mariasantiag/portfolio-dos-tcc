@@ -42,8 +42,9 @@ def post_usuario():
 
 @app.route("/paginacadastrotcc")
 def paginacadastrotcc():
-    return render_template("cadastro-tcc.html")
-
+    curso = Curso_orientador.recuperar_curso()
+    orientador = Curso_orientador.recuperar_orientador()
+    return render_template("cadastro-tcc.html", curso=curso, orientador=orientador)
 
 @app.route("/paginaorientadorcurso")
 def paginaorientadorcurso():
@@ -123,6 +124,7 @@ def post_tcc():
 
     # Redireciona para a página inicial após o cadastro
     return redirect("/paginainicial")
+
 
 
 app.run(debug=True)

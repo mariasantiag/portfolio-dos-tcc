@@ -35,18 +35,19 @@
       </div>
       <select name="curso" class="form-select" required>
         <option selected disabled>Selecione o curso</option>
-        <option value="1">Desenvolvimento de Sistemas</option>
-        <option value="2">Logística</option>
-        <option value="3">Eletromecânica</option>
+        {% for c in curso %}
+          <option value="{{ c.cod_curso }}">{{ c.nome_curso }}</option>
+        {% endfor %}
       </select>
-      
+     
       <!-- Orientador -->
       <select name="orientador" class="form-select" required>
         <option selected disabled>Selecione o orientador</option>
-        <option value="1">Ivo</option>
-        <option value="2">Alex</option>
-        <option value="3">Godofredo</option>
+        {% for o in orientador %}
+          <option value="{{ o.cod_orientador }}">{{ o.nome_orientador }}</option>
+        {% endfor %}
       </select>
+  
       <!-- Data -->
       <div class="mb-3">
         <input name="data" type="date" class="form-control" required>
