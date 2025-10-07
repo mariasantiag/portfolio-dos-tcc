@@ -110,9 +110,10 @@
                 <h2>Recentes</h2>
             </div>
 
+            {% for tcc in tccs %}
             <div class="grid__recentes">
 
-                {% for tcc in tccs %}
+                
                 <div class="card__recentes">
                     <!-- 1. O CONTEÚDO fica aqui -->
                     <div class="card__conteudo">
@@ -133,7 +134,7 @@
                             <strong>Professores:</strong> {{tcc.nome_orientador}}
                         </p>
                     </div>
-                {% endfor %}
+                
                
                     <!-- 2. O DROPDOWN é um irmão do conteúdo -->
                     <div class="dropdown card-dropdown">
@@ -145,6 +146,7 @@
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </section>
 
         <!-- Botão flutuante "+" -->

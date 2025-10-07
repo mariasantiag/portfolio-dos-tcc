@@ -17,7 +17,7 @@ class Palavra:
                             descricao,
                             data,
                             nome_curso,
-                            nome_orientador
+                            nome_orientador 
                         FROM
                             tbTcc
                         INNER JOIN
