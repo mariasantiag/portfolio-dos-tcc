@@ -24,7 +24,7 @@
     <script src="/static/js/script.js" defer></script>
 
     
-    <link rel="stylesheet" href="/static/css/tela_inicial.css">
+    <link rel="stylesheet" href="/static/css/filtro.css">
 </head>
 
 <body>
@@ -82,23 +82,39 @@
         </div>
       </header>
 
-    <h1>TCCs Ordenados por Data</h1>
+    <main class="main__tccs">
 
-    <main>
-        <div class="tccs-container">
+        <div class="tittle__tccs">
+            <h1>TCCs Ordenados por Data</h1>
+        </div>
+        
+        <div class="grid__tccs">
             {% for tcc in tccs_ordenados %}
-                <div class="tcc-card">
+                <div class="card__tccs">
                     <h3>{{ tcc.titulo }}</h3>
                     <p><strong>Data:</strong> {{ tcc.data }}</p>
                     <p><strong>Autores:</strong> {{ tcc.autor }}</p>
                     <p><strong>Orientador:</strong> {{ tcc.cod_orientador }}</p>
                     <p><strong>Curso:</strong> {{ tcc.cod_curso }}</p>
                     <p><strong>Descrição:</strong> {{ tcc.descricao }}</p>
+                    
+                    <!-- Dropdown três pontinhos -->
+                    <div class="dropdown card-dropdown">
+                        <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
+                            <li><a class="dropdown-item" href="#">Editar</a></li>
+                            <li><a class="dropdown-item" href="#" id="btn__excluir">Excluir</a></li>
+                        </ul>
+                    </div>
                 </div>
             {% else %}
                 <p>Nenhum TCC encontrado.</p>
             {% endfor %}
         </div>
+        
+
+
+
     
     </main>
     
