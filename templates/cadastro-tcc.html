@@ -24,62 +24,60 @@
   
   <!-- FORMULÁRIO -->
   <div class="form-container">
-    <form>
+    <form action="/post/cadastrar/tcc" method="POST" enctype="multipart/form-data">
       <!-- Título -->
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Título" required>
+        <input name="titulo" type="text" class="form-control" placeholder="Título" required>
       </div>
       <!-- Autores -->
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Nome dos autores" required>
+        <input name="autores" type="text" class="form-control" placeholder="Nome dos autores" required>
       </div>
+      <select name="curso" class="form-select" required>
+        <option selected disabled>Selecione o curso</option>
+        {% for c in curso %}
+          <option value="{{ c.cod_curso }}">{{ c.nome_curso }}</option>
+        {% endfor %}
+      </select>
+     
       <!-- Orientador -->
-      <div class="mb-3">
-        <select class="form-select" required>
-          <option selected disabled>Selecione o orientador</option>
-          <option value="ivo">Ivo</option>
-          <option value="alex">Alex</option>
-          <option value="godofredo">Godofredo</option>
-        </select>
-      </div>
-      <!-- Curso -->
-      <div class="mb-3">
-        <select class="form-select" required>
-          <option selected disabled>Selecione o curso</option>
-          <option value="ds">Desenvolvimento de Sistemas</option>
-          <option value="logistica">Logística</option>
-          <option value="eletro">Eletromecânica</option>
-        </select>
-      </div>
+      <select name="orientador" class="form-select" required>
+        <option selected disabled>Selecione o orientador</option>
+        {% for o in orientador %}
+          <option value="{{ o.cod_orientador }}">{{ o.nome_orientador }}</option>
+        {% endfor %}
+      </select>
+  
       <!-- Data -->
       <div class="mb-3">
-        <input type="date" class="form-control" required>
+        <input name="data" type="date" class="form-control" required>
       </div>
       <!-- Descrição -->
       <div class="mb-3">
-        <textarea class="form-control" rows="3" placeholder="Descrição"></textarea>
+        <textarea name="descricao" id="descricao" class="form-control" rows="3" placeholder="Descrição"></textarea>
       </div>
       <!-- Curso em Destaque -->
       <div class="mb-3">
         <label for="cursoDestaque" class="form-label">Curso em Destaque?</label>
-        <input type="text" class="form-control" id="cursoDestaque" placeholder="Responda com 'Sim' ou 'Não'">
+        <input name="destaque" type="text" class="form-control" id="cursoDestaque" placeholder="Responda com 'Sim' ou 'Não'">
       </div>
       <!-- Arquivo PDF -->
       <div class="mb-3">
-        <input type="file" class="form-control" accept="application/pdf">
+        <input name="pdf" id="pdf" type="file" class="form-control" accept="application/pdf">
       </div>
       <!-- Palavras-chave -->
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Palavra-chave 1">
+        <input name="chave1" type="text" class="form-control" placeholder="Palavra-chave 1">
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Palavra-chave 2">
+        <input name="chave2" type="text" class="form-control" placeholder="Palavra-chave 2">
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Palavra-chave 3">
+        <input name="chave3" type="text" class="form-control" placeholder="Palavra-chave 3">
       </div>
       <!-- Botões -->
       <div class="d-flex justify-content-between">
+        <a href="/paginainicial"><button type="button" class="btn btn-third">Voltar</button></a>
         <button type="reset" class="btn btn-secondary">Cancelar</button>
         <button type="submit" class="btn btn-primary">Confirmar</button>
       </div>

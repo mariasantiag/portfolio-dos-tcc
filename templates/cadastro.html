@@ -27,23 +27,24 @@
         <div class="form-container text-center">
             <i class="bi bi-person-circle"></i>
     
-            <form>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Godofredo Stocco da Silva">
-                </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput2" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="godofredo.stocco@email.com">
-                </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput3" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="formGroupExampleInput3" placeholder="">
-                </div>
-                
-                <button type="button" class="btn btn-secondary">Voltar</button>
-                <button type="button" class="btn btn-secondary">Cadastrar-se</button>
-            </form>
+                <form action="/post/cadastrarusuario", method="POST">
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Godofredo Stocco da Silva" name="nome">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Login</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="godofredo.stocco@email.com" name="login">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput3" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="formGroupExampleInput3" placeholder="" name="senha">
+                    </div>
+                    
+                    <a href="/paginalogin"><button type="button" class="btn btn-secondary">Voltar</button></a>
+                    <button type="submit" class="btn btn-secondary">Cadastrar-se</button>
+                </form>
+            </div>
         </div>
     </main>
 </body>

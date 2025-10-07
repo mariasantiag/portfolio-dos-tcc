@@ -22,9 +22,11 @@
 
   <main class="login-container">
     <section class="card shadow-lg p-4">
-      <!-- formulário -->
-      <form id="formLogin" novalidate>
-        <!-- login -->
+      <h1 class="text-center mb-4">Login</h1>
+
+      <!-- formulário-->
+      <form id="formLogin" novalidate action="/post/logar" method="POST">
+        <!-- nome -->
         <div class="mb-3">
           <label for="login" class="form-label">Login</label>
           <input type="text" class="form-control" id="login" name="login" required>
@@ -40,12 +42,12 @@
 
         <!-- botões -->
         <div class="d-flex justify-content-between">
-          <button type="button" class="btn btn-secondary">Voltar</button>
+          <a href="/paginainicial"><button type="button" class="btn btn-secondary">Voltar</button></a>
           <button type="submit" class="btn btn-primary">Login</button>
         </div>
 
         <div class="text-center mt-3">
-          <button type="button" class="btn btn-outline-success w-100">Cadastrar</button>
+          <a href="/paginacadastro"><button type="button" class="btn btn-outline-success w-100">Cadastrar</button></a>
         </div>
       </form>
     </section>
