@@ -8,6 +8,7 @@ from models.control_curso_orientador import Curso_orientador
 from models.control_destaques import Destaques
 from models.control_recentes import Recentes
 from models.control_usuario_admin import Usuario
+from flask import jsonify, request
 
 from flask import session
 app = Flask(__name__)
@@ -42,9 +43,19 @@ def post_usuario():
 
 @app.route("/paginacadastrotcc")
 def paginacadastrotcc():
-    curso = Curso_orientador.recuperar_curso()
-    orientador = Curso_orientador.recuperar_orientador()
-    return render_template("cadastro-tcc.html", curso=curso, orientador=orientador)
+    curso = Curso_orientador.recuperar_curso()  
+    return render_template("cadastro-tcc.html", curso=curso)
+
+
+
+# API que responde a GET em /api/orientadores/<id_do_curso>
+@app.route("/api/orientadores/<int:cod_curso>")
+def api_orientadores(cod_curso):
+    orientadores = Curso_orientador.recuperar_orientador(cod_curso)
+
+    # Retorna os dados no formato JSON (usado pelo JavaScript no frontend)
+    return jsonify(orientadores)
+
 
 @app.route("/paginaorientadorcurso")
 def paginaorientadorcurso():

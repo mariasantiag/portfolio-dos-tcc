@@ -59,7 +59,29 @@ class Curso_orientador:
             return resultado
 
 
-    def recuperar_orientador():
+    # def recuperar_orientador():
+
+    #         #Criar conexão
+    #         conexao = Conexao.criar_conexao()
+
+    #         # O cursor será responsável por manipular
+    #         cursor = conexao.cursor(dictionary = True)
+
+    #         # Criando o sql que será executado
+    #         sql = "SELECT nome_orientador, cod_orientador FROM tbOrientador;"
+
+    #         #Executando o comando sql
+    #         cursor.execute(sql)        
+
+    #         #Recuperando os dados e jogando em uma varialvel
+    #         resultado = cursor.fetchall()
+
+    #         #Fecho a conexão (como não ouve alteração não preciso do commit)
+    #         conexao.close()
+
+    #         return resultado
+    
+    def recuperar_orientador(cod_curso):
 
             #Criar conexão
             conexao = Conexao.criar_conexao()
@@ -68,10 +90,12 @@ class Curso_orientador:
             cursor = conexao.cursor(dictionary = True)
 
             # Criando o sql que será executado
-            sql = "SELECT nome_orientador, cod_orientador FROM tbOrientador;"
+            sql = "SELECT nome_orientador FROM tbOrientador where cod_curso = %s;"
+
+            valores = (cod_curso,)
 
             #Executando o comando sql
-            cursor.execute(sql)        
+            cursor.execute(sql, valores)        
 
             #Recuperando os dados e jogando em uma varialvel
             resultado = cursor.fetchall()
@@ -80,3 +104,4 @@ class Curso_orientador:
             conexao.close()
 
             return resultado
+    
