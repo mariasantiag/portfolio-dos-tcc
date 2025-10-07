@@ -40,7 +40,7 @@ CREATE TABLE tbAdmin (
     login VARCHAR(80) NOT NULL,
     senha VARCHAR(100) NOT NULL,
     nome VARCHAR(80) NOT NULL,
-    codigo INT primary key
+    codigo INT primary key AUTO_INCREMENT
 );
 
 
