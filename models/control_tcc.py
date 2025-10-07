@@ -70,6 +70,7 @@ class Tcc:
 
             sql_tcc="""
                         SELECT
+                            codigo,
                             titulo,
                             autor,
                             descricao,
@@ -100,3 +101,16 @@ class Tcc:
         finally:
             cursor.close()
             conexao.close()
+
+    def vizualiza_tcc():
+        
+            conexao = Conexao.criar_conexao()
+            cursor = conexao.cursor(dictionary=True)
+
+            sql_tcc = """SELECT pdf_nome FROM tbtcc"""
+
+            cursor.execute(sql_tcc)
+
+            trabalho = cursor.fetchone()
+
+            return trabalho

@@ -19,11 +19,11 @@
 
     <!-- Link do Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-
-    <script src="/static/js/script.js" defer></script>
-
+    <script src="/static/js/vizualizacao-tcc.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js" defer></script> 
     <!-- Link do arquivo CSS -->
      <link rel="stylesheet" href="/static/css/tela_inicial.css">
+     
 
     <title>Portifólio dos TCC's</title>
     
@@ -103,9 +103,9 @@
                 <h2>Recentes</h2>
             </div>
 
+            {% for tccs in tccs %}
             <div class="grid__recentes">
 
-                {% for tccs in tccs %}
                 <div class="card__recentes">
                     <!-- 1. O CONTEÚDO fica aqui -->
                     <div class="card__conteudo">
@@ -126,8 +126,7 @@
                             <strong>Professores:</strong> {{tccs.nome_orientador}}
                         </p>
                     </div>
-                {% endfor %}
-
+                    
                     <!-- 2. O DROPDOWN é um irmão do conteúdo -->
                     <div class="dropdown card-dropdown">
                         <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
@@ -138,6 +137,7 @@
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </section>
 
         <!-- Botão flutuante "+" -->

@@ -19,9 +19,10 @@ app.secret_key = "seila2"
 def paginaprincipal():
     
     tccs = Tcc.exibi_tcc()
+    selecao= Tcc.vizualiza_tcc()
 
 
-    return render_template("principal.html", tccs = tccs)
+    return render_template("principal.html", tccs = tccs, selecao = selecao)
 
 @app.route("/paginalogin")
 def paginalogin():
