@@ -19,9 +19,9 @@ app.secret_key = "seila2"
 def paginaprincipal():
     
     tccs = Tcc.exibi_tcc()
+    rec_tccs = Tcc.recuperar_tcc()
 
-
-    return render_template("principal.html", tccs = tccs)
+    return render_template("principal.html", tccs = tccs, rec_tccs=rec_tccs)
 
 @app.route("/paginalogin")
 def paginalogin():
@@ -132,8 +132,7 @@ def post_tcc():
 
 @app.route("/apagartcc/<codigo>")
 def apagartcc(codigo):
-    deletar = Tcc.deletar_tcc(codigo)
-    rec_tcc = Tcc.recuperar_tcc()
-    return render_template("principal.html", deletar=deletar, rec_tcc=rec_tcc)
+    Tcc.deletar_tcc(codigo)
+    return redirect("/paginainicial") 
 
 app.run(debug=True)

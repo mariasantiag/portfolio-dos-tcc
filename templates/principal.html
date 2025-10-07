@@ -105,9 +105,10 @@
                 <h2>Recentes</h2>
             </div>
 
+            {% for tccs in tccs %}
             <div class="grid__recentes">
 
-                {% for tccs in tccs %}
+                
                 <div class="card__recentes">
                     <!-- 1. O CONTEÚDO fica aqui -->
                     <div class="card__conteudo">
@@ -128,24 +129,25 @@
                             <strong>Professores:</strong> {{tccs.nome_orientador}}
                         </p>
                     </div>
-                {% endfor %}
+                
 
                     <!-- 2. O DROPDOWN é um irmão do conteúdo -->
                     <!-- texto dos cards - informações dos TCC's -->
                     <p></p>
                 
                     <!-- Dropdown três pontinhos -->
-                    {% for t in tcc %}
                     <div class="dropdown card-dropdown">
                         <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
                             <li><a class="dropdown-item" href="#">Editar</a></li>
-                            <li><a class="dropdown-item" href="/apagartcc/{{t.codigo}}" id="btn__excluir">Excluir</a></li>
+                            {% for rec_tcc in rec_tccs %}
+                            <li><a class="dropdown-item" href="/apagartcc/{{rec_tcc.codigo}}" id="btn__excluir">Excluir</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
-                    {% endfor %}
                 </div>
             </div>
+            {% endfor %}
         </section>
 
         <!-- Botão flutuante "+" -->
