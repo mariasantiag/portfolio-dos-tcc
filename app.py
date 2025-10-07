@@ -132,7 +132,7 @@ def post_tcc():
     return redirect("/paginainicial")
 
 
-@app.route('/pesquisar', methods=['GET'])
+@app.route("/pesquisar", methods=['GET'])
 def pesquisar():
     # Captura o valor da palavra chave para pesquisa
     palavra_chave = request.args.get('pesquisa_palavra_chave')
@@ -141,7 +141,7 @@ def pesquisar():
     resultados = Palavra.pesquisar_palavra_chave(palavra_chave)
 
     # Retorna os resultados para o template
-    return render_template('principal.html', resultados=resultados)
+    return render_template('principal.html', tccs=resultados)
 
 if __name__ == '__main__':
     app.run(debug=True)

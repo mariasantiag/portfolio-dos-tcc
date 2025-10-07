@@ -49,6 +49,9 @@
             </form>
 
     
+    
+
+         
       
             {% if session.usuario %}
             <span class="header__user">Olá, {{session.nome_usuario}}</span>
@@ -109,29 +112,29 @@
 
             <div class="grid__recentes">
 
-                {% for tccs in tccs %}
+                {% for tcc in tccs %}
                 <div class="card__recentes">
                     <!-- 1. O CONTEÚDO fica aqui -->
                     <div class="card__conteudo">
                         <div class="card__header">
-                            <h4 class="card__titulo">{{tccs.titulo}}</h4>
-                            <span class="card__data">{{tccs.data}}</span>
+                            <h4 class="card__titulo">{{tcc.titulo}}</h4>
+                            <span class="card__data">{{tcc.data}}</span>
                         </div>
                         <p class="card__descricao">
-                            {{tccs.descricao}}
+                            {{tcc.descricao}}
                         </p>
                         <p class="card__autores">
-                            <strong>Autores:</strong> {{tccs.autores}}
+                            <strong>Autores:</strong> {{tcc.autores}}
                         </p>
                         <p class="card__autores">
-                            <strong>Curso:</strong> {{tccs.nome_curso}}
+                            <strong>Curso:</strong> {{tcc.nome_curso}}
                         </p>
                         <p class="card__autores">
-                            <strong>Professores:</strong> {{tccs.nome_orientador}}
+                            <strong>Professores:</strong> {{tcc.nome_orientador}}
                         </p>
                     </div>
                 {% endfor %}
-
+               
                     <!-- 2. O DROPDOWN é um irmão do conteúdo -->
                     <div class="dropdown card-dropdown">
                         <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
