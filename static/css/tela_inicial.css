@@ -164,11 +164,6 @@ h2{
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-/* .add__tcc i:hover {
-  transform: scale(1.1);
-  background-color: var(--cor05);
-  color: var(--cor01);
-} */
 
 /* Mover o dropdown para cima ao passar o mouse */
 .dropdown__add:hover .dropdown-menu {
