@@ -109,13 +109,15 @@
                     <p></p>
                 
                     <!-- Dropdown três pontinhos -->
+                    {% for t in tcc %}
                     <div class="dropdown card-dropdown">
                         <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
                             <li><a class="dropdown-item" href="#">Editar</a></li>
-                            <li><a class="dropdown-item" href="#" id="btn__excluir">Excluir</a></li>
+                            <li><a class="dropdown-item" href="/apagartcc/{{t.codigo}}" id="btn__excluir">Excluir</a></li>
                         </ul>
                     </div>
+                    {% endfor %}
                 </div>
                 
             </div>

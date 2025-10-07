@@ -62,3 +62,49 @@ class Tcc:
         self.registrar_tcc_no_banco(titulo, autores, orientador, curso, descricao, data, chave1, chave2, chave3, destaque, nome_pdf)
 
         print(f"TCC salvo com sucesso! PDF: {nome_pdf}")
+
+
+    def deletar_tcc(codigo):
+         # Criando a conexão com o banco de dados
+        conexao = Conexao.criar_conexao()
+
+        # O cursor será responsável por manipular
+        cursor = conexao.cursor()
+
+        # Criando o sql que será executado
+        sql = """DELETE from tbTcc WHERE codigo = %s;"""
+                   
+        valores = (codigo,)
+       
+        # Executando o comnado sql
+        cursor.execute(sql,valores)
+       
+        # Confirmo a alteração, SERVE PAR FIXAR ALTERAÇÃO, SE ALTEROU, EXCLUIU OU FEZ UPDATE, OU SEJA SERVE PARA CONFIRMAR ALTERAÇÃO
+        conexao.commit()
+       
+        # Fecho a conexao com o banco
+        cursor.close()
+        conexao.close() 
+
+    
+    def recuperar_tcc():
+     
+        # Criando a conexão com o banco de dados
+        conexao = Conexao.criar_conexao()
+
+        # O cursor será responsável por manipular
+        cursor = conexao.cursor(dictionary= True)
+
+         # Criando o sql que será executado
+        sql = "SELECT * FROM  tbTcc; "
+                   
+        # Executando o comnado sql
+        cursor.execute(sql)
+       
+        # Recuperando os dados e guardando em uma variavel
+        resultado = cursor.fetchall()
+       
+        # Fecho a conexao com o banco
+        conexao.close()
+
+        return resultado

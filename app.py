@@ -125,6 +125,10 @@ def post_tcc():
     # Redireciona para a página inicial após o cadastro
     return redirect("/paginainicial")
 
-
+@app.route("/apagartcc/<codigo>")
+def apagartcc(codigo):
+    deletar = Tcc.deletar_tcc(codigo)
+    rec_tcc = Tcc.recuperar_tcc()
+    return render_template("principal.html", deletar=deletar, rec_tcc=rec_tcc)
 
 app.run(debug=True)
