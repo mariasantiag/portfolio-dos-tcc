@@ -62,3 +62,41 @@ class Tcc:
         self.registrar_tcc_no_banco(titulo, autores, orientador, curso, descricao, data, chave1, chave2, chave3, destaque, nome_pdf)
 
         print(f"TCC salvo com sucesso! PDF: {nome_pdf}")
+
+    def exibi_tcc():
+        try:
+            conexao = Conexao.criar_conexao()
+            cursor = conexao.cursor(dictionary=True)
+
+            sql_tcc="""
+                        SELECT
+                            titulo,
+                            autor,
+                            descricao,
+                            data,
+                            nome_curso,
+                            nome_orientador
+                        FROM
+                            tbTcc
+                        INNER JOIN
+                            tbCurso ON tbTcc.cod_curso = tbCurso.cod_curso
+                        inner join 
+                            tborientador on tbcurso.cod_curso = tborientador.cod_curso;
+
+                        
+            """
+
+
+            cursor.execute(sql_tcc)
+            
+            trabalhos=cursor.fetchall()
+
+            return trabalhos
+        
+        except:
+            print("Nenhum TCC encontrado")
+            conexao.rollback()
+
+        finally:
+            cursor.close()
+            conexao.close()

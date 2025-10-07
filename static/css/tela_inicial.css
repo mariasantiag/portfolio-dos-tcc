@@ -122,14 +122,6 @@ h2{
   padding: 0 15px;
 }
 
-.card__recentes {
-  position: relative; /* permite posicionar o dropdown */
-  background-color: var(--cor07);
-  border-radius: 20px;
-  padding: 22px 30px; /* ajustado para texto começar à esquerda */
-  font-size: 18px;
-  text-align: left; /* garante alinhamento à esquerda */
-}
 
 .card-dropdown {
   position: absolute;
@@ -178,4 +170,100 @@ h2{
 
 
 
+.card__recentes {
+  position: relative; 
+  background-color: var(--cor07);
+  border: none;
+  border-radius: 20px;
+  padding: 22px 30px;
+  text-align: left;
+  margin-bottom: 15px; /* Adiciona um espaço entre os cards */
+  
+  /* Organiza o conteúdo e o dropdown lado a lado */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alterado para 'center' para alinhar verticalmente ao meio */
+  
+  /* Efeitos de clique e hover */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
 
+
+.card__recentes:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* --- Dropdown (Três pontinhos) --- */
+.card-dropdown {
+  /* Esta posição relativa é crucial para que o menu que aparece (que é absoluto) 
+     se posicione corretamente em relação aos três pontinhos. */
+  position: relative; 
+  /* Removemos top e right que não são mais necessários aqui */
+}
+
+.card-dropdown span {
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--cor02);
+}
+
+.card-dropdown span:hover {
+  color: var(--cor04);
+}
+
+
+/* --- Conteúdo de Texto do Card --- */
+.card__conteudo {
+  flex-grow: 1; /* Faz o conteúdo ocupar o espaço disponível */
+  margin-right: 15px; /* Cria um espaço para não colar no menu */
+}
+
+/* --- Cabeçalho (Título e Data) --- */
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 15px; /* Adiciona um espaço entre título e data para evitar que se toquem */
+}
+
+.card__titulo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--cor03);
+  margin: 0;
+}
+
+.card__data {
+  font-size: 0.9rem;
+  color: #555;
+  white-space: nowrap; /* Impede que a data quebre a linha */
+  flex-shrink: 0; /* Impede que a data seja espremida */
+}
+
+/* --- Descrição e Autores --- */
+.card__descricao {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 15px;
+  /* Permite a quebra de linha em palavras longas para evitar overflow */
+  word-wrap: break-word;
+}
+
+.card__autores {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.card__autores strong {
+  color: #333;
+}
+
+.bi-three-dots-vertical{
+  position: absolute;
+}

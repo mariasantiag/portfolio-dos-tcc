@@ -7,11 +7,11 @@
 
     <!-- link do CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        xintegrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
         <!-- Link do JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        xintegrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous" defer></script>
 
         <!-- Link dos icones -->
@@ -31,7 +31,7 @@
 
 <body>
     <header class="header__ bg-light p-2">
-        <!-- container-fluid e row →  dividi os elementos em colunas. -->
+        <!-- container-fluid e row →  dividi os elementos em colunas. -->
         <div class="container-fluid">
           <div class="row align-items-center">
             
@@ -54,9 +54,9 @@
             <span class="header__user">Olá, {{session.nome_usuario}}</span>
             {% endif %}
 
-            <!-- Ícones  -->
-             <!-- ícones ocupam menos espaço e ficam alinhados à direita. -->
-              <!-- isso força ícone filtro + ícone perfil a ficarem lado a lado, alinhados verticalmente e com espaço (gap-3) entre eles. -->
+            <!-- Ícones  -->
+              <!-- ícones ocupam menos espaço e ficam alinhados à direita. -->
+               <!-- isso força ícone filtro + ícone perfil a ficarem lado a lado, alinhados verticalmente e com espaço (gap-3) entre eles. -->
             <div class="col-4 col-md-6 d-flex justify-content-end align-items-center gap-3">
                 <!-- Dropdown do filtro -->
                 <div class="dropdown">
@@ -108,11 +108,31 @@
             </div>
 
             <div class="grid__recentes">
+
+                {% for tccs in tccs %}
                 <div class="card__recentes">
-                    <!-- texto dos cards - informações dos TCC's -->
-                    <p></p>
-                
-                    <!-- Dropdown três pontinhos -->
+                    <!-- 1. O CONTEÚDO fica aqui -->
+                    <div class="card__conteudo">
+                        <div class="card__header">
+                            <h4 class="card__titulo">{{tccs.titulo}}</h4>
+                            <span class="card__data">{{tccs.data}}</span>
+                        </div>
+                        <p class="card__descricao">
+                            {{tccs.descricao}}
+                        </p>
+                        <p class="card__autores">
+                            <strong>Autores:</strong> {{tccs.autores}}
+                        </p>
+                        <p class="card__autores">
+                            <strong>Curso:</strong> {{tccs.nome_curso}}
+                        </p>
+                        <p class="card__autores">
+                            <strong>Professores:</strong> {{tccs.nome_orientador}}
+                        </p>
+                    </div>
+                {% endfor %}
+
+                    <!-- 2. O DROPDOWN é um irmão do conteúdo -->
                     <div class="dropdown card-dropdown">
                         <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
@@ -121,7 +141,6 @@
                         </ul>
                     </div>
                 </div>
-                
             </div>
         </section>
 
@@ -136,8 +155,8 @@
         </div>
         {% endif %}
 
-
     </main>
 </body>
 
 </html>
+
