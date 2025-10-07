@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCCs por Data</title>
 
     <!-- link do CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,14 +23,12 @@
 
     <script src="/static/js/script.js" defer></script>
 
-    <!-- Link do arquivo CSS -->
-     <link rel="stylesheet" href="/static/css/tela_inicial.css">
-
-    <title>Portifólio dos TCC's</title>
     
+    <link rel="stylesheet" href="/static/css/tela_inicial.css">
 </head>
 
 <body>
+
     <header class="header__ bg-light p-2">
         <!-- container-fluid e row →  dividi os elementos em colunas. -->
         <div class="container-fluid">
@@ -59,7 +58,7 @@
                    <i class="bi bi-funnel fs-3 text-white" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item" href="#">Página Inicial</a></li>
-                        <li><a class="dropdown-item" href="/tccs_por_data">Ano</a></li>
+                        <li><a class="dropdown-item" href="ano.html">Ano</a></li>
                     </ul>
                 </div>
                 
@@ -82,58 +81,27 @@
           </div>
         </div>
       </header>
-      
-    <!-- body da página -->
-    <main class="info_ _principal">
-        
-        <section class="sec__destaques">
-            <div class="tittle__destaque">
-                <h2>Destaques</h2>
-            </div>
-            
-            <div class="grid__destaque">
-                <div class="card__destaque"></div>
-                <div class="card__destaque"></div>
-            </div>
-              
-        </section>
 
-        <section class="sec__recentes">
-            <div class="tittle__recentes">
-                <h2>Recentes</h2>
-            </div>
+    <h1>TCCs Ordenados por Data</h1>
 
-            <div class="grid__recentes">
-                <div class="card__recentes">
-                    <!-- texto dos cards - informações dos TCC's -->
-                    <p></p>
-                
-                    <!-- Dropdown três pontinhos -->
-                    <div class="dropdown card-dropdown">
-                        <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
-                            <li><a class="dropdown-item" href="#">Editar</a></li>
-                            <li><a class="dropdown-item" href="#" id="btn__excluir">Excluir</a></li>
-                        </ul>
-                    </div>
+    <main>
+        <div class="tccs-container">
+            {% for tcc in tccs_ordenados %}
+                <div class="tcc-card">
+                    <h3>{{ tcc.titulo }}</h3>
+                    <p><strong>Data:</strong> {{ tcc.data }}</p>
+                    <p><strong>Autores:</strong> {{ tcc.autor }}</p>
+                    <p><strong>Orientador:</strong> {{ tcc.cod_orientador }}</p>
+                    <p><strong>Curso:</strong> {{ tcc.cod_curso }}</p>
+                    <p><strong>Descrição:</strong> {{ tcc.descricao }}</p>
                 </div>
-                
-            </div>
-        </section>
-
-        <!-- Botão flutuante "+" -->
-        {% if session.usuario %}
-        <div class="add__tcc dropdown__add">
-            <i class="bi bi-plus-circle fs-1" role="button" id="dropdownAddButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAddButton">
-                <li><a class="dropdown-item" href="/paginacadastrotcc">Adicionar TCC</a></li>
-                <li><a class="dropdown-item" href="/paginaorientadorcurso">Adicionar Orientador e Curso</a></li>
-            </ul>
+            {% else %}
+                <p>Nenhum TCC encontrado.</p>
+            {% endfor %}
         </div>
-        {% endif %}
-
-
+    
     </main>
+    
 </body>
 
 </html>
