@@ -63,6 +63,43 @@ class Tcc:
 
         print(f"TCC salvo com sucesso! PDF: {nome_pdf}")
 
+    def exibi_tcc():
+        try:
+            conexao = Conexao.criar_conexao()
+            cursor = conexao.cursor(dictionary=True)
+
+            sql_tcc="""
+                        SELECT
+                            titulo,
+                            autor,
+                            descricao,
+                            data,
+                            nome_curso,
+                            nome_orientador
+                        FROM
+                            tbTcc
+                        INNER JOIN
+                            tbCurso ON tbTcc.cod_curso = tbCurso.cod_curso
+                        inner join 
+                            tborientador on tbcurso.cod_curso = tborientador.cod_curso;
+
+                        
+            """
+
+
+            cursor.execute(sql_tcc)
+            
+            trabalhos=cursor.fetchall()
+
+            return trabalhos
+        
+        except:
+            print("Nenhum TCC encontrado")
+            conexao.rollback()
+
+        finally:
+            cursor.close()
+            conexao.close()
 
     def deletar_tcc(codigo):
          # Criando a conexão com o banco de dados

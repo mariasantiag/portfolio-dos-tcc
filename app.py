@@ -9,6 +9,7 @@ from models.control_destaques import Destaques
 from models.control_recentes import Recentes
 from models.control_usuario_admin import Usuario
 
+
 from flask import session
 app = Flask(__name__)
 app.secret_key = "seila2"
@@ -16,7 +17,11 @@ app.secret_key = "seila2"
 @app.route("/")
 @app.route("/paginainicial")
 def paginaprincipal():
-    return render_template("principal.html")
+    
+    tccs = Tcc.exibi_tcc()
+
+
+    return render_template("principal.html", tccs = tccs)
 
 @app.route("/paginalogin")
 def paginalogin():
