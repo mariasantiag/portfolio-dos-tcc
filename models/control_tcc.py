@@ -31,10 +31,10 @@ class Tcc:
             cursor.execute(sql_tcc, dados_tcc)
             conexao.commit()
 
-            print(f"TCC '{titulo}' registrado com sucesso.")
+            print(f"TCC '{titulo}' registrado com sucesso, volte para pagina inicial ou cadastre um novo tcc")
 
         except mysql.connector.Error as err:
-            print(f"Erro ao registrar TCC: {err}")
+            print(f"Erro ao registrar TCC, por favor verifique se todos os campos estão prenchidos corretamente e se seu arquivo está salvo como um PDF: {err}")
             conexao.rollback()
 
         finally:
