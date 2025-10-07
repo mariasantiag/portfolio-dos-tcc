@@ -106,7 +106,7 @@
             {% for tccs in tccs %}
             <div class="grid__recentes">
 
-                <div class="card__recentes">
+                <button id="tcc-viewer-container" class="card__recentes">
                     <!-- 1. O CONTEÚDO fica aqui -->
                     <div class="card__conteudo">
                         <div class="card__header">
@@ -127,6 +127,11 @@
                         </p>
                     </div>
                     
+                    <div id="pdf-renderer">
+                    </div> 
+                    <div class="no-copy-overlay">
+                    </div>
+
                     <!-- 2. O DROPDOWN é um irmão do conteúdo -->
                     <div class="dropdown card-dropdown">
                         <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
@@ -135,7 +140,7 @@
                             <li><a class="dropdown-item" href="#" id="btn__excluir">Excluir</a></li>
                         </ul>
                     </div>
-                </div>
+                </button>
             </div>
             {% endfor %}
         </section>
