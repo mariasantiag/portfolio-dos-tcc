@@ -93,6 +93,7 @@
     <!-- body da página -->
     <main class="info_ _principal">
         
+        <!-- seção DESTAQUES -->
         <section class="sec__destaques">
             <div class="tittle__destaque">
                 <h2>Destaques</h2>
@@ -105,6 +106,7 @@
               
         </section>
 
+        <!-- seção RECENTES -->
         <section class="sec__recentes">
             <div class="tittle__recentes">
                 <h2>Recentes</h2>
@@ -137,11 +139,17 @@
                 
                
                     <!-- 2. O DROPDOWN é um irmão do conteúdo -->
+                    <!-- texto dos cards - informações dos TCC's -->
+                    <p></p>
+                
+                    <!-- Dropdown três pontinhos -->
                     <div class="dropdown card-dropdown">
                         <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
                             <li><a class="dropdown-item" href="#">Editar</a></li>
-                            <li><a class="dropdown-item" href="#" id="btn__excluir">Excluir</a></li>
+                            {% for rec_tcc in rec_tccs %}
+                            <li><a class="dropdown-item" href="/apagartcc/{{rec_tcc.codigo}}" id="btn__excluir">Excluir</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>

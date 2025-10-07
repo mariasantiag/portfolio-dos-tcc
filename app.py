@@ -20,9 +20,9 @@ app.secret_key = "seila2"
 def paginaprincipal():
     
     tccs = Tcc.exibi_tcc()
+    rec_tccs = Tcc.recuperar_tcc()
 
-
-    return render_template("principal.html", tccs = tccs)
+    return render_template("principal.html", tccs = tccs, rec_tccs=rec_tccs)
 
 @app.route("/paginalogin")
 def paginalogin():
@@ -131,6 +131,10 @@ def post_tcc():
     # Redireciona para a página inicial após o cadastro
     return redirect("/paginainicial")
 
+@app.route("/apagartcc/<codigo>")
+def apagartcc(codigo):
+    Tcc.deletar_tcc(codigo)
+    return redirect("/paginainicial") 
 
 @app.route("/pesquisar", methods=['GET'])
 def pesquisar():
