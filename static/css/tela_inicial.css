@@ -57,9 +57,9 @@
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block !important;
-    right: 10px !important;
-    
+  display: block !important;
+  right: 0 !important;
+  left: auto !important; /* garante alinhamento à direita */
 }
 
 /* body */
