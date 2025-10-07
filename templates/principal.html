@@ -37,14 +37,18 @@
             
             <!-- Campo de pesquisa  -->
              <!-- busca ocupa mais espaço no mobile. -->
+            <form action="/pesquisar" method="GET">
             <div class="col-8 col-md-6">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" id="pesquisa_palavra_chave" name="pesquisa_palavra_chave" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">
                   <i class="bi bi-search"></i>
                 </button>
               </div>
             </div>
+            </form>
+
+    
       
             {% if session.usuario %}
             <span class="header__user">Olá, {{session.nome_usuario}}</span>

@@ -1,0 +1,28 @@
+
+from data.conexao import Conexao
+import mysql.connector
+
+class Palavra:
+    @staticmethod
+    def pesquisar_palavra_chave(palavra_chave):
+        # Conexão com o banco de dados
+        conexao = Conexao.criar_conexao()
+        cursor = conexao.cursor()
+
+        # SQL para buscar nas 3 colunas
+        sql = """
+        SELECT *
+        FROM tbTcc
+        WHERE palavrachave1 LIKE %s OR palavrachave2 LIKE %s OR palavrachave3 LIKE %s
+        """
+        palavra = f"%{palavra_chave}%"  # Adiciona os '%' para realizar a pesquisa parcial
+        cursor.execute(sql, (palavra, palavra, palavra))
+
+        # Retorna todos os resultados
+        resultados = cursor.fetchall()
+
+        # Fecha a conexão
+        cursor.close()
+        conexao.close()
+
+        return resultados

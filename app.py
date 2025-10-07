@@ -8,6 +8,7 @@ from models.control_curso_orientador import Curso_orientador
 from models.control_destaques import Destaques
 from models.control_recentes import Recentes
 from models.control_usuario_admin import Usuario
+from models.control_palavra_chave import Palavra
 
 from flask import session
 app = Flask(__name__)
@@ -125,6 +126,20 @@ def post_tcc():
     # Redireciona para a página inicial após o cadastro
     return redirect("/paginainicial")
 
+
+@app.route('/pesquisar', methods=['GET'])
+def pesquisar():
+    # Captura o valor da palavra chave para pesquisa
+    palavra_chave = request.args.get('pesquisa_palavra_chave')
+
+    # Chama a função de pesquisa
+    resultados = Palavra.pesquisar_palavra_chave(palavra_chave)
+
+    # Retorna os resultados para o template
+    return render_template('principal.html', resultados=resultados)
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 app.run(debug=True)
