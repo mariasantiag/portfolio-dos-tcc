@@ -12,13 +12,15 @@ class Tcc:
             cursor = conexao.cursor(dictionary=True)
 
             sql_tcc = """
-                INSERT INTO tbTcc (
-                    titulo, autor, orientador, curso, descricao, data,
-                    palavrachave1, palavrachave2, palavrachave3,
-                    destaques, pdf_nome
-                )
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-            """
+            INSERT INTO tbTcc (
+                titulo, autor, cod_orientador, cod_curso, descricao, data,
+                palavrachave1, palavrachave2, palavrachave3,
+                destaque, pdf_nome
+            )
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """
+
+
 
             dados_tcc = (
                 titulo, autores, orientador, curso, descricao, data,

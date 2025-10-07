@@ -33,24 +33,20 @@
       <div class="mb-3">
         <input name="autores" type="text" class="form-control" placeholder="Nome dos autores" required>
       </div>
+      <select name="curso" class="form-select" required>
+        <option selected disabled>Selecione o curso</option>
+        <option value="1">Desenvolvimento de Sistemas</option>
+        <option value="2">Logística</option>
+        <option value="3">Eletromecânica</option>
+      </select>
+      
       <!-- Orientador -->
-      <div class="mb-3">
-        <select name="orientador" class="form-select" required>
-          <option selected disabled>Selecione o orientador</option>
-          <option value="ivo">Ivo</option>
-          <option value="alex">Alex</option>
-          <option value="godofredo">Godofredo</option>
-        </select>
-      </div>
-      <!-- Curso -->
-      <div class="mb-3">
-        <select name="curso" class="form-select" required>
-          <option selected disabled>Selecione o curso</option>
-          <option value="ds">Desenvolvimento de Sistemas</option>
-          <option value="logistica">Logística</option>
-          <option value="eletro">Eletromecânica</option>
-        </select>
-      </div>
+      <select name="orientador" class="form-select" required>
+        <option selected disabled>Selecione o orientador</option>
+        <option value="1">Ivo</option>
+        <option value="2">Alex</option>
+        <option value="3">Godofredo</option>
+      </select>
       <!-- Data -->
       <div class="mb-3">
         <input name="data" type="date" class="form-control" required>

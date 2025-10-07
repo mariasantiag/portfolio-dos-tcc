@@ -49,18 +49,17 @@ def paginacadastrotcc():
 def paginaorientadorcurso():
     return render_template("cadastro-curso-orientador.html")
 
-@app.route("/post/cadastraorientadorcurso", methods= ["POST"])
+@app.route("/post/cadastraorientadorcurso", methods=["POST"])
 def post_curso_orientador():
-    # Peguei as informações vinda do usuário
     nome_curso = request.form.get("curso_nome")
     nome_orientador = request.form.get("orientador_nome")
-   
 
-    # Cadastrando a mensagem usando a classe mensagem
-    Curso_orientador.cadastro_curso(nome_curso)
-    Curso_orientador.cadastro_orientador(nome_orientador)
-    
-    # Redireciona para o index
+    # 1. Cadastrar curso e pegar id
+    cod_curso = Curso_orientador.cadastro_curso(nome_curso)
+
+    # 2. Cadastrar orientador já vinculando ao curso
+    Curso_orientador.cadastro_orientador(nome_orientador, cod_curso)
+
     return redirect("/paginainicial")
 
 @app.route("/post/logar", methods=["POST"])
@@ -80,14 +79,13 @@ def deslogar():
     session.clear()
     return redirect("/") 
 
-
 @app.route("/post/cadastrar/tcc", methods=["POST"])
 def post_tcc():
     # Pegando todas as informações do formulário
     titulo = request.form.get("titulo")
-    autores = request.form.get("autores")  # Pegando o valor de "autores"
-    orientador = request.form.get("orientador")
-    curso = request.form.get("curso")
+    autores = request.form.get("autores")
+    curso = int(request.form.get("curso"))
+    orientador = int(request.form.get("orientador"))
     descricao = request.form.get("descricao")
     data = request.form.get("data")
     chave1 = request.form.get("chave1")
@@ -109,27 +107,11 @@ def post_tcc():
     pdf.save(caminho_temporario)
 
     print(f"Arquivo salvo temporariamente em: {caminho_temporario}")
-    print("Arquivo existe?", os.path.exists(caminho_temporario))
 
     # Instanciando a classe Tcc
     tcc = Tcc()
 
-    # Chama o método para registrar no banco de dados
-    tcc.registrar_tcc_no_banco(
-        titulo=titulo,
-        autores=autores,
-        orientador=orientador,
-        curso=curso,
-        descricao=descricao,
-        data=data,
-        chave1=chave1,
-        chave2=chave2,
-        chave3=chave3,
-        destaque=destaque,
-        pdf_nome=pdf.filename
-    )
-
-    # Chama o método para salvar o PDF na pasta 'pdf'
+    # Chama o método completo que salva o PDF e registra no banco
     tcc.salvar_tcc(
         titulo, autores, orientador, curso, descricao, caminho_temporario, 
         data, chave1, chave2, chave3, destaque
@@ -141,7 +123,6 @@ def post_tcc():
 
     # Redireciona para a página inicial após o cadastro
     return redirect("/paginainicial")
-
 
 
 app.run(debug=True)
