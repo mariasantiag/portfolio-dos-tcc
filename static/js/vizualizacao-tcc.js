@@ -75,11 +75,13 @@ function closepdf(buttonclose,elementoPDF){
         elementoPDF.style.display = 'none'
         buttonclose.style.display = 'none'
         tccContainer.classList.remove('is-viewing')
+        
+        pdfViewer.innerHTML = '';
     })
 
-    const pdfViewer = tccContainer.querySelector('.tcc-renderer');
 
-    
+ 
+
 }
 
 const btnclose = document.querySelector(".btn-close")

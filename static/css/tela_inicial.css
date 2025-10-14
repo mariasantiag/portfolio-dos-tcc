@@ -173,6 +173,7 @@ h2{
 .card__recentes {
   position: relative; 
   background-color: var(--cor07);
+
   border: none;
   border-radius: 20px;
   padding: 22px 30px;
@@ -249,6 +250,7 @@ h2{
   font-size: 1rem;
   color: #333;
   margin-bottom: 15px;
+  max-width: 1051px;
   /* Permite a quebra de linha em palavras longas para evitar overflow */
   word-wrap: break-word;
 }
