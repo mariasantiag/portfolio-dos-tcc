@@ -64,13 +64,15 @@ def paginaorientadorcurso():
 @app.route("/post/cadastraorientadorcurso", methods=["POST"])
 def post_curso_orientador():
     nome_curso = request.form.get("curso_nome")
-    nome_orientador = request.form.get("orientador_nome")
+    orientadores = request.form.getlist("orientador_nome")  # Lista de orientadores
 
-    # 1. Cadastrar curso e pegar id
+    # Cadastra o curso e pega o ID
     cod_curso = Curso_orientador.cadastro_curso(nome_curso)
 
-    # 2. Cadastrar orientador já vinculando ao curso
-    Curso_orientador.cadastro_orientador(nome_orientador, cod_curso)
+    # Insere cada orientador individualmente
+    for nome_orientador in orientadores:
+        if nome_orientador.strip():
+            Curso_orientador.cadastro_orientador(nome_orientador.strip(), cod_curso)
 
     return redirect("/paginainicial")
 
@@ -135,7 +137,5 @@ def post_tcc():
 
     # Redireciona para a página inicial após o cadastro
     return redirect("/paginainicial")
-
-
 
 app.run(debug=True)
