@@ -66,6 +66,7 @@ def paginaorientadorcurso():
 def post_curso_orientador():
     nome_curso = request.form.get("curso_nome")
     orientadores = request.form.getlist("orientador_nome")  # Lista de orientadores
+    orientadores = request.form.getlist("orientador_nome")  # Lista de orientadores
 
     # Cadastra o curso e pega o ID
     cod_curso = Curso_orientador.cadastro_curso(nome_curso)
