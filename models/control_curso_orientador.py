@@ -21,19 +21,19 @@ class Curso_orientador:
 
         return cod_curso  # Retorna o id para uso posterior
 
-
     @staticmethod
     def cadastro_orientador(nome_orientador, cod_curso):
         conexao = Conexao.criar_conexao()
         cursor = conexao.cursor()
 
         sql = "INSERT INTO tbOrientador (nome_orientador, cod_curso) VALUES (%s, %s)"
-        valores = (nome_orientador, cod_curso)
+        valores = (nome_orientador, cod_curso)  # <- nome_orientador é string
         cursor.execute(sql, valores)
 
         conexao.commit()
         cursor.close()
         conexao.close()
+
 
 
     def recuperar_curso():
@@ -59,7 +59,9 @@ class Curso_orientador:
             return resultado
 
 
-    def recuperar_orientador():
+
+    
+    def recuperar_orientador(cod_curso):
 
             #Criar conexão
             conexao = Conexao.criar_conexao()
@@ -68,10 +70,12 @@ class Curso_orientador:
             cursor = conexao.cursor(dictionary = True)
 
             # Criando o sql que será executado
-            sql = "SELECT nome_orientador, cod_orientador FROM tbOrientador;"
+            sql = "SELECT nome_orientador, cod_orientador FROM tbOrientador where cod_curso = %s;"
+
+            valores = (cod_curso,)
 
             #Executando o comando sql
-            cursor.execute(sql)        
+            cursor.execute(sql, valores)        
 
             #Recuperando os dados e jogando em uma varialvel
             resultado = cursor.fetchall()
@@ -80,3 +84,4 @@ class Curso_orientador:
             conexao.close()
 
             return resultado
+    
