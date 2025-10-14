@@ -126,26 +126,30 @@ class Tcc:
 
 
     def deletar_tcc(codigo):
-         # Criando a conexão com o banco de dados
+        # Criando a conexão com o banco de dados
         conexao = Conexao.criar_conexao()
-
-        # O cursor será responsável por manipular
         cursor = conexao.cursor()
 
-        # Criando o sql que será executado
-        sql = """DELETE from tbTcc WHERE codigo = %s;"""
-                   
-        valores = (codigo,)
-       
-        # Executando o comnado sql
-        cursor.execute(sql,valores)
-       
-        # Confirmo a alteração, SERVE PAR FIXAR ALTERAÇÃO, SE ALTEROU, EXCLUIU OU FEZ UPDATE, OU SEJA SERVE PARA CONFIRMAR ALTERAÇÃO
-        conexao.commit()
-       
-        # Fecho a conexao com o banco
-        cursor.close()
-        conexao.close() 
+        try:
+            sql_filho = "DELETE FROM tbTcc_Orientador WHERE cod_tcc = %s;"
+            valores = (codigo,) 
+            cursor.execute(sql_filho, valores)
+
+            sql_pai = "DELETE FROM tbTcc WHERE codigo = %s;"
+            cursor.execute(sql_pai, valores)
+
+            conexao.commit()
+            print(f"TCC com código {codigo} e suas associações foram deletados com sucesso.")
+
+        except Exception as e:
+            # Em caso de qualquer erro, desfaz todas as alterações feitas na transação
+            conexao.rollback()
+            print(f"Ocorreu um erro ao deletar o TCC: {e}")
+
+        finally:
+            # Garante que a conexão com o banco seja sempre fechada
+            cursor.close()
+            conexao.close()
 
     
     def recuperar_tcc():
