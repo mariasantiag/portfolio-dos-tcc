@@ -21,11 +21,11 @@ def paginaprincipal():
 
 @app.route("/paginalogin")
 def paginalogin():
-    return render_template("login.html")   
+    return render_template("login.html")  
 
 @app.route("/paginacadastro")
 def paginacadastro():
-    return render_template("cadastro.html")   
+    return render_template("cadastro.html")  
 
 
 @app.route("/post/cadastrarusuario", methods= ["POST"])
@@ -37,7 +37,7 @@ def post_usuario():
 
     # Cadastrando a mensagem usando a classe mensagem
     Usuario.cadastro_usuario(nome, login, senha)
-    
+   
     # Redireciona para o index
     return redirect("/paginalogin")
 
@@ -47,13 +47,14 @@ def paginacadastrotcc():
     return render_template("cadastro-tcc.html", curso=curso)
 
 
-
-# API que responde a GET em /api/orientadores/<id_do_curso>
 @app.route("/api/orientadores/<int:cod_curso>")
 def api_orientadores(cod_curso):
     orientadores = Curso_orientador.recuperar_orientador(cod_curso)
-
-    # Retorna os dados no formato JSON (usado pelo JavaScript no frontend)
+    # Exemplo de retorno esperado
+    # orientadores = [
+    #    {"id": 1, "nome_orientador": "Fulano"},
+    #    {"id": 2, "nome_orientador": "Beltrano"},
+    # ]
     return jsonify(orientadores)
 
 
@@ -64,13 +65,15 @@ def paginaorientadorcurso():
 @app.route("/post/cadastraorientadorcurso", methods=["POST"])
 def post_curso_orientador():
     nome_curso = request.form.get("curso_nome")
-    nome_orientador = request.form.get("orientador_nome")
+    orientadores = request.form.getlist("orientador_nome")  # Lista de orientadores
 
-    # 1. Cadastrar curso e pegar id
+    # Cadastra o curso e pega o ID
     cod_curso = Curso_orientador.cadastro_curso(nome_curso)
 
-    # 2. Cadastrar orientador já vinculando ao curso
-    Curso_orientador.cadastro_orientador(nome_orientador, cod_curso)
+    # Insere cada orientador individualmente
+    for nome_orientador in orientadores:
+        if nome_orientador.strip():
+            Curso_orientador.cadastro_orientador(nome_orientador.strip(), cod_curso)
 
     return redirect("/paginainicial")
 
@@ -78,18 +81,25 @@ def post_curso_orientador():
 def post_logar():
     login = request.form.get("login")
     senha = request.form.get("senha")
-    
+   
     esta_logado = Usuario.logar(login, senha)
 
     if esta_logado:
         return redirect("/paginainicial")
     else:
         return redirect("/paginalogin")
-    
+   
 @app.route("/deslogar")
 def deslogar():
     session.clear()
-    return redirect("/") 
+    return redirect("/")
+
+# Mantenha o import os e o from flask import request, redirect
+# Adicione: import os
+
+# ... (código anterior) ...
+
+# ... (código anterior) ...
 
 @app.route("/post/cadastrar/tcc", methods=["POST"])
 def post_tcc():
@@ -97,7 +107,7 @@ def post_tcc():
     titulo = request.form.get("titulo")
     autores = request.form.get("autores")
     curso = int(request.form.get("curso"))
-    orientador = int(request.form.get("orientador"))
+    orientadores_ids = request.form.getlist("orientador[]") # ou "orientador"
     descricao = request.form.get("descricao")
     data = request.form.get("data")
     chave1 = request.form.get("chave1")
@@ -125,7 +135,7 @@ def post_tcc():
 
     # Chama o método completo que salva o PDF e registra no banco
     tcc.salvar_tcc(
-        titulo, autores, orientador, curso, descricao, caminho_temporario, 
+        titulo, autores, orientadores_ids, curso, descricao, caminho_temporario,
         data, chave1, chave2, chave3, destaque
     )
 
@@ -135,7 +145,6 @@ def post_tcc():
 
     # Redireciona para a página inicial após o cadastro
     return redirect("/paginainicial")
-
 
 
 app.run(debug=True)

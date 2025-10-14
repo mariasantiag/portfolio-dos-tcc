@@ -12,7 +12,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-  
+ 
   <!-- HEADER -->
   <header class="header bg-light p-2">
     <div class="container-fluid">
@@ -23,7 +23,7 @@
       </div>
     </div>
   </header>
-  
+ 
   <!-- FORMULÁRIO -->
   <div class="form-container">
     <form action="/post/cadastrar/tcc" method="POST" enctype="multipart/form-data">
@@ -42,13 +42,23 @@
         {% endfor %}
       </select>
      
-      <!-- Orientador -->
-      <select name="orientador" id="select-orientador" class="form-select" required>
-         <!-- A opção padrão aparece antes do carregamento via JavaScript -->
-        <option selected disabled>Selecione o orientador</option>
-      </select>
-      
-  
+      <fieldset class="mb-3">
+        <legend class="fw-semibold">Orientadores</legend>
+        <div id="orientadores-container">
+          <div class="orientador-input mb-2 d-flex align-items-center">
+            <select name="orientador[]" class="form-select orientador-select me-2" required>
+              <option selected disabled>Selecione o orientador</option>
+            </select>
+            <button type="button" class="btn btn-danger btn-sm" onclick="removerCampo(this)">Remover</button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-sm btn-success mt-2" onclick="adicionarCampoOrientador()">+ Adicionar Orientador</button>
+      </fieldset>
+
+
+   
+
+
       <!-- Data -->
       <div class="mb-3">
         <input name="data" type="date" class="form-control" required>

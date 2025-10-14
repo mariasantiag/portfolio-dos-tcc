@@ -90,7 +90,7 @@ class Curso_orientador:
             cursor = conexao.cursor(dictionary = True)
 
             # Criando o sql que será executado
-            sql = "SELECT nome_orientador FROM tbOrientador where cod_curso = %s;"
+            sql = "SELECT nome_orientador, cod_orientador FROM tbOrientador where cod_curso = %s;"
 
             valores = (cod_curso,)
 
