@@ -15,7 +15,6 @@ document.addEventListener('keydown', function(e){
         alert('Capturas de tela foram dasabilitadas')       
     }
     if (e.key === 'F12'){
-        navigator.clipboard.writeText('')
         e.preventDefault()
         alert('Esta função foi desabilitada para proteger o conteúdo do site.')       
     }
@@ -58,7 +57,7 @@ loadingTask.promise.then(function(pdf){
 ) 
 
 function viewpdf(buttonclose,elementoPDF){
-    const button = document.getElementById("btn-view-tcc");
+    const button = document.querySelectorAll(".btn-view-tcc");
 
     button.addEventListener("click", () => {
         elementoPDF.style.display = 'block';
@@ -79,7 +78,7 @@ function closepdf(buttonclose,elementoPDF){
 
 const pdfFrame = document.getElementById("tcc-viewer-container");
 const btnclose = document.getElementById("btn_close")
-const tccContainer = document.querySelector('.tcc_view');
+const tccContainer = document.querySelectorAll('.tcc_view');
 
 closepdf(btnclose,pdfFrame)
 
