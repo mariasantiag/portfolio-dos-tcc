@@ -37,16 +37,23 @@
         <div class="container-fluid">
           <div class="row align-items-center">
             
-            <!-- Campo de pesquisa  -->
-              <!-- busca ocupa mais espaço no mobile. -->
+            <!-- Campo de pesquisa  -->
+             <!-- busca ocupa mais espaço no mobile. -->
+            <form action="/pesquisar" method="GET">
             <div class="col-8 col-md-6">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" id="pesquisa_palavra_chave" name="pesquisa_palavra_chave" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">
                   <i class="bi bi-search"></i>
                 </button>
               </div>
             </div>
+            </form>
+
+    
+    
+
+         
       
             {% if session.usuario %}
             <span class="header__user">Olá, {{session.nome_usuario}}</span>
@@ -88,6 +95,7 @@
     <!-- body da página -->
     <main class="info_ _principal">
         
+        <!-- seção DESTAQUES -->
         <section class="sec__destaques">
             <div class="tittle__destaque">
                 <h2>Destaques</h2>
@@ -100,6 +108,7 @@
               
         </section>
 
+        <!-- seção RECENTES -->
         <section class="sec__recentes">
             <div class="tittle__recentes">
                 <h2>Recentes</h2>
@@ -112,31 +121,37 @@
                     <!-- 1. O CONTEÚDO fica aqui -->
                     <div class="card__conteudo">
                         <div class="card__header">
-                            <h4 class="card__titulo">{{tccs.titulo}}</h4>
-                            <span class="card__data">{{tccs.data}}</span>
+                            <h4 class="card__titulo">{{tcc.titulo}}</h4>
+                            <span class="card__data">{{tcc.data}}</span>
                         </div>
                         <p class="card__descricao">
-                            {{tccs.descricao}}
+                            {{tcc.descricao}}
                         </p>
                         <p class="card__autores">
                             <strong>Autores:</strong> {{tccs.autor}}
                         </p>
                         <p class="card__autores">
-                            <strong>Curso:</strong> {{tccs.nome_curso}}
+                            <strong>Curso:</strong> {{tcc.nome_curso}}
                         </p>
                         <p class="card__autores">
-                            <strong>Professores:</strong> {{tccs.nome_orientador}}
+                            <strong>Professores:</strong> {{tcc.nome_orientador}}
                         </p>
 
                     </div>
                     
                     
                     <!-- 2. O DROPDOWN é um irmão do conteúdo -->
+                    <!-- texto dos cards - informações dos TCC's -->
+                    <p></p>
+                
+                    <!-- Dropdown três pontinhos -->
                     <div class="dropdown card-dropdown">
                         <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
                             <li><a class="dropdown-item" href="#">Editar</a></li>
-                            <li><a class="dropdown-item" href="#" id="btn__excluir">Excluir</a></li>
+                            {% for rec_tcc in rec_tccs %}
+                            <li><a class="dropdown-item" href="/apagartcc/{{rec_tcc.codigo}}" id="btn__excluir">Excluir</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
