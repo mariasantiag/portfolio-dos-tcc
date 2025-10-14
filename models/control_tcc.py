@@ -76,7 +76,8 @@ class Tcc:
                             descricao,
                             data,
                             nome_curso,
-                            nome_orientador
+                            nome_orientador,
+                            pdf_nome
                         FROM
                             tbTcc
                         INNER JOIN
@@ -102,15 +103,4 @@ class Tcc:
             cursor.close()
             conexao.close()
 
-    def visualiza_tcc():
-        
-            conexao = Conexao.criar_conexao()
-            cursor = conexao.cursor(dictionary=True)
 
-            sql_tcc = """SELECT pdf_nome FROM tbtcc"""
-
-            cursor.execute(sql_tcc)
-
-            trabalho = cursor.fetchone()
-
-            return trabalho
