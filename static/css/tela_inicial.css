@@ -366,3 +366,9 @@ h2{
       transform: translate(-50%, -50%) scale(1);
   }
 }
+
+.container__func_tccs{
+  display: flex;
+
+  max-width: 1500px;
+}
