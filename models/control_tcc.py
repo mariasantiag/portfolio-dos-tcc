@@ -62,6 +62,9 @@ class Tcc:
             if 'conexao' in locals() and conexao is not None:
                 conexao.close()
 
+    def salvar_tcc(self, titulo, autores, orientador, curso, descricao, pdf_path, data, chave1, chave2, chave3, destaque):
+        # Pasta onde os PDFs serão armazenados
+        pasta_pdf = 'static/pdf'  # Assumindo que a pasta pdf já existe no seu projeto
 
     def salvar_tcc(self, titulo, autores, orientadores_ids, curso, descricao, pdf_path, data, chave1, chave2, chave3, destaque):
         # ... (código de salvamento do PDF permanece igual) ...
@@ -88,12 +91,14 @@ class Tcc:
 
             sql_tcc="""
                         SELECT
+                            codigo,
                             titulo,
                             autor,
                             descricao,
                             data,
                             nome_curso,
-                            nome_orientador
+                            nome_orientador,
+                            pdf_nome
                         FROM
                             tbTcc
                         INNER JOIN
@@ -118,6 +123,7 @@ class Tcc:
         finally:
             cursor.close()
             conexao.close()
+
 
     def deletar_tcc(codigo):
          # Criando a conexão com o banco de dados

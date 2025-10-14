@@ -168,6 +168,7 @@ h2{
 .card__recentes {
   position: relative; 
   background-color: var(--cor07);
+
   border: none;
   border-radius: 20px;
   padding: 22px 30px;
@@ -244,6 +245,7 @@ h2{
   font-size: 1rem;
   color: #333;
   margin-bottom: 15px;
+  max-width: 1051px;
   /* Permite a quebra de linha em palavras longas para evitar overflow */
   word-wrap: break-word;
 }
@@ -261,4 +263,106 @@ h2{
 
 .bi-three-dots-vertical{
   position: absolute;
+}
+/* --- ESTADO PADRÃO DO MODAL (ESCONDIDO) --- */
+.tcc_view {
+  /* O JS vai controlar isso com display: none e display: block,
+     mas deixamos aqui como o estado inicial correto. */
+  display: none;
+}
+
+/* --- ESTADO ATIVO DO MODAL (VISÍVEL) --- */
+/* Esta regra é ativada quando o JS adiciona a classe .is-viewing */
+.tcc_view.is-viewing {
+  /* 1. TRANSFORMA O CONTAINER NA SOBREPOSIÇÃO ESCURA DE TELA CHEIA */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  
+  /* O JS força 'display: block', então não podemos usar flexbox.
+     Usaremos posicionamento absoluto nos filhos para centralizar. */
+  
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* --- A CAIXA DE CONTEÚDO BRANCA (DENTRO DO MODAL) --- */
+.tcc_view.is-viewing .view-pdf {
+  display: block; /* Garante que o conteúdo seja visível */
+
+  /* 2. CENTRALIZA A CAIXA USANDO POSICIONAMENTO ABSOLUTO */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* 3. ESTILIZAÇÃO DA CAIXA */
+  width: 90%;
+  max-width: 1100px;
+  height: 90vh;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  overflow-y: scroll; /* Permite rolar o conteúdo do PDF */
+  
+  animation: scaleUp 0.4s ease-out;
+}
+
+.tcc_view.is-viewing .btn-close {
+  display: flex; /* Garante que o ícone 'X' fique centralizado no botão */
+  
+  /* 4. POSICIONA O BOTÃO NO CANTO SUPERIOR DIREITO DA TELA */
+  position: fixed; /* Usamos 'fixed' para ser relativo à tela */
+  top: 20px;
+  right: 20px;
+  
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1020; /* Fica acima de tudo */
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.tcc_view.is-viewing .btn-close:hover {
+  transform: scale(1.1);
+  background-color: #f1f1f1;
+}
+
+/* --- CAMADA DE PROTEÇÃO (No-Copy) --- */
+.no-copy-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: transparent;
+}
+
+/* --- ANIMAÇÕES --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+  }
 }

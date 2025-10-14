@@ -19,13 +19,15 @@
 
     <!-- Link do Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-
-    <script src="/static/js/script.js" defer></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js" defer></script> 
+    <script src="/static/js/vizualizacao-tcc.js" defer></script>
     <!-- Link do arquivo CSS -->
      <link rel="stylesheet" href="/static/css/tela_inicial.css">
+     
 
     <title>Portifólio dos TCC's</title>
+
+   
     
 </head>
 
@@ -112,32 +114,32 @@
                 <h2>Recentes</h2>
             </div>
 
-            {% for tcc in tccs %}
+            {% for tccs in tccs %}
             <div class="grid__recentes">
 
-                
-                <div class="card__recentes">
+                <div onclick= 'viewpdf("static/pdf/{{tccs.pdf_nome}}")'  class="card__recentes btn-view-tcc">
                     <!-- 1. O CONTEÚDO fica aqui -->
                     <div class="card__conteudo">
                         <div class="card__header">
-                            <h4 class="card__titulo">{{tcc.titulo}}</h4>
-                            <span class="card__data">{{tcc.data}}</span>
+                            <h4 class="card__titulo">{{tccs.titulo}}</h4>
+                            <span class="card__data">{{tccs.data}}</span>
                         </div>
                         <p class="card__descricao">
-                            {{tcc.descricao}}
+                            {{tccs.descricao}}
                         </p>
                         <p class="card__autores">
-                            <strong>Autores:</strong> {{tcc.autores}}
+                            <strong>Autores:</strong> {{tccs.autor}}
                         </p>
                         <p class="card__autores">
-                            <strong>Curso:</strong> {{tcc.nome_curso}}
+                            <strong>Curso:</strong> {{tccs.nome_curso}}
                         </p>
                         <p class="card__autores">
-                            <strong>Professores:</strong> {{tcc.nome_orientador}}
+                            <strong>Professores:</strong> {{tccs.nome_orientador}}
                         </p>
+
                     </div>
-                
-               
+                    
+                    
                     <!-- 2. O DROPDOWN é um irmão do conteúdo -->
                     <!-- texto dos cards - informações dos TCC's -->
                     <p></p>
@@ -153,6 +155,17 @@
                         </ul>
                     </div>
                 </div>
+                
+                <div class="tcc_view">
+                    <button class="btn-close"><i class="bi bi-x" ></i></button> 
+                    <div class="view-pdf">
+                        <div class="tcc-renderer">
+                        </div> 
+                        <div class="no-copy-overlay">
+                        </div>
+                    </div>
+                </div>
+
             </div>
             {% endfor %}
         </section>
