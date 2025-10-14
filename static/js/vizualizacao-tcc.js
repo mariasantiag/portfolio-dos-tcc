@@ -14,11 +14,17 @@ document.addEventListener('keydown', function(e){
         e.preventDefault()
         alert('Capturas de tela foram dasabilitadas')       
     }
+    if (e.key === 'F12'){
+        navigator.clipboard.writeText('')
+        e.preventDefault()
+        alert('Esta função foi desabilitada para proteger o conteúdo do site.')       
+    }
+
 }, false); //
 
 
 // Codigo para exibir o TCC
-const pdfUrl = '../pdf/Proteção de PDF.pdf'
+const pdfUrl = 'http://127.0.0.1:5000/static/pdf/Revisão Modernismo 3 fase e Concretismo.pdf'
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js`;
 
@@ -48,10 +54,36 @@ loadingTask.promise.then(function(pdf){
         })
         
     }
-},
-function(reason){
-    console.error('Erro ao carregar o PDF', reason)
 }
-) // 
+) 
+
+function viewpdf(buttonclose,elementoPDF){
+    const button = document.getElementById("btn-view-tcc");
+
+    button.addEventListener("click", () => {
+        elementoPDF.style.display = 'block';
+        buttonclose.style.display = 'block'
+        tccContainer.classList.add('is-viewing')
+    });
+    
+}
+
+function closepdf(buttonclose,elementoPDF){
+    buttonclose.addEventListener("click", () => {
+        elementoPDF.style.display = 'none'
+        buttonclose.style.display = 'none'
+        tccContainer.classList.remove('is-viewing');
+    })
+    
+}
+
+const pdfFrame = document.getElementById("tcc-viewer-container");
+const btnclose = document.getElementById("btn_close")
+const tccContainer = document.querySelector('.tcc_view');
+
+closepdf(btnclose,pdfFrame)
+
+viewpdf(btnclose,pdfFrame);
+
 
 

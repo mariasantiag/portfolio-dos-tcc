@@ -268,3 +268,101 @@ h2{
   position: absolute;
 }
 
+.tcc_view.is-viewing {
+    position: fixed; /* Ocupa a tela inteira */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo branco com sobreposição escura */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Oculta o botão "Ver PDF" quando o modal está aberto */
+    & #btn-view-pdf {
+        display: none;
+    }
+}
+
+#tcc-viewer-container {
+    width: 90%;
+    max-width: 1100px;
+    height: 90vh; /* Ocupa 90% da altura da tela */
+    border: none; /* Remove a borda antiga */
+    overflow-y: scroll;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 12px; /* Cantos arredondados */
+}
+
+.tcc_view.is-viewing #tcc-viewer-container {
+    animation: fadeInScaleUp 0.4s ease-out forwards;
+}
+
+@keyframes fadeInScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Camada de Proteção (No-Copy) --- */
+.no-copy-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: transparent;
+}
+
+/* --- Botão de Fechar (X) --- */
+.btn-close {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    /* Posicionado à direita e acima do container do PDF */
+    top: calc(5vh - 20px); /* 5vh é a margem superior do PDF, -20px para subir mais */
+    right: calc(5vw - 20px); /* 5vw é a margem direita do PDF, -20px para mover mais */
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    color: #333;
+    border: none;
+    border-radius: 50%; /* Deixa o botão redondo */
+    cursor: pointer;
+    z-index: 1020; /* Garante que fique acima de tudo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-close:hover {
+    transform: scale(1.1);
+    background-color: #f1f1f1;
+}
+
+/* Mostra o botão de fechar quando o modal está ativo */
+.tcc_view.is-viewing .btn-close {
+    display: flex;
+}
+
+/* --- Configurações Iniciais --- */
+/* Esconde o viewer e o botão de fechar por padrão */
+.view-pdf, .btn-close {
+    display: none;
+}
+
+/* Mostra o viewer quando o modal está ativo */
+.tcc_view.is-viewing .view-pdf {
+    display: block;
+}

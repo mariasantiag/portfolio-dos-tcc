@@ -43,7 +43,7 @@ class Tcc:
 
     def salvar_tcc(self, titulo, autores, orientador, curso, descricao, pdf_path, data, chave1, chave2, chave3, destaque):
         # Pasta onde os PDFs serão armazenados
-        pasta_pdf = 'pdf'  # Assumindo que a pasta pdf já existe no seu projeto
+        pasta_pdf = 'static/pdf'  # Assumindo que a pasta pdf já existe no seu projeto
 
         # Cria a pasta se não existir
         if not os.path.exists(pasta_pdf):
@@ -102,7 +102,7 @@ class Tcc:
             cursor.close()
             conexao.close()
 
-    def vizualiza_tcc():
+    def visualiza_tcc():
         
             conexao = Conexao.criar_conexao()
             cursor = conexao.cursor(dictionary=True)

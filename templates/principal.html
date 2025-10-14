@@ -19,8 +19,8 @@
 
     <!-- Link do Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-    <script src="/static/js/vizualizacao-tcc.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js" defer></script> 
+    <script src="/static/js/vizualizacao-tcc.js" defer></script>
     <!-- Link do arquivo CSS -->
      <link rel="stylesheet" href="/static/css/tela_inicial.css">
      
@@ -106,7 +106,7 @@
             {% for tccs in tccs %}
             <div class="grid__recentes">
 
-                <button id="tcc-viewer-container" class="card__recentes">
+                <button  class="card__recentes btn-view-tcc">
                     <!-- 1. O CONTEÚDO fica aqui -->
                     <div class="card__conteudo">
                         <div class="card__header">
@@ -127,11 +127,7 @@
                         </p>
                     </div>
                     
-                    <div id="pdf-renderer">
-                    </div> 
-                    <div class="no-copy-overlay">
-                    </div>
-
+                    
                     <!-- 2. O DROPDOWN é um irmão do conteúdo -->
                     <div class="dropdown card-dropdown">
                         <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
@@ -141,6 +137,17 @@
                         </ul>
                     </div>
                 </button>
+                
+                <div class="tcc_view">
+                    <button class="btn-close" id="btn_close"><i class="bi bi-x" ></i></button> 
+                    <div class="view-pdf tcc-viewer-container">
+                        <div id="tcc-renderer">
+                        </div> 
+                        <div class="no-copy-overlay">
+                        </div>
+                    </div>
+                </div>
+
             </div>
             {% endfor %}
         </section>
