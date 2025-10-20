@@ -21,11 +21,11 @@ app.secret_key = "seila2"
 def paginaprincipal():
     
     tccs = Tcc.exibi_tcc()
-    rec_tccs = Tcc.recuperar_tcc()
+   
     # Atualize a chamada para a nova função
     destaques = Destaques.buscar_todos_destaques()
 
-    return render_template("principal.html", tccs=tccs, rec_tccs=rec_tccs, destaques=destaques)
+    return render_template("principal.html", tccs=tccs, destaques=destaques)
 
 @app.route("/paginalogin")
 def paginalogin():
@@ -34,6 +34,23 @@ def paginalogin():
 @app.route("/paginacadastro")
 def paginacadastro():
     return render_template("cadastro.html")  
+
+@app.route("/paginaverificacao")
+def paginaverificacao():
+    
+    return render_template("verificacao.html")
+
+
+
+@app.route("/post/verificarcodigo", methods=["POST"])
+def verificarcodigo():
+    senha = "@admin-SENAI-BiblioTCCa!2025"
+    codigo = request.form.get("codigo")
+
+    if senha == codigo:
+        return redirect("/paginacadastro")
+    else:
+        return redirect("/paginaverificacao")
 
 
 @app.route("/post/cadastrarusuario", methods= ["POST"])
@@ -171,6 +188,8 @@ def pesquisar():
 
     # Retorna os resultados para o template
     return render_template('principal.html', tccs=resultados, destaques=destaques)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
