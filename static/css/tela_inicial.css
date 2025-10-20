@@ -21,47 +21,49 @@ box-sizing: border-box;
 .header__ {
   width: 100%;
   height: auto;
-  display: flex;
   background: var(--cor-gradiente);
   padding: 10px 20px;
-}
+  }
+  
+  .form__pesquisa{
+  width: 50vw;
+  }
 
-/* espaçamento do input-group */
-.mb-3 {
-  margin-bottom: 0 !important; /* zerei aqui para o header não ficar alto demais */
-}
-
-/* campo de busca */
-.form-control {
+  
+  .header__user{
+  color: var(--cor01);
+  font-size: 0.9rem;
+  padding-top: 5px; 
+  width: 50vw;
+  }
+  
+  /* campo de busca */
+  .form-control {
   background-color: var(--cor01);
-}
-
-/* botão da busca */
-.input-group .btn {
+  }
+  
+  /* botão da busca */
+  .input-group .btn {
   background-color: var(--cor01);
   border: none;
-}
-
-/* ao passar o mouse no botão de busca */
-.input-group .btn:hover {
+  }
+  .input-group .btn:hover {
   background-color: var(--cor02);
   color: var(--cor01);
-}
-
-/* ícones */
-.bi-funnel,
-.bi-person-circle {
+  }
+  
+  /* ícones */
+  .bi-funnel,
+  .bi-person-circle {
   font-size: 30px;
   color: var(--cor01);
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block !important;
-  right: 10px !important;
+  }
   
-}
 
-/* body */
+  .dropdown .dropdown-menu {
+  right: 10px;
+  }
+
 
 h2{
 font-size: 24px;
