@@ -77,15 +77,21 @@ class Usuario:
 
         resultado = cursor.fetchone()
 
+        # Fecha o "mensageiro" (cursor) que foi usado para falar com o banco de dados.
         cursor.close()
+        # Fecha a conexão com o banco de dados para liberar recursos.
         conexao.close()
 
+        # Verifica se a variável 'resultado' encontrou algum usuário no banco.
         if resultado:
             session['usuario'] = resultado['login']
             session['nome_usuario'] = resultado['nome']
             return True
         else:
+            # Se não encontrou nenhum usuário, retorna False, indicando que o login falhou.
             return False
 
+    # Esta função é chamada quando o usuário quer sair do sistema.
     def logoff():
+    # Limpa completamente a "memória" da sessão, esquecendo quem estava logado.
         session.clear()

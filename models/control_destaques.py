@@ -37,8 +37,10 @@ class Destaques:
                 GROUP BY
                     tcc.codigo;
             """
+            # Executa um único comando SQL de cada vez.
             cursor.execute(sql)
 
+            # Recuperando os dados e guardando em uma variavel
             resultados = cursor.fetchall()
             
             return resultados

@@ -2,6 +2,7 @@ from data.conexao import Conexao
 
 
 class Curso_orientador:
+    # O '@staticmethod' indica que este método pertence à classe, mas não precisa de uma instância específica da classe para ser chamado (não usa 'self').
     @staticmethod
     def cadastro_curso(nome_curso):
         conexao = Conexao.criar_conexao()
@@ -27,7 +28,7 @@ class Curso_orientador:
         cursor = conexao.cursor()
 
         sql = "INSERT INTO tbOrientador (nome_orientador, cod_curso) VALUES (%s, %s)"
-        valores = (nome_orientador, cod_curso)  # <- nome_orientador é string
+        valores = (nome_orientador, cod_curso)  
         cursor.execute(sql, valores)
 
         conexao.commit()

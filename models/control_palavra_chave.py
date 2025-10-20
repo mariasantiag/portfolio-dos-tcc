@@ -29,7 +29,7 @@ class Palavra:
         """
 
         
-        palavra = f"%{palavra_chave}%"  # Adiciona os '%' para realizar a pesquisa parcial
+        palavra = f"%{palavra_chave}%"  
         cursor.execute(sql, (palavra, palavra, palavra))
 
         # Retorna todos os resultados

@@ -18,16 +18,16 @@ class Tcc:
         # Cria uma lista de tuplas (tcc_id, orientador_id) para execução em massa
         dados_relacao = [(tcc_id, int(o_id)) for o_id in orientadores_ids]
 
+        # Executa o mesmo comando SQL várias vezes, uma para cada conjunto de dados que você fornece.
         cursor.executemany(sql_relacao, dados_relacao)
 
 
     def registrar_tcc_no_banco(self, titulo, autores, orientadores_ids, curso, descricao, data, chave1, chave2, chave3, destaque, pdf_nome):
-        # NOTA: orientadores_ids é agora uma LISTA
         try:
             conexao = Conexao.criar_conexao()
             cursor = conexao.cursor(dictionary=True)
 
-            # 1. INSERE O TCC NA tbTcc (sem o cod_orientador)
+            # INSERE O TCC NA tbTcc (sem o cod_orientador)
             sql_tcc = """
             INSERT INTO tbTcc (
                 titulo, autor, cod_curso, descricao, data,
@@ -45,14 +45,18 @@ class Tcc:
             cursor.execute(sql_tcc, dados_tcc)
             tcc_id = cursor.lastrowid  # Pega o ID do TCC recém-inserido
 
-            # 2. INSERE OS ORIENTADORES NA tbTcc_Orientador
+            # INSERE OS ORIENTADORES NA tbTcc_Orientador
             self.registrar_orientadores_no_banco(tcc_id, orientadores_ids, conexao, cursor)
 
+            # Efetiva (salva permanentemente) todas as exclusões feitas.
             conexao.commit()
             print(f"TCC '{titulo}' e seus orientadores registrados com sucesso.")
 
         except mysql.connector.Error as err:
             print(f"Erro ao registrar TCC: {err}")
+            # Se a operação de salvar o TCC envolve múltiplas etapas e o erro acontece no meio do caminho, o `rollback()` desfaz TODAS as
+            # alterações feitas até aquele ponto. Isso garante que o banco de dados não fique em um estado
+            # inconsistente (com dados "pela metade"). É um mecanismo de segurança essencial.
             conexao.rollback()
 
         finally:
@@ -64,15 +68,22 @@ class Tcc:
 
     def salvar_tcc(self, titulo, autores, orientador, curso, descricao, pdf_path, data, chave1, chave2, chave3, destaque):
         # Pasta onde os PDFs serão armazenados
-        pasta_pdf = 'static/pdf'  # Assumindo que a pasta pdf já existe no seu projeto
+        pasta_pdf = 'static/pdf'  
 
     def salvar_tcc(self, titulo, autores, orientadores_ids, curso, descricao, pdf_path, data, chave1, chave2, chave3, destaque):
-        # ... (código de salvamento do PDF permanece igual) ...
+        # Define o nome da pasta onde os arquivos PDF serão guardados.
         pasta_pdf = 'pdf'
+        # Verifica se a pasta chamada 'pdf' já existe no diretório do projeto.
         if not os.path.exists(pasta_pdf):
+             # Se a pasta não existir, este comando a cria.
              os.makedirs(pasta_pdf)
 
+        # Pega apenas o nome do arquivo do caminho completo fornecido.
+        # Exemplo: se pdf_path for 'C:/Downloads/meu_trabalho.pdf', nome_pdf será 'meu_trabalho.pdf'.
         nome_pdf = os.path.basename(pdf_path)
+
+        # Cria o caminho completo onde o arquivo PDF será salvo.Junta o nome da pasta ('pdf') com o nome do arquivo ('meu_trabalho.pdf'),
+        # resultando em um caminho como 'pdf/meu_trabalho.pdf'.
         caminho_pdf_destino = os.path.join(pasta_pdf, nome_pdf)
        
         # Usa shutil.move para mover o arquivo temporário (melhor do que copy e remove depois)
@@ -115,13 +126,15 @@ class Tcc:
                     tcc.codigo;
             """
 
+            # Executa um único comando SQL de cada vez.
             cursor.execute(sql_tcc)
             
+            # Recuperando os dados e guardando em uma variavel
             trabalhos = cursor.fetchall()
 
             return trabalhos
         
-        except Exception as e: # É uma boa prática capturar a exceção específica para entender o erro.
+        except Exception as e: 
             print(f"Erro ao buscar TCCs: {e}")
             if conexao:
                 conexao.rollback()
@@ -144,9 +157,11 @@ class Tcc:
             valores = (codigo,) 
             cursor.execute(sql_filho, valores)
 
+            # Agora que as ligações foram removidas, define o comando para apagar o registro principal do TCC na tabela `tbTcc` (a tabela "pai").
             sql_pai = "DELETE FROM tbTcc WHERE codigo = %s;"
             cursor.execute(sql_pai, valores)
 
+            # Efetiva (salva permanentemente) todas as exclusões feitas. Sem o `commit()`, nada seria realmente apagado no banco de dados.
             conexao.commit()
             print(f"TCC com código {codigo} e suas associações foram deletados com sucesso.")
 
