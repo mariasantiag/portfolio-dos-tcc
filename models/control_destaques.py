@@ -36,7 +36,14 @@ class Destaques:
                 -- Agrupa o resultado por código do TCC para ter uma linha por trabalho
                 GROUP BY
                     tcc.codigo;
+                ORDER BY
+                    RAND()
+                LIMIT 2;
             """
+
+            # O 'ORDER BY RAND()' é um comando do MySQL que embaralha todas as linhas de resultado que foram encontradas (ou seja, todos os TCCs com destaque = 'sim').
+            # O 'LIMIT 2' é executado DEPOIS da ordenação aleatória.Depois de embaralhar tudo, pega apenas as 2 primeiras linhas desse resultado embaralhado e descarte o resto.
+               
             # Executa um único comando SQL de cada vez.
             cursor.execute(sql)
 
