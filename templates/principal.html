@@ -116,8 +116,8 @@
             
             {% for tccs in tccs %}
             <div class="container__func_tccs">
-
-                    <div class="grid__recentes">
+                
+                <div class="grid__recentes">
                         
                         <div onclick= 'viewpdf("static/pdf/{{tccs.pdf_nome}}")'  class="card__recentes btn-view-tcc">
                             <!-- 1. O CONTEÚDO fica aqui -->
@@ -161,13 +161,14 @@
                         </div>
                     </div>
                 
-                    <div class="dropdown card-dropdown">
-                        <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
-                            <li><a class="dropdown-item" href="#">Editar</a></li>
-                            <li><a class="dropdown-item" href="/apagartcc/{{tccs.codigo}}" id="btn__excluir">Excluir</a></li>
-                        </ul>
-                    </div>
+
+                    
+                        <div class="card__actions">
+                            <a href="#" class="btn__edit" id="btn__edit"><i class="bi bi-pencil-square"></i></a>
+                            <a href="/apagartcc/{{tccs.codigo}}" class="btn__excluir" id="btn__excluir"><i class="bi bi-trash-fill"  ></i></a></li>
+                        </div>
+                 
+
                 </div>
             {% endfor %}
         </section>
