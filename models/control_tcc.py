@@ -86,7 +86,7 @@ class Tcc:
         # resultando em um caminho como 'pdf/meu_trabalho.pdf'.
         caminho_pdf_destino = os.path.join(pasta_pdf, nome_pdf)
        
-        # Usa shutil.move para mover o arquivo temporário (melhor do que copy e remove depois)
+        # shutil.move para mover o arquivo temporário (melhor do que copy e remove depois)
         shutil.move(pdf_path, caminho_pdf_destino)
 
         # Agora, registra as informações no banco de dados (incluindo o nome do PDF)
