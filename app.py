@@ -22,8 +22,10 @@ def paginaprincipal():
     
     tccs = Tcc.exibi_tcc()
     rec_tccs = Tcc.recuperar_tcc()
+    # Atualize a chamada para a nova função
+    destaques = Destaques.buscar_todos_destaques()
 
-    return render_template("principal.html", tccs = tccs, rec_tccs=rec_tccs)
+    return render_template("principal.html", tccs=tccs, rec_tccs=rec_tccs, destaques=destaques)
 
 @app.route("/paginalogin")
 def paginalogin():
@@ -165,9 +167,10 @@ def pesquisar():
 
     # Chama a função de pesquisa
     resultados = Palavra.pesquisar_palavra_chave(palavra_chave)
+    destaques = Destaques.buscar_todos_destaques()
 
     # Retorna os resultados para o template
-    return render_template('principal.html', tccs=resultados)
+    return render_template('principal.html', tccs=resultados, destaques=destaques)
 
 if __name__ == '__main__':
     app.run(debug=True)

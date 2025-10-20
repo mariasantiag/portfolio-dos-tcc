@@ -84,45 +84,54 @@ class Tcc:
 
         print(f"TCC salvo com sucesso! PDF: {nome_pdf}")
 
+
     def exibi_tcc():
+        conexao = None # Inicializa a conexão como None
         try:
             conexao = Conexao.criar_conexao()
             cursor = conexao.cursor(dictionary=True)
 
-            sql_tcc="""
-                        SELECT
-                            codigo,
-                            titulo,
-                            autor,
-                            descricao,
-                            data,
-                            nome_curso,
-                            nome_orientador,
-                            pdf_nome
-                        FROM
-                            tbTcc
-                        INNER JOIN
-                            tbCurso ON tbTcc.cod_curso = tbCurso.cod_curso
-                        inner join 
-                            tborientador on tbcurso.cod_curso = tborientador.cod_curso;
-
-                        
+            # SQL modificado para agrupar os orientadores por TCC
+            sql_tcc = """
+                SELECT
+                    tcc.codigo,
+                    tcc.titulo,
+                    tcc.autor,
+                    tcc.descricao,
+                    tcc.data,
+                    curso.nome_curso,
+                    tcc.pdf_nome,
+                    -- A função GROUP_CONCAT junta os nomes dos orientadores em uma única string, separados por vírgula e espaço.
+                    -- Damos a esta nova coluna o nome de 'orientadores'.
+                    GROUP_CONCAT(orientador.nome_orientador SEPARATOR ', ') AS orientadores
+                FROM
+                    tbTcc AS tcc
+                INNER JOIN
+                    tbCurso AS curso ON tcc.cod_curso = curso.cod_curso
+                INNER JOIN 
+                    tbOrientador AS orientador ON curso.cod_curso = orientador.cod_curso
+                -- A cláusula GROUP BY é essencial. Ela agrupa todas as linhas que pertencem ao mesmo TCC em uma só.
+                GROUP BY
+                    tcc.codigo;
             """
-
 
             cursor.execute(sql_tcc)
             
-            trabalhos=cursor.fetchall()
+            trabalhos = cursor.fetchall()
 
             return trabalhos
         
-        except:
-            print("Nenhum TCC encontrado")
-            conexao.rollback()
+        except Exception as e: # É uma boa prática capturar a exceção específica para entender o erro.
+            print(f"Erro ao buscar TCCs: {e}")
+            if conexao:
+                conexao.rollback()
+            return [] # Retorna uma lista vazia em caso de erro
 
         finally:
-            cursor.close()
-            conexao.close()
+            if conexao and conexao.is_connected():
+                cursor.close()
+                conexao.close()
+
 
 
     def deletar_tcc(codigo):
