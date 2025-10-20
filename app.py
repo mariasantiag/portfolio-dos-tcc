@@ -21,11 +21,11 @@ app.secret_key = "seila2"
 def paginaprincipal():
     
     tccs = Tcc.exibi_tcc()
-    rec_tccs = Tcc.recuperar_tcc()
+   
     # Atualize a chamada para a nova função
     destaques = Destaques.buscar_todos_destaques()
 
-    return render_template("principal.html", tccs=tccs, rec_tccs=rec_tccs, destaques=destaques)
+    return render_template("principal.html", tccs=tccs, destaques=destaques)
 
 @app.route("/paginalogin")
 def paginalogin():
