@@ -35,6 +35,23 @@ def paginalogin():
 def paginacadastro():
     return render_template("cadastro.html")  
 
+@app.route("/paginaverificacao")
+def paginaverificacao():
+    
+    return render_template("verificacao.html")
+
+
+
+@app.route("/post/verificarcodigo", methods=["POST"])
+def verificarcodigo():
+    senha = "@admin-SENAI-BiblioTCCa!2025"
+    codigo = request.form.get("codigo")
+
+    if senha == codigo:
+        return redirect("/paginacadastro")
+    else:
+        return redirect("/paginaverificacao")
+
 
 @app.route("/post/cadastrarusuario", methods= ["POST"])
 def post_usuario():
@@ -171,6 +188,8 @@ def pesquisar():
 
     # Retorna os resultados para o template
     return render_template('principal.html', tccs=resultados, destaques=destaques)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

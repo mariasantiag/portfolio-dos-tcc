@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digite o Código</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <form action="/post/verificarcodigo" method="post">
+    <h1 class="titulo">
+      DIGITE O CÓDIGO
+      <span class="icone">🔒</span>
+    </h1>
+
+    <input type="text" class="campo-codigo" name="codigo" placeholder="">
+
+    <div class="botoes">
+      <a href="/paginalogin"><button class="btn voltar" type="button">Voltar</button></a>
+      <button class="btn enviar" type="submit">Enviar</button>
+    </div>
+    </form>
+  </div>
+</body>
+</html>
