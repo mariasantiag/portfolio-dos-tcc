@@ -119,7 +119,7 @@
                             <strong>Curso:</strong> {{ destaque.nome_curso }}
                         </p>
                         <p class="card__autores">
-                            <strong>Professores:</strong> {{ destaque.nome_orientador }}
+                            <strong>Professores:</strong> {{ destaque.orientadores }}
                         </p>
                     </div>
                 </div>
@@ -134,27 +134,27 @@
                 <h2>Recentes</h2>
             </div>
 
-            {% for tccs in tccs %}
+            {% for tcc in tccs %}
             <div class="grid__recentes">
 
                 <div onclick= 'viewpdf("static/pdf/{{tccs.pdf_nome}}")'  class="card__recentes btn-view-tcc">
                     <!-- 1. O CONTEÚDO fica aqui -->
                     <div class="card__conteudo">
                         <div class="card__header">
-                            <h4 class="card__titulo">{{tccs.titulo}}</h4>
-                            <span class="card__data">{{tccs.data}}</span>
+                            <h4 class="card__titulo">{{tcc.titulo}}</h4>
+                            <span class="card__data">{{tcc.data}}</span>
                         </div>
                         <p class="card__descricao">
-                            {{tccs.descricao}}
+                            {{tcc.descricao}}
                         </p>
                         <p class="card__autores">
-                            <strong>Autores:</strong> {{tccs.autor}}
+                            <strong>Autores:</strong> {{tcc.autor}}
                         </p>
                         <p class="card__autores">
-                            <strong>Curso:</strong> {{tccs.nome_curso}}
+                            <strong>Curso:</strong> {{tcc.nome_curso}}
                         </p>
                         <p class="card__autores">
-                            <strong>Professores:</strong> {{tccs.nome_orientador}}
+                            <strong>Professores:</strong> {{tcc.orientadores}}
                         </p>
 
                     </div>
