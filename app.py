@@ -9,6 +9,7 @@ from models.control_destaques import Destaques
 from models.control_recentes import Recentes
 from models.control_usuario_admin import Usuario
 from models.control_palavra_chave import Palavra
+import random
 
 from flask import jsonify, request
 
@@ -17,15 +18,28 @@ app = Flask(__name__)
 app.secret_key = "seila2"
 
 @app.route("/")
+@app.route("/")
 @app.route("/paginainicial")
 def paginaprincipal():
     
     tccs = Tcc.exibi_tcc()
-   
-    # Atualize a chamada para a nova função
-    destaques = Destaques.buscar_todos_destaques()
+    
+    # Busca todos os destaques
+    todos_destaques = Destaques.buscar_todos_destaques()
 
-    return render_template("principal.html", tccs=tccs, destaques=destaques)
+    # Define quantos destaques você quer sortear
+    num_destaques_desejados = 2
+
+    # Usa random.sample para selecionar 'k' itens aleatórios
+    #  Verificamos o tamanho da lista para evitar erros se houver menos de 2 destaques
+    if len(todos_destaques) > num_destaques_desejados:
+        destaques_selecionados = random.sample(todos_destaques, num_destaques_desejados)
+    else:
+        # Se houver 2 ou menos destaques, use todos eles
+        destaques_selecionados = todos_destaques
+
+    
+    return render_template("principal.html", tccs=tccs, destaques=destaques_selecionados)
 
 @app.route("/paginalogin")
 def paginalogin():
