@@ -18,7 +18,6 @@
 }
 
 /* header */
-/* header */
 .header__ {
     width: 100%;
     height: auto;
@@ -100,11 +99,14 @@ h2{
 }
 
 /* section de recentes */
-.sec__recentes{
+.sec__recentes {
   text-align: center;
   margin: 20px auto;
 
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  }
 
 .tittle__recentes{
   display: inline-block;
@@ -114,14 +116,14 @@ h2{
   margin-bottom: 15px;
 }
 
-.grid__recentes{
+.grid__recentes {
   display: grid;
-  grid-template-columns: 1fr;   
-  max-width: 1200px;
-  margin: 0 auto; /* centralizar */
+  grid-template-columns: 1fr;
+  max-width: 1500px; /* <-- AUMENTADO de 1200px para 1500px (para bater com a seção "Destaques") */
+  margin: 0 auto;
   padding: 0 15px;
+  width: 100%;
 }
-
 
 .card-dropdown {
   position: absolute;
@@ -166,25 +168,22 @@ h2{
 
 
 .card__recentes {
-  position: relative; 
+  position: relative;
   background-color: var(--cor07);
-
   border: none;
   border-radius: 20px;
   padding: 22px 30px;
   text-align: left;
-  margin-bottom: 15px; /* Adiciona um espaço entre os cards */
   
-  /* Organiza o conteúdo e o dropdown lado a lado */
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Alterado para 'center' para alinhar verticalmente ao meio */
-  
-  /* Efeitos de clique e hover */
+  align-items: center;
   cursor: pointer;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
 
+  flex-grow: 1;
+  margin-right: 15px;
+}
 
 .card__recentes:hover {
   transform: translateY(-4px);
@@ -245,7 +244,7 @@ h2{
   font-size: 1rem;
   color: #333;
   margin-bottom: 15px;
-  max-width: 1051px;
+  max-width: 800px;
   /* Permite a quebra de linha em palavras longas para evitar overflow */
   word-wrap: break-word;
 }
@@ -366,3 +365,95 @@ h2{
       transform: translate(-50%, -50%) scale(1);
   }
 }
+
+
+.card__actions {
+  display: flex;
+  flex-direction: column; /* Empilha os botões verticalmente */
+  justify-content: center; /* Centraliza eles no espaço */
+  gap: 15px; /* Espaço entre os botões */
+  padding: 0 10px; /* Um pequeno respiro nas laterais */
+}
+
+.card__actions a {
+  font-size: 1.9rem; /* <-- Aumenta o tamanho dos ícones */
+  color: #555; /* Cor padrão */
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.card__actions a:hover {
+  transform: scale(1.1); /* Efeito de zoom */
+}
+
+/* Cores personalizadas no hover */
+.card__actions .btn__edit:hover {
+  color: var(--cor04); 
+}
+
+.card__actions .btn__excluir:hover {
+  color: var(--cor04); 
+}
+
+.container__func_tccs {
+   display: flex;
+   align-items: center; 
+   margin-bottom: 20px; 
+   width: 80%; /* Define a largura da linha  */
+   max-width: 1100px; /* Define um limite máximo */
+  }
+
+
+  /* Responsividade */
+
+  /* Responsividade Desktops */
+@media (max-width: 1100px){
+  
+    .container__func_tccs {
+      flex-direction: column;
+      width: 95%; /* Ocupa mais espaço na tela*/
+     }
+    .card__recentes { 
+      margin-right: 0;
+      margin-bottom: 15px; /* Adiciona espaço abaixo do card */
+      width: 100%; /* Faz o card ocupar toda a largura */
+    }
+  
+    .card__actions {
+      flex-direction: row;
+      justify-content: flex-end; /* Alinha os ícones à direita */
+      width: 100%;
+     }
+  }
+
+  /* Responsividade Laptops */
+@media (max-width: 960px) {
+    
+    .card__descricao {
+      max-width: 500px; /* Diminui o tamanho do texto para encaixar na tela */
+    }
+  }
+
+  /* Responsividade Tablets */
+@media (max-width: 769px) {
+  
+
+    
+    .card__descricao {
+      max-width: 500px; /* Diminui o tamanho do texto para encaixar na tela */
+    }
+  }
+  
+  /* Responsividade Celular */
+@media (max-width: 481px){
+  
+  .card__actions a {
+    font-size: 1.7rem; /* Diminui um pouco os ícones no mobile */
+  }
+  
+  .card__descricao {
+    max-width: 200px; /* Diminui o tamanho do texto para encaixar na tela */
+  }
+}
+
+  
+
