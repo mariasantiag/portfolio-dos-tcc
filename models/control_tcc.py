@@ -176,3 +176,24 @@ class Tcc:
             conexao.close()
 
     
+    def recuperar_tcc():
+     
+        # Criando a conexão com o banco de dados
+        conexao = Conexao.criar_conexao()
+
+        # O cursor será responsável por manipular
+        cursor = conexao.cursor(dictionary= True)
+
+         # Criando o sql que será executado
+        sql = "SELECT * FROM  tbTcc; "
+                   
+        # Executando o comnado sql
+        cursor.execute(sql)
+       
+        # Recuperando os dados e guardando em uma variavel
+        resultado = cursor.fetchall()
+       
+        # Fecho a conexao com o banco
+        conexao.close()
+
+        return resultado
