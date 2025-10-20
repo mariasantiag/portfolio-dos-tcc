@@ -135,58 +135,61 @@
             </div>
 
             {% for tcc in tccs %}
-            <div class="grid__recentes">
-
-                <div onclick= 'viewpdf("static/pdf/{{tccs.pdf_nome}}")'  class="card__recentes btn-view-tcc">
-                    <!-- 1. O CONTEÚDO fica aqui -->
-                    <div class="card__conteudo">
-                        <div class="card__header">
-                            <h4 class="card__titulo">{{tcc.titulo}}</h4>
-                            <span class="card__data">{{tcc.data}}</span>
-                        </div>
-                        <p class="card__descricao">
-                            {{tcc.descricao}}
-                        </p>
-                        <p class="card__autores">
-                            <strong>Autores:</strong> {{tcc.autor}}
-                        </p>
-                        <p class="card__autores">
-                            <strong>Curso:</strong> {{tcc.nome_curso}}
-                        </p>
-                        <p class="card__autores">
-                            <strong>Professores:</strong> {{tcc.orientadores}}
-                        </p>
-
-                    </div>
-                    
-                    
-                    <!-- 2. O DROPDOWN é um irmão do conteúdo -->
-                    <!-- texto dos cards - informações dos TCC's -->
-                    <p></p>
+            <div class="container__func_tccs">
                 
-                    <!-- Dropdown três pontinhos -->
+                <div class="grid__recentes">
+                        
+                        <div onclick= 'viewpdf("static/pdf/{{tcc.pdf_nome}}")'  class="card__recentes btn-view-tcc">
+                            <!-- 1. O CONTEÚDO fica aqui -->
+                            <div class="card__conteudo">
+                                <div class="card__header">
+                                    <h4 class="card__titulo">{{tcc.titulo}}</h4>
+                                    <span class="card__data">{{tcc.data}}</span>
+                                </div>
+                                <p class="card__descricao">
+                                    {{tcc.descricao}}
+                                </p>
+                                <p class="card__autores">
+                                    <strong>Autores:</strong> {{tcc.autor}}
+                                </p>
+                                <p class="card__autores">
+                                    <strong>Curso:</strong> {{tcc.nome_curso}}
+                                </p>
+                                <p class="card__autores">
+                                    <strong>Professores:</strong> {{tcc.orientadores}}
+                                </p>
+                                
+                            </div>
+                            
+                            
+                            <!-- 2. O DROPDOWN é um irmão do conteúdo -->
+                            <!-- texto dos cards - informações dos TCC's -->
+                            <p></p>
+                            
+                            <!-- Dropdown três pontinhos -->
                     {% if session.usuario %} 
-                    <div class="dropdown card-dropdown">
-                        <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
-                            <li><a class="dropdown-item" href="#">Editar</a></li>
-                            {% for rec_tcc in rec_tccs %}
-                            <li><a class="dropdown-item" href="/apagartcc/{{rec_tcc.codigo}}" id="btn__excluir">Excluir</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    {% endif %}
+                            
+                            
+                            {% endif %}
                 </div>
-                
-                <div class="tcc_view">
-                    <button class="btn-close"><i class="bi bi-x" ></i></button> 
-                    <div class="view-pdf">
-                        <div class="tcc-renderer">
-                        </div> 
-                        <div class="no-copy-overlay">
+                        <div class="tcc_view">
+                            <button class="btn-close"><i class="bi bi-x" ></i></button> 
+                            <div class="view-pdf">
+                                <div class="tcc-renderer">
+                                </div> 
+                                <div class="no-copy-overlay">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                
+
+                    
+                        <div class="card__actions">
+                            <a href="#" class="btn__edit" id="btn__edit"><i class="bi bi-pencil-square"></i></a>
+                            <a href="/apagartcc/{{tcc.codigo}}" class="btn__excluir" id="btn__excluir"><i class="bi bi-trash-fill"  ></i></a></li>
+                        </div>
+                 
 
                 </div>
             {% endfor %}
