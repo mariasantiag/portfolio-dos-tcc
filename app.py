@@ -191,22 +191,8 @@ def pesquisar():
     # Chama a função de pesquisa
     resultados = Palavra.pesquisar_palavra_chave(palavra_chave)
 
-      # Busca todos os destaques
-    todos_destaques = Destaques.buscar_todos_destaques()
-
-    # Define quantos destaques você quer sortear
-    num_destaques_desejados = 2
-
-    # Usa random.sample para selecionar 'k' itens aleatórios
-    #  Verificamos o tamanho da lista para evitar erros se houver menos de 2 destaques
-    if len(todos_destaques) > num_destaques_desejados:
-        destaques_selecionados = random.sample(todos_destaques, num_destaques_desejados)
-    else:
-        # Se houver 2 ou menos destaques, use todos eles
-        destaques_selecionados = todos_destaques
-
     # Retorna os resultados para o template
-    return render_template('principal.html', tccs=resultados, destaques=destaques_selecionados)
+    return render_template('principal.html', tccs=resultados)
 
 
 @app.route("/tccs_por_data")
