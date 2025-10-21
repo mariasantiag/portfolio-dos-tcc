@@ -12,14 +12,14 @@ CREATE TABLE tbCurso (
 -- REMOVA cod_orientador da tbTcc!
 CREATE TABLE tbTcc (
     codigo INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(200) NOT NULL,
+    titulo VARCHAR(2000) NOT NULL,
     autor VARCHAR(2000) NOT NULL,
     cod_curso INT,
-    descricao VARCHAR(1200) NOT NULL,
+    descricao VARCHAR(12000) NOT NULL,
     data VARCHAR(10),
-    palavrachave1 VARCHAR(80),
-    palavrachave2 VARCHAR(80),
-    palavrachave3 VARCHAR(80),
+    palavrachave1 VARCHAR(200),
+    palavrachave2 VARCHAR(200),
+    palavrachave3 VARCHAR(200),
     destaque VARCHAR(3),
     pdf_nome VARCHAR(255),
     FOREIGN KEY (cod_curso) REFERENCES tbCurso(cod_curso)
@@ -29,7 +29,7 @@ CREATE TABLE tbTcc (
 -- TABELA DE ORIENTADORES (ligada ao curso)
 CREATE TABLE tbOrientador (
 cod_orientador INT AUTO_INCREMENT PRIMARY KEY,
-nome_orientador VARCHAR(80) NOT NULL,
+nome_orientador VARCHAR(200) NOT NULL,
 cod_curso INT,
 FOREIGN KEY (cod_curso) REFERENCES tbCurso(cod_curso)
 );
@@ -55,4 +55,3 @@ CREATE TABLE tbAdmin (
     codigo INT primary key AUTO_INCREMENT
 );
 
--- DADOS DE EXEMPLO
