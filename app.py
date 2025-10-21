@@ -190,10 +190,9 @@ def pesquisar():
 
     # Chama a função de pesquisa
     resultados = Palavra.pesquisar_palavra_chave(palavra_chave)
-    destaques = Destaques.buscar_todos_destaques()
 
     # Retorna os resultados para o template
-    return render_template('principal.html', tccs=resultados, destaques=destaques)
+    return render_template('principal.html', tccs=resultados)
 
 
 @app.route("/tccs_por_data")
