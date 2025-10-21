@@ -30,6 +30,13 @@ class Palavra:
                             tborientador as orientador on tbcurso.cod_curso = orientador.cod_curso
 					  WHERE palavrachave1 LIKE %s OR palavrachave2 LIKE %s OR palavrachave3 LIKE %s OR titulo LIKE %s OR autor LIKE %s
                             GROUP BY
+                            titulo,
+                            autor,
+                            descricao,
+                            data,
+                            nome_curso,
+                            nome_orientador as orientadores, 
+                            tbTcc.cod_curso,
                             tbTcc.codigo;
 
 
