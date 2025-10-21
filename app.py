@@ -196,16 +196,12 @@ def pesquisar():
     return render_template('principal.html', tccs=resultados, destaques=destaques)
 
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-@app.route('/tccs_por_data')
+@app.route("/tccs_por_data")
 def tccs_por_data():
     tcc_controller = Ano()
     tccs_ordenados = tcc_controller.obter_tccs_por_data()
     return render_template('ano.html', tccs_ordenados=tccs_ordenados)
 
 
-
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
