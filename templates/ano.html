@@ -10,18 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-        <!-- Link do JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous" defer></script>
-
-        <!-- Link dos icones -->
+    <!-- Link dos icones -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <!-- Link do Sweet Alert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-
-    <script src="/static/js/script.js" defer></script>
 
     
     <link rel="stylesheet" href="/static/css/filtro.css">
@@ -88,8 +79,8 @@
             <h1>TCC's - ordenados por data</h1>
         </div>
         
+        {% for tcc in tccs_ordenados %}
         <div class="grid__tccs">
-            {% for tcc in tccs_ordenados %}
                 <div class="card__tccs">
                     <h3>{{ tcc.titulo }}</h3>
                     <p><strong>Data:</strong> {{ tcc.data }}</p>
@@ -97,23 +88,16 @@
                     <p><strong>Orientador:</strong> {{ tcc.cod_orientador }}</p>
                     <p><strong>Curso:</strong> {{ tcc.cod_curso }}</p>
                     <p><strong>Descrição:</strong> {{ tcc.descricao }}</p>
-                    
-                    <!-- Dropdown três pontinhos -->
-                    <div class="dropdown card-dropdown">
-                        <span class="bi bi-three-dots-vertical" role="button" id="dropdownCardMenu" data-bs-toggle="dropdown" aria-expanded="false"></span>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCardMenu">
-                            <li><a class="dropdown-item" href="#">Editar</a></li>
-                            <li><a class="dropdown-item" href="#" id="btn__excluir">Excluir</a></li>
-                        </ul>
-                    </div>
-                </div>
-            {% else %}
-                <p>Nenhum TCC encontrado.</p>
-            {% endfor %}
+            
         </div>
+
+        <div class="card__actions">
+            <!-- <a href="#" class="btn__edit" id="btn__edit"><i class="bi bi-pencil-square"></i></a> -->
+            <a href="/apagartcc/{{tcc.codigo}}" class="btn__excluir" id="btn__excluir"><i class="bi bi-trash-fill"  ></i></a>
+        </div>
+          
         
-
-
+        {% endfor %}
 
     
     </main>
