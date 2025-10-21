@@ -19,7 +19,8 @@ class Palavra:
                             nome_curso,
                             nome_orientador as orientadores, 
                             tbTcc.cod_curso,
-                            tbTcc.codigo
+                            tbTcc.codigo,
+                        GROUP_CONCAT(orientador.nome_orientador SEPARATOR ', ') AS orientadores
                            
                         FROM
                             tbTcc
@@ -27,7 +28,10 @@ class Palavra:
                             tbCurso ON tbTcc.cod_curso = tbCurso.cod_curso
                         inner join 
                             tborientador as orientador on tbcurso.cod_curso = orientador.cod_curso
-					  WHERE palavrachave1 LIKE %s OR palavrachave2 LIKE %s OR palavrachave3 LIKE %s OR titulo LIKE %s OR autor LIKE %s;
+					  WHERE palavrachave1 LIKE %s OR palavrachave2 LIKE %s OR palavrachave3 LIKE %s OR titulo LIKE %s OR autor LIKE %s
+                            GROUP BY
+                            tbTcc.codigo;
+
 
         """
 
