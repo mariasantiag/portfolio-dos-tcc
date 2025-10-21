@@ -5,6 +5,7 @@ from models.control_curso_orientador import Curso_orientador
 from models.control_destaques import Destaques
 from models.control_recentes import Recentes
 from models.control_usuario_admin import Usuario
+from models.control_filtro import Ano
 from models.control_palavra_chave import Palavra
 import random
 
@@ -198,6 +199,13 @@ def pesquisar():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/tccs_por_data')
+def tccs_por_data():
+    tcc_controller = Ano()
+    tccs_ordenados = tcc_controller.obter_tccs_por_data()
+    return render_template('ano.html', tccs_ordenados=tccs_ordenados)
+
 
 
 app.run(debug=True)
