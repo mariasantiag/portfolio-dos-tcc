@@ -2,3 +2,4 @@ flask
 mysql-connector-python
 
 # SENHA para Ilana: @admin-SENAI-BiblioTCCa!2025
+# SENHA Banco-de-dados: @admin-SENAI-!2025
