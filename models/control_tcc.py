@@ -72,7 +72,7 @@ class Tcc:
 
     def salvar_tcc(self, titulo, autores, orientadores_ids, curso, descricao, pdf_path, data, chave1, chave2, chave3, destaque):
         # Define o nome da pasta onde os arquivos PDF serão guardados.
-        pasta_pdf = 'pdf'
+        pasta_pdf = 'static/pdf'
         # Verifica se a pasta chamada 'pdf' já existe no diretório do projeto.
         if not os.path.exists(pasta_pdf):
              # Se a pasta não existir, este comando a cria.
