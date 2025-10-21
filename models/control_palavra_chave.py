@@ -17,7 +17,6 @@ class Palavra:
                             descricao,
                             data,
                             nome_curso,
-                            nome_orientador as orientadores, 
                             tbTcc.cod_curso,
                             tbTcc.codigo,
                         GROUP_CONCAT(orientador.nome_orientador SEPARATOR ', ') AS orientadores
@@ -35,7 +34,6 @@ class Palavra:
                             descricao,
                             data,
                             nome_curso,
-                            nome_orientador as orientadores, 
                             tbTcc.cod_curso,
                             tbTcc.codigo;
 
