@@ -1,13 +1,11 @@
 from flask import Flask, render_template, request, redirect
-import datetime
-import mysql.connector
 import os
-import shutil
 from models.control_tcc import Tcc
 from models.control_curso_orientador import Curso_orientador
 from models.control_destaques import Destaques
 from models.control_recentes import Recentes
 from models.control_usuario_admin import Usuario
+from models.control_filtro import Ano
 from models.control_palavra_chave import Palavra
 import random
 
@@ -134,12 +132,6 @@ def deslogar():
     session.clear()
     return redirect("/")
 
-# Mantenha o import os e o from flask import request, redirect
-# Adicione: import os
-
-# ... (código anterior) ...
-
-# ... (código anterior) ...
 
 @app.route("/post/cadastrar/tcc", methods=["POST"])
 def post_tcc():
@@ -198,15 +190,17 @@ def pesquisar():
 
     # Chama a função de pesquisa
     resultados = Palavra.pesquisar_palavra_chave(palavra_chave)
-    destaques = Destaques.buscar_todos_destaques()
 
     # Retorna os resultados para o template
-    return render_template('principal.html', tccs=resultados, destaques=destaques)
+    return render_template('principal.html', tccs=resultados)
 
+
+@app.route("/tccs_por_data")
+def tccs_por_data():
+    tcc_controller = Ano()
+    tccs_ordenados = tcc_controller.obter_tccs_por_data()
+    return render_template('ano.html', tccs_ordenados=tccs_ordenados)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-app.run(debug=True)

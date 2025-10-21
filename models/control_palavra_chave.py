@@ -17,21 +17,32 @@ class Palavra:
                             descricao,
                             data,
                             nome_curso,
-                            nome_orientador,
-                            GROUP_CONCAT(orientador.nome_orientador SEPARATOR ', ') AS orientadores
+                            tbTcc.cod_curso,
+                            tbTcc.codigo,
+                        GROUP_CONCAT(orientador.nome_orientador SEPARATOR ', ') AS orientadores
+                           
                         FROM
                             tbTcc
                         INNER JOIN
                             tbCurso ON tbTcc.cod_curso = tbCurso.cod_curso
                         inner join 
                             tborientador as orientador on tbcurso.cod_curso = orientador.cod_curso
-					  WHERE palavrachave1 LIKE %s OR palavrachave2 LIKE %s OR palavrachave3 LIKE %s  ;
+					  WHERE palavrachave1 LIKE %s OR palavrachave2 LIKE %s OR palavrachave3 LIKE %s OR titulo LIKE %s OR autor LIKE %s
+                            GROUP BY
+                            titulo,
+                            autor,
+                            descricao,
+                            data,
+                            nome_curso,
+                            tbTcc.cod_curso,
+                            tbTcc.codigo;
+
 
         """
 
         
         palavra = f"%{palavra_chave}%"  
-        cursor.execute(sql, (palavra, palavra, palavra))
+        cursor.execute(sql, (palavra, palavra, palavra, palavra, palavra))
 
         # Retorna todos os resultados
         resultados = cursor.fetchall()
