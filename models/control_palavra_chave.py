@@ -17,8 +17,7 @@ class Palavra:
                             descricao,
                             data,
                             nome_curso,
-                            nome_orientador,
-                            GROUP_CONCAT(orientador.nome_orientador SEPARATOR ', ') AS orientadores
+                            nome_orientador as orientadores
                         FROM
                             tbTcc
                         INNER JOIN

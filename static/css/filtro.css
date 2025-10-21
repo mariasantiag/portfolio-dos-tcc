@@ -1,0 +1,117 @@
+/* root */
+:root {
+    --cor01: #ffffff;
+    --cor02: #000000;
+    --cor-gradiente: linear-gradient(to right, #AA0608, #E82626);
+    --cor03: #AA0608;
+    --cor04: #E82626;
+    --cor05: #FF5858;
+    --cor06: #B1AEAE;
+    --cor07: #E5E5E5;
+  }
+
+*{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* header */
+/* header */
+.header__ {
+    width: 100%;
+    height: auto;
+    display: flex;
+    background: var(--cor-gradiente);
+    padding: 10px 20px;
+  }
+  
+  /* espaçamento do input-group */
+  .mb-3 {
+    margin-bottom: 0 !important; /* zerei aqui para o header não ficar alto demais */
+  }
+  
+  /* campo de busca */
+  .form-control {
+    background-color: var(--cor01);
+  }
+  
+  /* botão da busca */
+  .input-group .btn {
+    background-color: var(--cor01);
+    border: none;
+  }
+  
+  /* ao passar o mouse no botão de busca */
+  .input-group .btn:hover {
+    background-color: var(--cor02);
+    color: var(--cor01);
+  }
+  
+  /* ícones */
+  .bi-funnel,
+  .bi-person-circle {
+    font-size: 30px;
+    color: var(--cor01);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block !important;
+    right: 10px !important;
+    
+}
+
+/* body */
+
+h1{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* section dos destaques */
+.main__tccs{
+    text-align: center;
+    margin: 20px auto;
+
+}
+
+.tittle__tccs{
+  display: inline-block;
+  background: var(--cor04);
+  padding: 5px 50px;
+  border-radius: 50px;
+  margin-bottom: 15px;
+}
+
+.grid__tccs{
+  display: grid;
+  grid-template-columns: 1fr; /* uma coluna */
+  gap: 20px; /* espaçamento entre os cards */
+  max-width: 1500px;
+  margin: 0 auto; /* centralizar */
+}
+
+.card__tccs{
+  background: var(--cor07);
+  border-radius: 10px;
+  padding: 40px;
+  font-size: 18px;
+  text-align: start;
+}
+
+.card-dropdown {
+    position: relative;
+    bottom: 245px;
+    left: 1400px;
+}
+
+.card-dropdown span {
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--cor02);
+}
+
+.card-dropdown span:hover {
+  color: var(--cor04);
+}
