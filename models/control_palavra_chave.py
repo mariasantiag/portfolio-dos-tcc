@@ -17,7 +17,9 @@ class Palavra:
                             descricao,
                             data,
                             nome_curso,
-                            nome_orientador
+                            nome_orientador as orientadores, 
+                            tbTcc.cod_curso,
+                            tbTcc.codigo 
                         FROM
                             tbTcc
                         INNER JOIN
