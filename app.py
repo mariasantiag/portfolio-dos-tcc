@@ -1,8 +1,5 @@
 from flask import Flask, render_template, request, redirect
-import datetime
-import mysql.connector
 import os
-import shutil
 from models.control_tcc import Tcc
 from models.control_curso_orientador import Curso_orientador
 from models.control_destaques import Destaques
@@ -134,12 +131,6 @@ def deslogar():
     session.clear()
     return redirect("/")
 
-# Mantenha o import os e o from flask import request, redirect
-# Adicione: import os
-
-# ... (código anterior) ...
-
-# ... (código anterior) ...
 
 @app.route("/post/cadastrar/tcc", methods=["POST"])
 def post_tcc():
