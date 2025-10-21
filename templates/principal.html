@@ -35,42 +35,13 @@
     <header class="header__ bg-light p-2">
         <div class="container-fluid">
           <div class="row align-items-center">
-            
-            <!-- Campo de pesquisa  -->
-             <!-- busca ocupa mais espaço no mobile. -->
-            <form action="/pesquisar" method="GET">
-            <div class="col-8 col-md-6">
-              <div class="input-group mb-3">
-                <input type="text" id="pesquisa_palavra_chave" name="pesquisa_palavra_chave" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
-                  <i class="bi bi-search"></i>
-                </button>
-              </div>
-            </div>
-            </form>
-
-            {% if session.usuario %}
-            <span class="header__user">Olá, {{session.nome_usuario}}</span>
-            {% endif %}
-
-            <!-- Ícones  -->
-              <!-- ícones ocupam menos espaço e ficam alinhados à direita. -->
-               <!-- isso força ícone filtro + ícone perfil a ficarem lado a lado, alinhados verticalmente e com espaço (gap-3) entre eles. -->
-            <div class="col-4 col-md-6 d-flex justify-content-end align-items-center gap-3">
-                <!-- Dropdown do filtro -->
-                <div class="dropdown">
-                   <i class="bi bi-funnel fs-3 text-white" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="/paginainicial">Página Inicial</a></li>
-                        <li><a class="dropdown-item" href="/tccs_por_data">Ano</a></li>
-                    </ul>
-                </div>
+        
                 
                 <div class="col-8 col-md-6">
                     <form class="form__pesquisa" action="/pesquisar" method="GET">
                         <div class="input-group"> 
                             <input type="text" id="pesquisa_palavra_chave" name="pesquisa_palavra_chave" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
@@ -149,7 +120,6 @@
                 </div>
                 {% endfor %}
             </div>
-              
         </section>
 
         <!-- seção RECENTES -->
@@ -184,14 +154,7 @@
                                 
                             </div>
                             
-                            
-
-                            
-                         
-                            
-                            
-                            {% endif %}
-                </div>
+                    </div>
                         <div class="tcc_view">
                             <button class="btn-close"><i class="bi bi-x" ></i></button> 
                             <div class="view-pdf">

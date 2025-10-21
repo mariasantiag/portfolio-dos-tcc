@@ -66,9 +66,6 @@ class Tcc:
             if 'conexao' in locals() and conexao is not None:
                 conexao.close()
 
-    def salvar_tcc(self, titulo, autores, orientador, curso, descricao, pdf_path, data, chave1, chave2, chave3, destaque):
-        # Pasta onde os PDFs serão armazenados
-        pasta_pdf = 'static/pdf'  
 
     def salvar_tcc(self, titulo, autores, orientadores_ids, curso, descricao, pdf_path, data, chave1, chave2, chave3, destaque):
         # Define o nome da pasta onde os arquivos PDF serão guardados.
