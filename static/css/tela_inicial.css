@@ -21,52 +21,72 @@ box-sizing: border-box;
 .header__ {
   width: 100%;
   height: auto;
-  display: flex;
   background: var(--cor-gradiente);
   padding: 10px 20px;
+  } 
+  
+
+.header__user{
+color: var(--cor01);
+font-size: 0.9rem;
+padding-top: 5px; 
+
+}
+.hello__text{
+  width: 50px;
 }
 
-/* espaçamento do input-group */
-.mb-3 {
-  margin-bottom: 0 !important; /* zerei aqui para o header não ficar alto demais */
-}
 
 /* campo de busca */
 .form-control {
-  background-color: var(--cor01);
+background-color: var(--cor01);
 }
 
 /* botão da busca */
 .input-group .btn {
-  background-color: var(--cor01);
-  border: none;
+background-color: var(--cor01);
+border: none;
 }
-
-/* ao passar o mouse no botão de busca */
 .input-group .btn:hover {
-  background-color: var(--cor02);
-  color: var(--cor01);
+background-color: var(--cor02);
+color: var(--cor01);
 }
 
 /* ícones */
 .bi-funnel,
 .bi-person-circle {
-  font-size: 30px;
-  color: var(--cor01);
+font-size: 30px;
+color: var(--cor01);
 }
 
-.dropdown:hover .dropdown-menu {
-  display: block !important;
-  right: 10px !important;
+
+.dropdown .dropdown-menu {
+right: 10px;
+}
+
+
+.logo {
+    width: 100vw;
+    height: 200px;
+    margin: 0;
+    padding: 0; 
+    text-align: center;
+}
   
+/* Imagem da logo */
+.logo img {
+  max-height: 200px; 
+  max-width: 100%;
+  
+  margin-top: 20px;
+  height: auto;
 }
-
-/* body */
-
 h2{
 font-size: 24px;
 font-weight: bold;
 }
+
+
 
 /* section dos destaques */
 .sec__destaques{
@@ -76,19 +96,20 @@ font-weight: bold;
 }
 
 .tittle__destaque{
-display: inline-block;
-background: var(--cor04);
-padding: 5px 50px;
-border-radius: 50px;
-margin-bottom: 15px;
-}
+  display: inline-block;
+  background: var(--cor04);
+  padding: 5px 50px;
+  border-radius: 50px;
+  margin-bottom: 15px;
+  }
 
 .grid__destaque{
-display: grid;
-grid-template-columns: 1fr 1fr; /* duas colunas iguais */
-gap: 20px; /* espaçamento entre os cards */
-max-width: 1500px;
-margin: 0 auto; /* centralizar */
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; /* espaçamento entre os cards */
+  max-width: 1500px;
+  margin: 0 auto; /* centralizar */
 }
 
 .card__destaque {
@@ -96,7 +117,17 @@ background: var(--cor07);
 border-radius: 10px;
 padding: 40px;
 font-size: 18px;
+
+border: none;
+border-radius: 20px;
+transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
 }
+
+.card__destaque:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
 
 /* section de recentes */
 .sec__recentes {
@@ -125,21 +156,7 @@ padding: 0 15px;
 width: 100%;
 }
 
-.card-dropdown {
-position: absolute;
-top: 15px;
-right: 20px;
-}
 
-.card-dropdown span {
-font-size: 24px;
-cursor: pointer;
-color: var(--cor02);
-}
-
-.card-dropdown span:hover {
-color: var(--cor04);
-}
 
 .add__tcc {
 position: fixed; /* fixa na tela */
@@ -159,16 +176,9 @@ transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 
-/* Mover o dropdown para cima ao passar o mouse */
-.dropdown__add:hover .dropdown-menu {
-transform: translateY(-10px); /* Ajuste o valor conforme necessário */
-transition: transform 0.3s ease;
-}
-
 
 
 .card__recentes {
-position: relative;
 background-color: var(--cor07);
 border: none;
 border-radius: 20px;
@@ -194,7 +204,7 @@ box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 /* --- Dropdown (Três pontinhos) --- */
 .card-dropdown {
 /* Esta posição relativa é crucial para que o menu que aparece (que é absoluto) 
-   se posicione corretamente em relação aos três pontinhos. */
+  se posicione corretamente em relação aos três pontinhos. */
 position: relative; 
 /* Removemos top e right que não são mais necessários aqui */
 }
@@ -222,7 +232,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 margin-bottom: 12px;
-gap: 15px; /* Adiciona um espaço entre título e data para evitar que se toquem */
+gap: 15px;
 }
 
 .card__titulo {
@@ -235,8 +245,8 @@ margin: 0;
 .card__data {
 font-size: 0.9rem;
 color: #555;
-white-space: nowrap; /* Impede que a data quebre a linha */
-flex-shrink: 0; /* Impede que a data seja espremida */
+white-space: nowrap; 
+flex-shrink: 0; 
 }
 
 /* --- Descrição e Autores --- */
@@ -245,7 +255,6 @@ font-size: 1rem;
 color: #333;
 margin-bottom: 15px;
 max-width: 800px;
-/* Permite a quebra de linha em palavras longas para evitar overflow */
 word-wrap: break-word;
 }
 
@@ -263,17 +272,14 @@ color: #333;
 .bi-three-dots-vertical{
 position: absolute;
 }
+
 /* --- ESTADO PADRÃO DO MODAL (ESCONDIDO) --- */
 .tcc_view {
-/* O JS vai controlar isso com display: none e display: block,
-   mas deixamos aqui como o estado inicial correto. */
 display: none;
 }
 
-/* --- ESTADO ATIVO DO MODAL (VISÍVEL) --- */
-/* Esta regra é ativada quando o JS adiciona a classe .is-viewing */
 .tcc_view.is-viewing {
-/* 1. TRANSFORMA O CONTAINER NA SOBREPOSIÇÃO ESCURA DE TELA CHEIA */
+
 position: fixed;
 top: 0;
 left: 0;
@@ -282,17 +288,13 @@ height: 100%;
 background-color: rgba(0, 0, 0, 0.8);
 z-index: 1000;
 
-/* O JS força 'display: block', então não podemos usar flexbox.
-   Usaremos posicionamento absoluto nos filhos para centralizar. */
-
 animation: fadeIn 0.3s ease-out;
 }
 
 /* --- A CAIXA DE CONTEÚDO BRANCA (DENTRO DO MODAL) --- */
 .tcc_view.is-viewing .view-pdf {
-display: block; /* Garante que o conteúdo seja visível */
+display: block; 
 
-/* 2. CENTRALIZA A CAIXA USANDO POSICIONAMENTO ABSOLUTO */
 position: absolute;
 top: 50%;
 left: 50%;
@@ -305,7 +307,7 @@ height: 90vh;
 background-color: #fff;
 border-radius: 12px;
 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-overflow-y: scroll; /* Permite rolar o conteúdo do PDF */
+overflow-y: scroll;
 
 animation: scaleUp 0.4s ease-out;
 }
@@ -395,11 +397,11 @@ color: var(--cor04);
 }
 
 .container__func_tccs {
- display: flex;
- align-items: center; 
- margin-bottom: 20px; 
- width: 80%; /* Define a largura da linha  */
- max-width: 1100px; /* Define um limite máximo */
+display: flex;
+align-items: center; 
+margin-bottom: 20px; 
+width: 80%; /* Define a largura da linha  */
+max-width: 1100px; /* Define um limite máximo */
 }
 
 
@@ -411,7 +413,7 @@ color: var(--cor04);
   .container__func_tccs {
     flex-direction: column;
     width: 95%; /* Ocupa mais espaço na tela*/
-   }
+  }
   .card__recentes { 
     margin-right: 0;
     margin-bottom: 15px; /* Adiciona espaço abaixo do card */
@@ -422,7 +424,7 @@ color: var(--cor04);
     flex-direction: row;
     justify-content: flex-end; /* Alinha os ícones à direita */
     width: 100%;
-   }
+  }
 }
 
 /* Responsividade Laptops */
@@ -446,6 +448,21 @@ color: var(--cor04);
 /* Responsividade Celular */
 @media (max-width: 481px){
 
+  .form__pesquisa{
+    width: 150px;
+  }
+  .grid__destaque{
+
+    display: block;
+    padding: 22px 30px;
+
+    margin-bottom: 15px;
+
+    margin-right: 15px;
+
+
+  }
+
 .card__actions a {
   font-size: 1.7rem; /* Diminui um pouco os ícones no mobile */
 }
@@ -453,5 +470,7 @@ color: var(--cor04);
 .card__descricao {
   max-width: 200px; /* Diminui o tamanho do texto para encaixar na tela */
 }
+
+
 }
 

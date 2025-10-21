@@ -33,67 +33,62 @@
 
 <body>
     <header class="header__ bg-light p-2">
-        <!-- container-fluid e row →  dividi os elementos em colunas. -->
         <div class="container-fluid">
-          <div class="row align-items-center">
-            
-            <!-- Campo de pesquisa  -->
-             <!-- busca ocupa mais espaço no mobile. -->
-            <form action="/pesquisar" method="GET">
-            <div class="col-8 col-md-6">
-              <div class="input-group mb-3">
-                <input type="text" id="pesquisa_palavra_chave" name="pesquisa_palavra_chave" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                  <i class="bi bi-search"></i>
-                </button>
-              </div>
-            </div>
-            </form>
-
-    
-    
-
-         
-      
-            {% if session.usuario %}
-            <span class="header__user">Olá, {{session.nome_usuario}}</span>
-            {% endif %}
-
-            <!-- Ícones  -->
-              <!-- ícones ocupam menos espaço e ficam alinhados à direita. -->
-               <!-- isso força ícone filtro + ícone perfil a ficarem lado a lado, alinhados verticalmente e com espaço (gap-3) entre eles. -->
-            <div class="col-4 col-md-6 d-flex justify-content-end align-items-center gap-3">
-                <!-- Dropdown do filtro -->
-                <div class="dropdown">
-                   <i class="bi bi-funnel fs-3 text-white" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Página Inicial</a></li>
-                        <li><a class="dropdown-item" href="#">Ano</a></li>
-                    </ul>
-                </div>
+        
+            <div class="row align-items-center">
                 
-                <!-- Dropdown do login/perfil -->
-                <div class="dropdown">
-                    <button class="btn rounded-circle" id="dropdownLogin" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle fs-3 text-white"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownLogin">
-                        {% if session.usuario %} 
-                        <li><a class="dropdown-item" href="/deslogar">Sair</a></li>
-                        {% else %}
-                        <li><a class="dropdown-item" href="/paginalogin">Entrar</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        {% endif %}
-                    </ul>
+                <div class="col-8 col-md-6">
+                    <form class="form__pesquisa" action="/pesquisar" method="GET">
+                        <div class="input-group"> 
+                            <input type="text" id="pesquisa_palavra_chave" name="pesquisa_palavra_chave" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            </div>
-      
-          </div>
-        </div>
+
+
+                
+                <div class="col-4 col-md-6 d-flex justify-content-end align-items-center gap-3 container__filter__login">
+                    {% if session.usuario %}
+                    <div class="row ">
+                        <div class="col-12"> 
+                            <span class="header__user">Olá, {{session.nome_usuario}}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="dropdown">
+                         <i class="bi bi-funnel fs-3 text-white" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                             <li><a class="dropdown-item" href="#">Página Inicial</a></li>
+                             <li><a class="dropdown-item" href="#">Ano</a></li>
+                         </ul>
+                    </div>
+                    
+                    <div class="dropdown ">
+                         <button class="btn rounded-circle" id="dropdownLogin" data-bs-toggle="dropdown" aria-expanded="false">
+                             <i class="bi bi-person-circle fs-3 text-white"></i>
+                         </button>
+                         <ul class="dropdown-menu" aria-labelledby="dropdownLogin">
+                             {% if session.usuario %} 
+                             <li><a class="dropdown-item" href="/deslogar">Sair</a></li>
+                             {% else %}
+                             <li><a class="dropdown-item" href="/paginalogin">Entrar</a></li>
+                             <li><hr class="dropdown-divider"></li>
+                             {% endif %}
+                         </ul>
+                    </div>
+                </div>
+            </div> 
       </header>
       
     <!-- body da página -->
     <main class="info_ _principal">
+
+                 <figure class="logo">
+                    <img src="../static/img/logoBibliotcca.png" alt="logoBibliotcca">
+                </figure>
         
         <!-- seção DESTAQUES -->
         <section class="sec__destaques">
@@ -101,9 +96,9 @@
                 <h2>Destaques</h2>
             </div>
             
-            {% for destaque in destaques %}
             <div class="grid__destaque">
-                <div onclick="viewpdf('static/pdf/{{ destaque.pdf_nome }}')" class="card__destaque">
+                {% for destaque in destaques %}
+                <div onclick="viewpdf('static/pdf/{{ destaque.pdf_nome }}')" class="card__destaque btn-view-tcc">
                     <div class="card__conteudo">
                         <div class="card__header">
                             <h4 class="card__titulo">{{ destaque.titulo }}</h4>
@@ -123,8 +118,8 @@
                         </p>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
               
         </section>
 
@@ -161,11 +156,9 @@
                             </div>
                             
                             
-                                    <!-- texto dos cards - informações dos TCC's -->
-                            <p></p>
+
                             
-                            <!-- Dropdown três pontinhos -->
-                    {% if session.usuario %} 
+                         
                             
                             
                             {% endif %}
@@ -185,8 +178,8 @@
 
                         {% if session.usuario %}
                         <div class="card__actions">
-                            <!-- <a href="#" class="btn__edit" id="btn__edit"><i class="bi bi-pencil-square"></i></a> -->
-                            <a href="/apagartcc/{{tcc.codigo}}" class="btn__excluir" id="btn__excluir"><i class="bi bi-trash-fill"  ></i></a></li>
+                            <a href="#" class="btn__edit"><i class="bi bi-pencil-square"></i></a>
+                            <a href="/apagartcc/{{tcc.codigo}}" class="btn__excluir" ><i class="bi bi-trash-fill"  ></i></a></li>
                         </div>
                         {% endif %}
                  
