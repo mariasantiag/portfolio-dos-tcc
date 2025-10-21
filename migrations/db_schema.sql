@@ -15,7 +15,7 @@ CREATE TABLE tbTcc (
     titulo VARCHAR(2000) NOT NULL,
     autor VARCHAR(2000) NOT NULL,
     cod_curso INT,
-    descricao VARCHAR(12000) NOT NULL,
+    descricao VARCHAR(6000) NOT NULL,
     data VARCHAR(10),
     palavrachave1 VARCHAR(200),
     palavrachave2 VARCHAR(200),
