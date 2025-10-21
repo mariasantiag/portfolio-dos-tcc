@@ -20,4 +20,6 @@ class Conexao:
                         password = "@admin-SENAI-!2025",
                         database = "dbTcc"
         )
+
+        return conexao
     
