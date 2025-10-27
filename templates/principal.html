@@ -23,6 +23,7 @@
     <script src="/static/js/vizualizacao-tcc.js" defer></script>
     <!-- Link do arquivo CSS -->
      <link rel="stylesheet" href="/static/css/tela_inicial.css">
+     <link rel="stylesheet" href="/static/css/config.css">
      
 
     <title>Portifólio dos TCC's</title>
@@ -168,9 +169,12 @@
                 
 
 
+<<<<<<< HEAD
                         {% if session.usuario %}
+=======
+                
+>>>>>>> 72ccad01a1475ed22f3f836a501cc331adc0588e
                         <div class="card__actions">
-                            <a href="#" class="btn__edit"><i class="bi bi-pencil-square"></i></a>
                             <a href="/apagartcc/{{tcc.codigo}}" class="btn__excluir" ><i class="bi bi-trash-fill"  ></i></a></li>
                         </div>
                         {% endif %}
