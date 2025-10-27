@@ -127,7 +127,7 @@ def post_tcc():
     return redirect("/paginainicial")
 
 
-@app.route('/tccs_por_data')
+@app.route("/tccs_por_data")
 def tccs_por_data():
     tcc_controller = Ano()
     tccs_ordenados = tcc_controller.obter_tccs_por_data()
