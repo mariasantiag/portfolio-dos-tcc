@@ -1,22 +1,3 @@
-/* root */
-:root {
-  --cor01: #ffffff;
-  --cor02: #000000;
-  --cor-gradiente: linear-gradient(to right, #AA0608, #E82626);
-  --cor03: #AA0608;
-  --cor04: #E82626;
-  --cor05: #FF5858;
-  --cor06: #B1AEAE;
-  --cor07: #E5E5E5;
-}
-
-*{
-font-family: Arial, sans-serif;
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
 /* header */
 .header__ {
   width: 100%;
@@ -64,6 +45,19 @@ color: var(--cor01);
 right: 10px;
 }
 
+.dropdown-menu{
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--cor02);
+}
+
+
+.dropdown-menu .dropdown-item:active {
+  background-color: red;
+  color: white;
+}
+
+
 
 .logo {
     width: 100vw;
@@ -101,7 +95,9 @@ font-weight: bold;
   padding: 5px 50px;
   border-radius: 50px;
   margin-bottom: 15px;
-  }
+
+  font-style: italic;
+}
 
 .grid__destaque{
 
@@ -117,6 +113,11 @@ background: var(--cor07);
 border-radius: 10px;
 padding: 40px;
 font-size: 18px;
+margin-bottom: 5px;
+
+margin-left: 5px;
+margin-right: 10px;
+
 
 border: none;
 border-radius: 20px;
@@ -145,6 +146,8 @@ background: var(--cor04);
 padding: 5px 50px;
 border-radius: 50px;
 margin-bottom: 15px;
+
+font-style: italic;
 }
 
 .grid__recentes {
@@ -201,23 +204,6 @@ box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 
-/* --- Dropdown (Três pontinhos) --- */
-.card-dropdown {
-/* Esta posição relativa é crucial para que o menu que aparece (que é absoluto) 
-  se posicione corretamente em relação aos três pontinhos. */
-position: relative; 
-/* Removemos top e right que não são mais necessários aqui */
-}
-
-.card-dropdown span {
-font-size: 24px;
-cursor: pointer;
-color: var(--cor02);
-}
-
-.card-dropdown span:hover {
-color: var(--cor04);
-}
 
 
 /* --- Conteúdo de Texto do Card --- */
@@ -237,7 +223,7 @@ gap: 15px;
 
 .card__titulo {
 font-size: 1.2rem;
-font-weight: bold;
+font-weight: 800;
 color: var(--cor03);
 margin: 0;
 }
@@ -414,6 +400,8 @@ max-width: 1100px; /* Define um limite máximo */
     flex-direction: column;
     width: 95%; /* Ocupa mais espaço na tela*/
   }
+
+
   .card__recentes { 
     margin-right: 0;
     margin-bottom: 15px; /* Adiciona espaço abaixo do card */
@@ -438,7 +426,15 @@ max-width: 1100px; /* Define um limite máximo */
 /* Responsividade Tablets */
 @media (max-width: 769px) {
 
+  .logo {
 
+    height: 70px;
+
+}
+
+    .logo img {
+      max-height: 50px; 
+    }
   
   .card__descricao {
     max-width: 500px; /* Diminui o tamanho do texto para encaixar na tela */
