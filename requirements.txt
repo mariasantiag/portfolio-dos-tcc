@@ -1,5 +1,6 @@
 flask
 mysql-connector-python
 
+# Senha atual APENAS PARA TESTE: admin
 # SENHA para Ilana: @admin-SENAI-BiblioTCCa!2025
 # SENHA Banco-de-dados: @admin-SENAI-!2025

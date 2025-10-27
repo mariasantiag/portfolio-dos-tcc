@@ -56,7 +56,7 @@ def paginaverificacao():
 
 @app.route("/post/verificarcodigo", methods=["POST"])
 def verificarcodigo():
-    senha = "@admin-SENAI-BiblioTCCa!2025"
+    senha = "admin"
     codigo = request.form.get("codigo")
 
     if senha == codigo:
