@@ -17,6 +17,10 @@ padding-top: 5px;
   width: 50px;
 }
 
+h1{
+  font-style: italic;
+}
+
 
 /* campo de busca */
 .form-control {
