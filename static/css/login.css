@@ -1,5 +1,5 @@
 
-  .header {
+.header {
   width: 100%;
   display: flex;
   align-items: center;
@@ -8,6 +8,7 @@
   padding: 12px 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
+
 
 .header h1 {
   color: #ffffff;

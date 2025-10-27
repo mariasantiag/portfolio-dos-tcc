@@ -390,6 +390,10 @@ width: 80%; /* Define a largura da linha  */
 max-width: 1100px; /* Define um limite máximo */
 }
 
+.Titulo__Pagina{
+  max-width: 900px;
+}
+
 
 /* Responsividade */
 

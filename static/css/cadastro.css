@@ -1,3 +1,13 @@
+
+/* container central */
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
   .header {
     width: 100%;
     display: flex;
@@ -32,6 +42,10 @@ h1 {
   font-size: 1.8rem;
   font-weight: bold;
   color: #AA0608; /* mesmo vermelho dos botões */
+}
+
+main{
+  margin-top: 10px;
 }
 
 /* área do formulário */
