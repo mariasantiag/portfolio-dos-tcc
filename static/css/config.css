@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --cor01: #ffffff;
+    --cor02: #000000;
+    --cor-gradiente: linear-gradient(to right, #AA0608, #E82626);
+    --cor03: #AA0608;
+    --cor04: #E82626;
+    --cor05: #FF5858;
+    --cor06: #B1AEAE;
+    --cor07: #E5E5E5;
+  }
+  
+*{
+font-family: "Montserrat", sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
