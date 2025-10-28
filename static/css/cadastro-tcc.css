@@ -3,14 +3,14 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: var(--cor-gradiente);
+  justify-content: center;
+  background-color: var(--cor-vermelho-escuroforte); /* vermelho */
   padding: 12px 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px var(--cor-vermelho-escuro);
 }
 
 .header h1 {
-  color: var(--cor01);
+  color: var(--cor-fundo-branco);
   font-weight: bold;
   margin: 0;
   font-size: 1.8rem;
@@ -23,7 +23,7 @@
   max-width: 700px;
   margin: 50px auto;
   padding: 30px;
-  background-color: var(--cor01);
+  background-color: var(--cor-fundo-branco);
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
@@ -38,7 +38,7 @@
 .form-control,
 .form-select,
 textarea.form-control {
-  border: 2px solid #ddd;
+  border: 2px solid var(--cor-branco-padrao);
   border-radius: 8px;
   padding: 10px;
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s;
@@ -47,7 +47,7 @@ textarea.form-control {
 .form-control:focus,
 .form-select:focus,
 textarea.form-control:focus {
-  border-color: var(--cor04);
+  border-color: var(--cor-vermelho-escuro);
   box-shadow: 0 0 6px rgba(232, 38, 38, 0.4);
   outline: none;
 }
@@ -61,36 +61,36 @@ textarea.form-control:focus {
 }
 
 .btn-primary {
-  background-color: var(--cor04);
+  background-color: var(--cor-vermelho-escuro);
   border: none;
 }
 .btn-primary:hover {
-  background-color: var(--cor03);
+  background-color: var(--cor-vermelho-escuroforte);
 }
 
 .btn-secondary {
-  background-color: var(--cor06);
+  background-color: var(--cor-branco-padrao);
   border: none;
-  color: var(--cor02);
+  color: var(--cor-fundo-preto);
 }
 .btn-secondary:hover {
-  background-color: var(--cor05);
-  color: var(--cor01);
+  background-color: var(--cor-vermelho-padrao);
+  color: var(--cor-fundo-branco);
 }
 
 .btn-third {
-  background-color: var(--cor06);
+  background-color: var(--cor-branco-padrao);
   border: none;
-  color: var(--cor02);
+  color: var(--cor-fundo-preto);
 }
 .btn-third:hover {
-  background-color: var(--cor05);
-  color: var(--cor01);
+  background-color: var(--cor-vermelho-padrao);
+  color: var(--cor-branco-padrao);
 }
 
 
 /* ⚠️ Feedback inválido */
 .invalid-feedback {
   font-size: 0.9rem;
-  color: var(--cor03);
+  color: var(--cor-vermelho-escuro);
 }

@@ -1,9 +1,9 @@
-// ATUALIZAÇÃO DA FUNÇÃO popularOrientadoresEmSelect (Mantém a que eu te passei na última resposta, mas garante o retorno)
+/// Função para preencher o <select> de orientadores conforme o curso selecionado
 function popularOrientadoresEmSelect(select, data = []) {
   // Limpa as opções antigas
   select.innerHTML = '<option selected disabled>Selecione o orientador</option>';
 
-  // Se já temos os dados, popula diretamente (não é o caso do botão Adicionar)
+  /// Se já existe uma lista de orientadores, adiciona direto
   if (data.length > 0) {
       data.forEach(orientador => {
           const option = document.createElement("option");
@@ -20,14 +20,15 @@ function popularOrientadoresEmSelect(select, data = []) {
 
   // Verifica se um curso válido está selecionado
   if (!cursoSelecionado || selectCurso.options[selectCurso.selectedIndex].disabled) {
-       // Não faz nada se for a opção "Selecione o curso"
+      // Se nenhum curso foi escolhido, sai da função
        return;
   }
  
-  // Faz o fetch (busca)
+  // Faz o fetch (busca os orientadores do curso no servidor) 
   fetch(`/api/orientadores/${cursoSelecionado}`)
       .then(response => response.json())
       .then(data => {
+          // Adiciona cada orientador como uma opção no select
           data.forEach(orientador => {
               const option = document.createElement("option");
               option.value = orientador.cod_orientador;
@@ -40,24 +41,22 @@ function popularOrientadoresEmSelect(select, data = []) {
       });
 }
 
-// NOVO CÓDIGO DO DOMContentLoaded
+// Quando a página carregar
 document.addEventListener("DOMContentLoaded", function () {
   // Referência ao <select> de curso
   const selectCurso = document.querySelector("select[name='curso']");
 
-  // Quando o curso for alterado...
+  // Quando o curso for trocado, atualiza todos os selects de orientador
   selectCurso.addEventListener("change", function () {
-      // Encontra TODOS os selects de orientador (o inicial e os adicionados)
       const selectsOrientadores = document.querySelectorAll('#orientadores-container .orientador-select');
      
       selectsOrientadores.forEach(selectOrientador => {
-          // Repopula cada um com os orientadores do novo curso
           popularOrientadoresEmSelect(selectOrientador);
       });
   });
 });
 
-// A função adicionarCampoOrientador() deve permanecer como estava (e como está abaixo)
+// Adiciona um novo campo de orientador
 function adicionarCampoOrientador() {
   const container = document.getElementById('orientadores-container');
 
@@ -73,12 +72,11 @@ function adicionarCampoOrientador() {
 
   container.appendChild(novoCampo);
 
-  // Atualiza a lista de opções com base no curso selecionado
-  // ESSA CHAMADA GARANTE QUE O NOVO CAMPO SEJA POPULADO IMEDIATAMENTE!
+  // Preenche o novo campo com os orientadores do curso atual
   popularOrientadoresEmSelect(novoCampo.querySelector('select'));
 }
 
-// Remove o campo
+// Remove o campo de orientador
 function removerCampo(botao) {
   botao.parentElement.remove();
 }

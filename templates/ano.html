@@ -27,17 +27,20 @@
 
 <body>
 
+  <!-- Cabeçalho -->
   <header class="header__ bg-light p-2">
     <div class="container-fluid">
       <div class="row align-items-center">
         
+        <!-- Titulo da página -->
         <div class="Titulo__Pagina">
           <h1>TCC's - ordenados por data</h1>
         </div>
 
 
-            
+            <!--  Div para o filtro -->
             <div class="col-4 col-md-6 d-flex justify-content-end align-items-center gap-3 container__filter__login">
+                <!--  Se o usuário está logado, aparece mensagem de boas vindas -->
                 {% if session.usuario %}
                 <div class="row ">
                     <div class="col-12"> 
@@ -45,6 +48,7 @@
                     </div>
                 </div>
                 {% endif %}
+                <!-- Menu, onde existe a possibilidade de ir para a página inicial ou página de ano -->
                 <div class="dropdown">
                      <i class="bi bi-funnel fs-3 text-white" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -52,7 +56,7 @@
                         <li><a class="dropdown-item" href="/tccs_por_data">Ano</a></li>
                      </ul>
                 </div>
-                
+                <!-- Menu para logar e deslogar -->
                 <div class="dropdown">
                      <button class="btn rounded-circle" id="dropdownLogin" data-bs-toggle="dropdown" aria-expanded="false">
                          <i class="bi bi-person-circle fs-3 text-white"></i>
@@ -70,14 +74,17 @@
         </div> 
   </header>
 
+    <!-- Conteúdo principal -->
     <main class="main__tccs">
 
+        <!-- Seção dos recentes -->
       <section class="sec__recentes">
 
         
         {% for tcc in tccs_ordenados %}
         <div class="container__func_tccs">
                 
+          <!-- Informações dos tccs -->
           <div class="grid__recentes">
                   
                   <div onclick= 'viewpdf("static/pdf/{{tcc.pdf_nome}}")'  class="card__recentes btn-view-tcc">
@@ -103,6 +110,7 @@
                       
               </div>
               
+              <!-- Visualização do pdf do tcc -->
               <div class="tcc_view">
                   <button class="btn-close"><i class="bi bi-x" ></i></button> 
                   <div class="view-pdf">
@@ -120,7 +128,7 @@
       
 
         
-        
+        <!-- Visualização do pdf do tcc -->
         <div class="tcc_view">
           <button class="btn-close"><i class="bi bi-x" ></i></button> 
           <div class="view-pdf">
