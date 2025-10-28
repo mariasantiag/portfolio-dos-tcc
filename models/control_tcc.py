@@ -120,7 +120,9 @@ class Tcc:
                     tbOrientador AS orientador ON curso.cod_curso = orientador.cod_curso
                 -- A cláusula GROUP BY é essencial. Ela agrupa todas as linhas que pertencem ao mesmo TCC em uma só.
                 GROUP BY
-                    tcc.codigo;
+                    tcc.codigo
+                ORDER BY
+                    tcc.data DESC;
             """
 
             # Executa um único comando SQL de cada vez.
