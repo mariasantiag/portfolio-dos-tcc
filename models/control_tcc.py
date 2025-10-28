@@ -22,7 +22,7 @@ class Tcc:
         cursor.executemany(sql_relacao, dados_relacao)
 
 
-    def registrar_tcc_no_banco(self, titulo, autores, orientadores_ids, curso, descricao, data, chave1, chave2, chave3, destaque, pdf_nome):
+    def registrar_tcc_no_banco(self, titulo, autores, orientadores_ids, curso, descricao, data, chave1, chave2, chave3, chave4, chave5, destaque, pdf_nome):
         try:
             conexao = Conexao.criar_conexao()
             cursor = conexao.cursor(dictionary=True)
@@ -31,14 +31,14 @@ class Tcc:
             sql_tcc = """
             INSERT INTO tbTcc (
                 titulo, autor, cod_curso, descricao, data,
-                palavrachave1, palavrachave2, palavrachave3,
+                palavrachave1, palavrachave2, palavrachave3, palavrachave4, palavrachave5,
                 destaque, pdf_nome
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             """
             dados_tcc = (
                 titulo, autores, curso, descricao, data,
-                chave1, chave2, chave3,
+                chave1, chave2, chave3, chave4, chave5,
                 destaque, pdf_nome
             )
 
@@ -67,7 +67,7 @@ class Tcc:
                 conexao.close()
 
 
-    def salvar_tcc(self, titulo, autores, orientadores_ids, curso, descricao, pdf_path, data, chave1, chave2, chave3, destaque):
+    def salvar_tcc(self, titulo, autores, orientadores_ids, curso, descricao, pdf_path, data, chave1, chave2, chave3,chave4, chave5, destaque):
         # Define o nome da pasta onde os arquivos PDF serão guardados.
         pasta_pdf = 'static/pdf'
         # Verifica se a pasta chamada 'pdf' já existe no diretório do projeto.
@@ -88,7 +88,7 @@ class Tcc:
 
         # Agora, registra as informações no banco de dados (incluindo o nome do PDF)
         # Passa a lista de IDs: orientadores_ids
-        self.registrar_tcc_no_banco(titulo, autores, orientadores_ids, curso, descricao, data, chave1, chave2, chave3, destaque, nome_pdf)
+        self.registrar_tcc_no_banco(titulo, autores, orientadores_ids, curso, descricao, data, chave1, chave2, chave3, chave4, chave5, destaque, nome_pdf)
 
         print(f"TCC salvo com sucesso! PDF: {nome_pdf}")
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 import os
 from models.control_tcc import Tcc
 from models.control_curso_orientador import Curso_orientador
@@ -71,6 +71,11 @@ def post_usuario():
     nome = request.form.get("nome")
     login  = request.form.get("login")
     senha = request.form.get("senha")
+    
+    # Validação: se a senha for menor que 8
+    if len(senha) < 8:
+        flash("A senha deve ter pelo menos 8 caracteres.")
+        return redirect("/paginacadastro")
 
     # Cadastrando a mensagem usando a classe mensagem
     Usuario.cadastro_usuario(nome, login, senha)
@@ -145,6 +150,8 @@ def post_tcc():
     chave1 = request.form.get("chave1")
     chave2 = request.form.get("chave2")
     chave3 = request.form.get("chave3")
+    chave4 = request.form.get("chave4")
+    chave5 = request.form.get("chave5")
     destaque = request.form.get("destaque")
     pdf = request.files.get("pdf")
 
@@ -168,7 +175,7 @@ def post_tcc():
     # Chama o método completo que salva o PDF e registra no banco
     tcc.salvar_tcc(
         titulo, autores, orientadores_ids, curso, descricao, caminho_temporario,
-        data, chave1, chave2, chave3, destaque
+        data, chave1, chave2, chave3, chave4, chave5, destaque
     )
 
     # Remove o arquivo temporário após a cópia

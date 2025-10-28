@@ -20,6 +20,8 @@ CREATE TABLE tbTcc (
     palavrachave1 VARCHAR(200),
     palavrachave2 VARCHAR(200),
     palavrachave3 VARCHAR(200),
+	palavrachave4 VARCHAR(200),
+	palavrachave5 VARCHAR(200),
     destaque VARCHAR(3),
     pdf_nome VARCHAR(255),
     FOREIGN KEY (cod_curso) REFERENCES tbCurso(cod_curso)
