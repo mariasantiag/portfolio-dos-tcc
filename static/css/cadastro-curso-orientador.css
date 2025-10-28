@@ -12,13 +12,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #E82626; /* vermelho */
+    background-color: var(--cor-vermelho-escuroforte);
     padding: 12px 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px var(--cor-vermelho-escuroforte);
   }
   
   .header h1 {
-    color: #ffffff;
+    color:  var(--cor-fundo-branco);
     font-weight: bold;
     margin: 0;
     font-size: 1.8rem;
@@ -32,7 +32,7 @@
     border: none;
     border-radius: 14px;
     overflow: hidden;
-    background: #ffffff;
+    background: var(--cor-fundo-branco);
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     transition: transform 0.2s ease-in-out;
   }
@@ -45,17 +45,17 @@
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
-    color: #AA0608; 
+    color: var(--cor-vermelho-escuroforte); 
     margin-bottom: 25px;
   }
   
   .titulo-principal {
-    color: #AA0608 !important;
+    color: var(--cor-vermelho-escuroforte) !important;
   }
   
   /* legendas dos fieldsets */
   fieldset {
-    border: 2px solid #AA0608;
+    border: 2px solid var(--cor-vermelho-escuroforte);
     border-radius: 10px;
     padding: 15px 20px;
     margin-bottom: 20px;
@@ -67,7 +67,7 @@
   legend {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #AA0608;
+    color: var(--cor-vermelho-escuroforte);
     padding: 0 8px;
   }
   
@@ -79,13 +79,13 @@
   
   /* inputs */
   .form-control {
-    border: 2px solid #ddd;
+    border: 2px solid var(--cor-branco-padrao);
     border-radius: 8px;
     padding: 10px;
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s;
   }
   .form-control:focus {
-    border-color: #AA0608;
+    border-color: var(--cor-vermelho-escuroforte);
     box-shadow: 0 0 6px rgba(170, 6, 8, 0.4);
     outline: none;
   }
@@ -100,17 +100,17 @@
   
   /* botão principal */
   .btn-primary {
-    background-color: #E82626;
-    border-color: #AA0608;
+    background-color: var(--cor-vermelho-escuro);
+    border-color: var(--cor-vermelho-escuroforte);
     border: none;
   }
   .btn-primary:hover {
-    background-color: #AA0608;
+    background-color: var(--cor-vermelho-escuroforte);
   }
   
   /* mensagens de erro */
   .invalid-feedback {
     font-size: 0.9rem;
-    color: #AA0608;
+    color: var(--cor-vermelho-escuroforte);
   }
   
