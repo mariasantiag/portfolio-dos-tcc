@@ -3,12 +3,12 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--cor07); 
+    background-color: var(--cor-branco-padrao); 
   }
   
   /* card principal */
   .container {
-    background-color: var(--cor01); 
+    background-color: var(--cor-fundo-branco); 
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -22,7 +22,7 @@
   .titulo {
     font-size: 26px;
     font-weight: bold;
-    color: var(--cor03); 
+    color: var(--cor-vermelho-escuroforte); 
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
@@ -38,7 +38,7 @@
   /* Efeito de foco (hover) no input */
   .campo-codigo:focus {
     outline: none;
-    border-color: var(--cor04); 
+    border-color: var(--cor-vermelho-escuro); 
     box-shadow: 0 0 0 4px rgba(232, 38, 38, 0.15); 
   }
   
@@ -70,35 +70,35 @@
   
   
   .btn.enviar {
-    background-color: var(--cor04); 
-    color: var(--cor01);
-    border-color: var(--cor04);
+    background-color: var(--cor-vermelho-escuro); 
+    color: var(--cor-fundo-branco);
+    border-color: var(--cor-vermelho-escuro);
     flex: 1; /* Ocupa metade do espaço */
   }
   
   .btn.enviar:hover {
-    background-color: var(--cor03);
-    border-color: var(--cor03);
+    background-color: var(--cor-vermelho-escuroforte);
+    border-color: var(--cor-vermelho-escuroforte);
     transform: translateY(-2px);
   }
   
  
   .btn.voltar {
-    background-color: var(--cor01); 
-    color: var(--cor06);
-    border-color: var(--cor06); 
+    background-color: var(--cor-fundo-branco); 
+    color: var(--cor-cinza-padrao);
+    border-color: var(--cor-cinza-padrao); 
   }
   
   .btn.voltar:hover {
-    background-color: var(--cor07); 
-    color: var(--cor02); 
-    border-color: var(--cor07);
+    background-color: var(--cor-branco-padrao); 
+    color: var(--cor-fundo-preto); 
+    border-color: var(--cor-branco-padrao);
   }
 
   
 .campo-codigo {
     width: 100%;
-    border: 1px solid var(--cor06); 
+    border: 1px solid var(--cor-cinza-padrao); 
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 30px;
@@ -108,7 +108,7 @@
     text-align: center;
     letter-spacing: 8px; 
     font-weight: bold;
-    color: var(--cor02);
+    color: var(--cor-fundo-preto);
   
     /* Deixaa a senha com bolinha */
     -webkit-text-security: disc;

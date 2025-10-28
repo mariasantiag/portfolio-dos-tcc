@@ -13,13 +13,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #E82626; /* vermelho */
+    background-color: var(--cor-vermelho-escuroforte); /* vermelho */
     padding: 12px 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px var(--cor-vermelho-padrao);
 }
 
 .header h1 {
-    color: #ffffff;
+    color: var(--cor-fundo-branco);
     font-weight: bold;
     margin: 0;
     font-size: 1.8rem;
@@ -30,22 +30,15 @@
 .bi-person-circle {
   font-size: 5rem;
   margin-bottom: 20px;
-  color: #AA0608; /* vermelho padrão */
+  color: var(--cor-vermelho-escuroforte);
   display: flex;
   justify-content: center;
 }
 
-/* título */
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #AA0608; /* mesmo vermelho dos botões */
-}
+
 
 main{
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 /* área do formulário */
@@ -53,14 +46,14 @@ main{
   width: 100%;
   max-width: 700px;
   padding: 20px;
-  background: #ffffff;
+  background: var(--cor-fundo-branco);
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 /* inputs */
 .form-control {
-  border: 2px solid #ddd;
+  border: 2px solid var(--cor-branco-padrao);
   border-radius: 8px;
   padding: 10px;
   margin-bottom: 15px;
@@ -68,7 +61,7 @@ main{
 }
 
 .form-control:focus {
-  border-color: #AA0608;
+  border-color: var(--cor-vermelho-escuroforte);
   box-shadow: 0 0 6px rgba(170, 6, 8, 0.4);
   outline: none;
 }
@@ -82,25 +75,25 @@ main{
 }
 
 .btn-primary {
-  background-color: #E82626;
+  background-color: var(--cor-vermelho-escuro);
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #AA0608;
+  background-color: var(--cor-vermelho-escuroforte);
 }
 
 .btn-secondary {
-  background-color: #E82626;
+  background-color: var(--cor-vermelho-escuro);
   border: none;
 }
 
 .btn-secondary:hover {
-  background-color: #AA0608;
+  background-color: var(--cor-vermelho-escuroforte);
 }
 
 /* feedback inválido */
 .invalid-feedback {
   font-size: 0.9rem;
-  color: #AA0608;
+  color: var(--cor-vermelho-escuroforte);
 }
