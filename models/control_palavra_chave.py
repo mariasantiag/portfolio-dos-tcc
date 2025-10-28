@@ -28,7 +28,7 @@ class Palavra:
                             tbCurso ON tbTcc.cod_curso = tbCurso.cod_curso
                         inner join 
                             tborientador as orientador on tbcurso.cod_curso = orientador.cod_curso
-					  WHERE palavrachave1 LIKE %s OR palavrachave2 LIKE %s OR palavrachave3 LIKE %s OR titulo LIKE %s OR autor LIKE %s
+					  WHERE palavrachave1 LIKE %s OR palavrachave2 LIKE %s OR palavrachave3 LIKE %s OR palavrachave4 LIKE %s OR palavrachave5 LIKE %s OR titulo LIKE %s OR autor LIKE %s
                             GROUP BY
                             titulo,
                             autor,
@@ -44,7 +44,7 @@ class Palavra:
 
         
         palavra = f"%{palavra_chave}%"  
-        cursor.execute(sql, (palavra, palavra, palavra, palavra, palavra))
+        cursor.execute(sql, (palavra, palavra, palavra, palavra, palavra, palavra, palavra))
 
         # Retorna todos os resultados
         resultados = cursor.fetchall()

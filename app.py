@@ -150,6 +150,8 @@ def post_tcc():
     chave1 = request.form.get("chave1")
     chave2 = request.form.get("chave2")
     chave3 = request.form.get("chave3")
+    chave4 = request.form.get("chave4")
+    chave5 = request.form.get("chave5")
     destaque = request.form.get("destaque")
     pdf = request.files.get("pdf")
 
@@ -173,7 +175,7 @@ def post_tcc():
     # Chama o método completo que salva o PDF e registra no banco
     tcc.salvar_tcc(
         titulo, autores, orientadores_ids, curso, descricao, caminho_temporario,
-        data, chave1, chave2, chave3, destaque
+        data, chave1, chave2, chave3, chave4, chave5, destaque
     )
 
     # Remove o arquivo temporário após a cópia
