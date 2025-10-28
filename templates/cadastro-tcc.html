@@ -67,12 +67,11 @@
       </div>
       <!-- Descrição -->
       <div class="mb-3">
-        <textarea name="descricao" id="descricao" class="form-control" rows="3" placeholder="Descrição"></textarea>
+        <textarea name="descricao" id="descricao" class="form-control" rows="3" placeholder="Descrição" required></textarea>
       </div>
       <!-- Curso em Destaque -->
       <div class="mb-3">
         <label for="cursoDestaque" class="form-label">Curso em Destaque?</label>
-        <!-- <input name="destaque" type="text" class="form-control" id="cursoDestaque" placeholder="Responda com 'Sim' ou 'Não'"> -->
         <select name="destaque" type="select" id="cursoDestaque" class="form-control" required>
            <option selected disabled>Selecione sim ou não (obrigátorio)</option>
             <option value="nao">Não</option>
@@ -81,23 +80,23 @@
       </div>
       <!-- Arquivo PDF -->
       <div class="mb-3">
-        <input name="pdf" id="pdf" type="file" class="form-control" accept="application/pdf">
+        <input name="pdf" id="pdf" type="file" class="form-control" accept="application/pdf" required>
       </div>
       <!-- Palavras-chave -->
       <div class="mb-3">
-        <input name="chave1" type="text" class="form-control" placeholder="Palavra-chave 1">
+        <input name="chave1" type="text" class="form-control" placeholder="Palavra-chave 1 (Obrigatório)" required>
       </div>
       <div class="mb-3">
-        <input name="chave2" type="text" class="form-control" placeholder="Palavra-chave 2">
+        <input name="chave2" type="text" class="form-control" placeholder="Palavra-chave 2 (Obrigatório)" required>
       </div>
       <div class="mb-3">
-        <input name="chave3" type="text" class="form-control" placeholder="Palavra-chave 3">
+        <input name="chave3" type="text" class="form-control" placeholder="Palavra-chave 3 (Obrigatório)" required>
       </div>
       <div class="mb-3">
-        <input name="chave4" type="text" class="form-control" placeholder="Palavra-chave 4">
+        <input name="chave4" type="text" class="form-control" placeholder="Palavra-chave 4 (Opcional)" >
       </div>
       <div class="mb-3">
-        <input name="chave5" type="text" class="form-control" placeholder="Palavra-chave 5">
+        <input name="chave5" type="text" class="form-control" placeholder="Palavra-chave 5 (Opcional)">
       </div>
       <!-- Botões -->
       <div class="d-flex justify-content-between">
