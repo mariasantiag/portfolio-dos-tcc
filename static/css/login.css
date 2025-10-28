@@ -1,17 +1,16 @@
-
 .header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #E82626; /* vermelho */
+  background-color: var(--cor-vermelho-escuroforte); /* vermelho */
   padding: 12px 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px var(--cor-vermelho-escuro);
 }
 
 
 .header h1 {
-  color: #ffffff;
+  color:  var(--cor-fundo-branco);
   font-weight: bold;
   margin: 0;
   font-size: 1.8rem;
@@ -33,7 +32,7 @@
   border: none;
   border-radius: 12px;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--cor-fundo-branco);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   transition: transform 0.2s ease-in-out;
 }
@@ -46,7 +45,7 @@
   font-size: 1.8rem;
   font-weight: bold;
   text-align: center;
-  color: #AA0608;
+  color: var(--cor-vermelho-escuroforte);
   margin-bottom: 20px;
 }
 
@@ -58,13 +57,13 @@
 
 /* inputs */
 .form-control {
-  border: 2px solid #ddd;
+  border: 2px solid var(--cor-branco-padrao);
   border-radius: 8px;
   padding: 10px;
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s;
 }
 .form-control:focus {
-  border-color: #AA0608;
+  border-color: var(--cor-vermelho-escuroforte);
   box-shadow: 0 0 6px rgba(170, 6, 8, 0.4);
   outline: none;
 }
@@ -79,36 +78,36 @@
 
 /* login */
 .btn-primary {
-  background-color: #E82626;
-  border-color: #AA0608;
+  background-color: var(--cor-vermelho-escuro);
+  border-color: var(--cor-vermelho-escuroforte);
   border: none;
 }
 .btn-primary:hover {
-  background-color: #AA0608;
+  background-color: var(--cor-vermelho-escuroforte);
 }
 
 /* voltar */
 .btn-secondary {
-  background-color: #E82626;
+  background-color: var(--cor-vermelho-escuro);
   border: none;
 }
 .btn-secondary:hover {
-  background-color: #AA0608;
+  background-color: var(--cor-vermelho-escuroforte);
 }
 
 /* cadastro */
 .btn-outline-success {
-  border: 2px solid #AA0608;
-  color: #AA0608;
+  border: 2px solid var(--cor-vermelho-escuroforte);
+  color: var(--cor-vermelho-escuroforte);
 }
 .btn-outline-success:hover {
-  background-color: #AA0608;
-  color: #fff;
+  background-color: var(--cor-vermelho-escuroforte);
+  color: var(--cor-branco-padrao);
 }
 
 /* feedback inválido */
 .invalid-feedback {
   font-size: 0.9rem;
-  color: #AA0608;
+  color: var(--cor-vermelho-escuroforte);
 }
 
