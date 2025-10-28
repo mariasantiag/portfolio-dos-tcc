@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 import os
 from models.control_tcc import Tcc
 from models.control_curso_orientador import Curso_orientador
@@ -71,6 +71,11 @@ def post_usuario():
     nome = request.form.get("nome")
     login  = request.form.get("login")
     senha = request.form.get("senha")
+    
+    # Validação: se a senha for menor que 8
+    if len(senha) < 8:
+        flash("A senha deve ter pelo menos 8 caracteres.")
+        return redirect("/paginacadastro")
 
     # Cadastrando a mensagem usando a classe mensagem
     Usuario.cadastro_usuario(nome, login, senha)

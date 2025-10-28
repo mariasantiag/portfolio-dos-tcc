@@ -30,6 +30,16 @@
             <div class="form-container">
 
                 <i class="bi bi-person-circle"></i>
+                
+                <!-- Menssagem para validação da senha (8 caracteres) -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class="flashes">
+                        {% for message in messages %}
+                        <li style="color: red;">{{ message }}</li>  {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
     
                 <form action="/post/cadastrarusuario", method="POST">
                     <div class="mb-3">
