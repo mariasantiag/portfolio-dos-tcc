@@ -28,16 +28,15 @@
 
     <title>Portifólio dos TCC's</title>
 
-   
-    
 </head>
 
 <body>
+    <!-- Cabeçalho -->
     <header class="header__ bg-light p-2">
         <div class="container-fluid">
           <div class="row align-items-center">
         
-                
+                <!-- Barra de pesquisa -->
                 <div class="col-8 col-md-6">
                     <form class="form__pesquisa" action="/pesquisar" method="GET">
                         <div class="input-group"> 
@@ -50,7 +49,7 @@
                 </div>
 
 
-                
+                <!-- Boas vindas ao usuário -->
                 <div class="col-4 col-md-6 d-flex justify-content-end align-items-center gap-3 container__filter__login">
                     {% if session.usuario %}
                     <div class="row ">
@@ -59,6 +58,8 @@
                         </div>
                     </div>
                     {% endif %}
+
+                    <!-- Filtros -->
                     <div class="dropdown">
                          <i class="bi bi-funnel fs-3 text-white" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -67,6 +68,7 @@
                          </ul>
                     </div>
                     
+                    <!-- Cadastro login -->
                     <div class="dropdown ">
                          <button class="btn rounded-circle" id="dropdownLogin" data-bs-toggle="dropdown" aria-expanded="false">
                              <i class="bi bi-person-circle fs-3 text-white"></i>
@@ -84,19 +86,20 @@
             </div> 
       </header>
       
-    <!-- body da página -->
+    <!-- Seção principal da página -->
     <main class="info_ _principal">
 
-                 <figure class="logo">
-                    <img src="../static/img/logoBibliotcca.png" alt="logoBibliotcca">
-                </figure>
+        <figure class="logo">
+            <img src="../static/img/logoBibliotcca.png" alt="logoBibliotcca">
+        </figure>
         
-        <!-- seção DESTAQUES -->
+        <!-- Seção DESTAQUES -->
         <section class="sec__destaques">
             <div class="tittle__destaque">
                 <h2>Destaques</h2>
             </div>
             
+            <!-- Jinja que recebe as infos para destaques -->
             <div class="grid__destaque">
                 {% for destaque in destaques %}
                 <div onclick="viewpdf('static/pdf/{{ destaque.pdf_nome }}')" class="card__destaque btn-view-tcc">
