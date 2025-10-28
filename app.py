@@ -73,7 +73,7 @@ def post_usuario():
     senha = request.form.get("senha")
     
     # Validação: se a senha for menor que 8
-    if len(senha) < 8:
+    if len(senha) < 8 or len(senha) > 8:
         flash("A senha deve ter 8 caracteres.")
         return redirect("/paginacadastro")
 
