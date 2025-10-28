@@ -15,7 +15,7 @@ from flask import session
 app = Flask(__name__)
 app.secret_key = "seila2"
 
-@app.route("/")
+# Caminho para rota principal 
 @app.route("/")
 @app.route("/paginainicial")
 def paginaprincipal():
@@ -39,21 +39,22 @@ def paginaprincipal():
     
     return render_template("principal.html", tccs=tccs, destaques=destaques_selecionados)
 
+# Caminho para pagina de login 
 @app.route("/paginalogin")
 def paginalogin():
     return render_template("login.html")  
 
+# Caminho para pagina de cadastro do admin
 @app.route("/paginacadastro")
 def paginacadastro():
     return render_template("cadastro.html")  
 
+# Caminho para pagina de verificação do admin 
 @app.route("/paginaverificacao")
 def paginaverificacao():
-    
     return render_template("verificacao.html")
 
-
-
+# Caminho que verifica se o codigo inserido pelo admin é valido 
 @app.route("/post/verificarcodigo", methods=["POST"])
 def verificarcodigo():
     senha = "admin"
@@ -64,7 +65,7 @@ def verificarcodigo():
     else:
         return redirect("/paginaverificacao")
 
-
+# Caminho que cadastra o admin
 @app.route("/post/cadastrarusuario", methods= ["POST"])
 def post_usuario():
     # Peguei as informações vinda do usuário
@@ -83,11 +84,16 @@ def post_usuario():
     # Redireciona para o index
     return redirect("/paginalogin")
 
+# Caminho para pagina de cadastro de tcc 
 @app.route("/paginacadastrotcc")
 def paginacadastrotcc():
     curso = Curso_orientador.recuperar_curso()  
     return render_template("cadastro-tcc.html", curso=curso)
 
+# Caminho para para pagina de cadastro de orientador e curso 
+@app.route("/paginaorientadorcurso")
+def paginaorientadorcurso():
+    return render_template("cadastro-curso-orientador.html")
 
 @app.route("/api/orientadores/<int:cod_curso>")
 def api_orientadores(cod_curso):
@@ -99,15 +105,10 @@ def api_orientadores(cod_curso):
     # ]
     return jsonify(orientadores)
 
-
-@app.route("/paginaorientadorcurso")
-def paginaorientadorcurso():
-    return render_template("cadastro-curso-orientador.html")
-
+# Cadastra o orientador e o curso 
 @app.route("/post/cadastraorientadorcurso", methods=["POST"])
 def post_curso_orientador():
     nome_curso = request.form.get("curso_nome")
-    orientadores = request.form.getlist("orientador_nome")  # Lista de orientadores
     orientadores = request.form.getlist("orientador_nome")  # Lista de orientadores
 
     # Cadastra o curso e pega o ID
@@ -120,6 +121,7 @@ def post_curso_orientador():
 
     return redirect("/paginainicial")
 
+# Verifica se o admin está logado 
 @app.route("/post/logar", methods=["POST"])
 def post_logar():
     login = request.form.get("login")
@@ -131,13 +133,14 @@ def post_logar():
         return redirect("/paginainicial")
     else:
         return redirect("/paginalogin")
-   
+
+# Rota para logoff   
 @app.route("/deslogar")
 def deslogar():
     session.clear()
     return redirect("/")
 
-
+# Cadastro de TCC
 @app.route("/post/cadastrar/tcc", methods=["POST"])
 def post_tcc():
     # Pegando todas as informações do formulário
@@ -185,11 +188,13 @@ def post_tcc():
     # Redireciona para a página inicial após o cadastro
     return redirect("/paginainicial")
 
+# Excluir TCC
 @app.route("/apagartcc/<codigo>")
 def apagartcc(codigo):
     Tcc.deletar_tcc(codigo)
     return redirect("/paginainicial") 
 
+# Pesquisa por palavra chave, titulo e autores do tcc 
 @app.route("/pesquisar", methods=['GET'])
 def pesquisar():
     # Captura o valor da palavra chave para pesquisa
@@ -201,7 +206,7 @@ def pesquisar():
     # Retorna os resultados para o template
     return render_template('principal.html', tccs=resultados)
 
-
+# Organiza TCC pela Data de conclusão 
 @app.route("/tccs_por_data")
 def tccs_por_data():
     tcc_controller = Ano()
