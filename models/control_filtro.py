@@ -9,8 +9,16 @@ class Ano:
 
             # SQL para buscar os TCCs e ordenar por data (assumindo que "data" é uma coluna do tipo DATE)
             sql_tccs = """
-            SELECT * FROM tbTcc
-            ORDER BY data DESC
+            SELECT 
+                tbTcc.*,
+                tbOrientador.nome_orientador,
+                tbCurso.nome_curso
+            FROM tbTcc
+            INNER JOIN tbCurso 
+                ON tbTcc.cod_curso = tbCurso.cod_curso
+            INNER JOIN tbOrientador 
+                ON tbOrientador.cod_curso = tbCurso.cod_curso
+            ORDER BY tbTcc.data ASC;
             """  # DESC para obter os mais recentes primeiro
 
             cursor.execute(sql_tccs)
