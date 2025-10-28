@@ -102,6 +102,10 @@ font-size: 30px;
 font-weight: bold;
 }
 
+.Titulo__Pagina{
+  color: var(--cor-branco-padrao);
+}
+
 
 /* seção dos destaques */
 .sec__destaques{
@@ -109,8 +113,6 @@ font-weight: bold;
   margin: 20px auto;
 
 }
-
-
 
 
 .grid__destaque{
