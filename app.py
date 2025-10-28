@@ -74,7 +74,7 @@ def post_usuario():
     
     # Validação: se a senha for menor que 8
     if len(senha) < 8:
-        flash("A senha deve ter pelo menos 8 caracteres.")
+        flash("A senha deve ter 8 caracteres.")
         return redirect("/paginacadastro")
 
     # Cadastrando a mensagem usando a classe mensagem
