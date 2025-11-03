@@ -21,6 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js" defer></script> 
     <script src="/static/js/vizualizacao-tcc.js" defer></script>
+ 
     <!-- Link do arquivo CSS -->
      <link rel="stylesheet" href="/static/css/tela_inicial.css">
      <link rel="stylesheet" href="/static/css/config.css">
@@ -174,12 +175,20 @@
                 
 
 
+<!-- 
                         {% if session.usuario %}
                         <div class="card__actions">
                             <a href="/apagartcc/{{tcc.codigo}}" class="btn__excluir" ><i class="bi bi-trash-fill"  ></i></a></li>
                         </div>
                         {% endif %}
-                 
+                  -->
+                        {% if session.usuario %}
+                        <div class="card__actions">
+                            <button type="button" class="btn__excluir" onclick="confirmarExclusao({{ tcc.codigo }})">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </div>
+                        {% endif %}
 
                 </div>
             {% endfor %}
