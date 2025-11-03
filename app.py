@@ -6,6 +6,7 @@ from models.control_destaques import Destaques
 from models.control_usuario_admin import Usuario
 from models.control_filtro import Ano
 from models.control_palavra_chave import Palavra
+from models.control_historico import Historico 
 import random
 
 from flask import jsonify, request
@@ -43,6 +44,25 @@ def paginaprincipal():
 def paginalogin():
     return render_template("login.html")  
 
+# Caminho da página de histórico
+@app.route("/paginahistorico")
+def paginahistorico():
+    logs = Historico.recuperar_historico()
+    return render_template("historico.html", logs=logs)
+
+# Caminho para limpar o histórico
+@app.route("/historico/limpar")
+def limpar_historico_route():
+    try:
+        # Chama a função do control
+        Historico.limpar_historico()
+        # Mensagem que vai aparecer quando apertar em excluir se for "success"
+    except Exception as e:
+        print(f"Erro ao limpar o histórico: {e}", "danger")
+    
+    # Redireciona de volta para a página de histórico
+    return redirect("/paginahistorico")
+
 # Caminho para pagina de cadastro do admin
 @app.route("/paginacadastro")
 def paginacadastro():
@@ -79,7 +99,7 @@ def post_usuario():
 
     # Cadastrando a mensagem usando a classe mensagem
     Usuario.cadastro_usuario(nome, login, senha)
-   
+    
     # Redireciona para o index
     return redirect("/paginalogin")
 
@@ -91,7 +111,7 @@ def paginacadastrotcc():
 
 # Caminho para para pagina de cadastro de orientador e curso 
 @app.route("/paginaorientadorcurso")
-def paginaorientadorcurso():
+def paginaorientadorcurso():      
     curso = Curso_orientador.recuperar_curso()  
 
     return render_template("cadastro-curso-orientador.html", curso=curso)
@@ -159,7 +179,7 @@ def post_curso_orientador():
 def post_logar():
     login = request.form.get("login")
     senha = request.form.get("senha")
-   
+    
     esta_logado = Usuario.logar(login, senha)
 
     if esta_logado:
@@ -167,13 +187,13 @@ def post_logar():
     else:
         return redirect("/paginalogin")
 
-# Rota para logoff   
+# Rota para logoff  
 @app.route("/deslogar")
 def deslogar():
     session.clear()
     return redirect("/")
 
-# Cadastro de TCC
+#  Cadastro de TCC
 @app.route("/post/cadastrar/tcc", methods=["POST"])
 def post_tcc():
     # Pegando todas as informações do formulário
@@ -214,6 +234,22 @@ def post_tcc():
         data, chave1, chave2, chave3, chave4, chave5, destaque
     )
 
+    # Historico 
+    try:
+        # Pega o nome do admin logado na sessão (que foi salvo no login)
+        nome_admin = session.get('nome_usuario', 'Admin Desconhecido')
+        
+        # Registra a ação no histórico
+        Historico.registrar_acao(
+            usuario_nome=nome_admin,
+            acao="Adicionou TCC",
+            detalhes=f"TCC: '{titulo}'"
+        )
+    except Exception as e:
+        print(f"Erro ao salvar log de cadastro: {e}")
+        # O TCC foi salvo, mas o histórico(log) falhou. Não quebra a aplicação.
+  
+
     # Remove o arquivo temporário após a cópia
     if os.path.exists(caminho_temporario):
         os.remove(caminho_temporario)
@@ -224,7 +260,25 @@ def post_tcc():
 # Excluir TCC
 @app.route("/apagartcc/<codigo>")
 def apagartcc(codigo):
-    Tcc.deletar_tcc(codigo)
+    # Chama a função deletar_tcc
+    titulo_deletado = Tcc.deletar_tcc(codigo)
+
+    if titulo_deletado: # Se o TCC foi deletado com sucesso
+        try:
+            # pega o nome do usuario ou admin desconhecido (caso não reconheça o usuário)
+            nome_admin = session.get('nome_usuario', 'Admin Desconhecido')
+            
+            # Cadastra o tcc excluido no histórico
+            Historico.registrar_acao(
+                usuario_nome=nome_admin,
+                acao="Excluiu TCC",
+                detalhes=f"TCC: '{titulo_deletado}'"
+            )
+        # erro, caso não de para salvar
+        except Exception as e:
+            print(f"Erro ao salvar log de exclusão: {e}")
+  
+
     return redirect("/paginainicial") 
 
 # Pesquisa por palavra chave, titulo e autores do tcc 

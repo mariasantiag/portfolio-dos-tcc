@@ -57,3 +57,11 @@ CREATE TABLE tbAdmin (
     codigo INT primary key AUTO_INCREMENT
 );
 
+
+CREATE TABLE tbHistorico (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    usuario_nome VARCHAR(100) NOT NULL,
+    acao VARCHAR(100) NOT NULL,
+    detalhes VARCHAR(255)
+);
