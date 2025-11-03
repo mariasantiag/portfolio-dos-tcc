@@ -92,7 +92,40 @@ def paginacadastrotcc():
 # Caminho para para pagina de cadastro de orientador e curso 
 @app.route("/paginaorientadorcurso")
 def paginaorientadorcurso():
-    return render_template("cadastro-curso-orientador.html")
+    curso = Curso_orientador.recuperar_curso()  
+
+    return render_template("cadastro-curso-orientador.html", curso=curso)
+
+@app.route("/post/excluirorientadorcurso", methods=["POST"])
+def post_excluir_orientador_curso():
+    cod_orientador = request.form.get("orientador_delete")
+    cod_curso = request.form.get("curso_delete")
+
+    try:
+        if cod_orientador:
+            # Prioriza excluir o orientador se ele foi selecionado
+            Curso_orientador.excluir_orientador(cod_orientador)
+            flash("Orientador excluído com sucesso.")
+        
+        elif cod_curso:
+            # Se NENHUM orientador foi selecionado, mas um curso foi...
+            # ...interpretamos como exclusão do CURSO.
+            Curso_orientador.excluir_curso(cod_curso)
+            flash("Curso e seus orientadores associados foram excluídos com sucesso.")
+        
+        else:
+            flash("Nenhuma seleção válida para exclusão.")
+    
+    except Exception as e:
+        print(f"Erro ao excluir: {e}")
+        # Captura erros de FK (Foreign Key)
+        if "foreign key constraint" in str(e).lower():
+             flash("Erro: Não é possível excluir. Este curso está vinculado a um ou mais TCCs.")
+        else:
+             flash(f"Erro ao excluir: {e}")
+
+    return redirect("/paginaorientadorcurso")
+
 
 @app.route("/api/orientadores/<int:cod_curso>")
 def api_orientadores(cod_curso):
@@ -112,6 +145,7 @@ def post_curso_orientador():
 
     # Cadastra o curso e pega o ID
     cod_curso = Curso_orientador.cadastro_curso(nome_curso)
+    
 
     # Insere cada orientador individualmente
     for nome_orientador in orientadores:

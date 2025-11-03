@@ -86,3 +86,61 @@ class Curso_orientador:
 
             return resultado
     
+    @staticmethod
+    def excluir_orientador(cod_orientador):
+        conexao = Conexao.criar_conexao()
+        cursor = conexao.cursor()
+        try:
+            # 1. Remover associações do orientador com TCCs (tabela N:N)
+            sql_tcc_link = "DELETE FROM tbTcc_Orientador WHERE cod_orientador = %s"
+            cursor.execute(sql_tcc_link, (cod_orientador,))
+            
+            # 2. Excluir o orientador
+            sql_orientador = "DELETE FROM tbOrientador WHERE cod_orientador = %s"
+            cursor.execute(sql_orientador, (cod_orientador,))
+            
+            conexao.commit()
+        except Exception as e:
+            conexao.rollback()
+            print(f"Erro ao excluir orientador (ID: {cod_orientador}): {e}")
+            raise e # Re-lança a exceção para ser pega no app.py
+        finally:
+            cursor.close()
+            conexao.close()
+
+    @staticmethod
+    def excluir_curso(cod_curso):
+        conexao = Conexao.criar_conexao()
+        cursor = conexao.cursor()
+        try:
+            # 1. Obter IDs dos orientadores deste curso (para o passo 2)
+            sql_get_orientadores = "SELECT cod_orientador FROM tbOrientador WHERE cod_curso = %s"
+            cursor.execute(sql_get_orientadores, (cod_curso,))
+            # Usamos fetchall() e list comprehension para obter uma lista de IDs
+            orientadores_ids = [row[0] for row in cursor.fetchall()]
+
+            if orientadores_ids:
+                # 2. Remover associações de TCCs com esses orientadores
+                # Precisamos criar os placeholders (%s) dinamicamente para a cláusula IN
+                format_strings = ','.join(['%s'] * len(orientadores_ids))
+                sql_tcc_link = f"DELETE FROM tbTcc_Orientador WHERE cod_orientador IN ({format_strings})"
+                cursor.execute(sql_tcc_link, tuple(orientadores_ids))
+            
+            # 3. Excluir os orientadores do curso
+            sql_orientador = "DELETE FROM tbOrientador WHERE cod_curso = %s"
+            cursor.execute(sql_orientador, (cod_curso,))
+            
+            # 4. Excluir o curso
+            # ATENÇÃO: Isso VAI FALHAR se houver TCCs vinculados (tbTcc.cod_curso)
+            # Isso é o comportamento DESEJADO (segurança). O try/except no app.py vai avisar o usuário.
+            sql_curso = "DELETE FROM tbCurso WHERE cod_curso = %s"
+            cursor.execute(sql_curso, (cod_curso,))
+            
+            conexao.commit()
+        except Exception as e:
+            conexao.rollback()
+            print(f"Erro ao excluir curso (ID: {cod_curso}): {e}")
+            raise e # Re-lança a exceção para ser pega no app.py
+        finally:
+            cursor.close()
+            conexao.close()
