@@ -43,8 +43,9 @@ class Palavra:
         """
 
         
-        palavra = f"%{palavra_chave}%"  
-        cursor.execute(sql, (palavra, palavra, palavra, palavra, palavra, palavra, palavra))
+        palavra_qualquer = f"%{palavra_chave}%"  
+        palavra_exata = f"{palavra_chave}"  
+        cursor.execute(sql, (palavra_exata, palavra_exata, palavra_exata, palavra_exata, palavra_exata, palavra_exata, palavra_qualquer))
 
         # Retorna todos os resultados
         resultados = cursor.fetchall()

@@ -87,6 +87,8 @@ def verificarcodigo():
 # Caminho que cadastra o admin
 @app.route("/post/cadastrarusuario", methods= ["POST"])
 def post_usuario():
+    if 'usuario' not in session:
+        return redirect("/paginalogin")
     # Peguei as informações vinda do usuário
     nome = request.form.get("nome")
     login  = request.form.get("login")
@@ -106,12 +108,16 @@ def post_usuario():
 # Caminho para pagina de cadastro de tcc 
 @app.route("/paginacadastrotcc")
 def paginacadastrotcc():
+    if 'usuario' not in session:
+        return redirect("/paginalogin")
     curso = Curso_orientador.recuperar_curso()  
     return render_template("cadastro-tcc.html", curso=curso)
 
 # Caminho para para pagina de cadastro de orientador e curso 
 @app.route("/paginaorientadorcurso")
-def paginaorientadorcurso():      
+def paginaorientadorcurso(): 
+    if 'usuario' not in session:
+        return redirect("/paginalogin")     
     curso = Curso_orientador.recuperar_curso()  
 
     return render_template("cadastro-curso-orientador.html", curso=curso)
@@ -160,6 +166,8 @@ def api_orientadores(cod_curso):
 # Cadastra o orientador e o curso 
 @app.route("/post/cadastraorientadorcurso", methods=["POST"])
 def post_curso_orientador():
+    if 'usuario' not in session:
+        return redirect("/paginalogin")
     nome_curso = request.form.get("curso_nome")
     orientadores = request.form.getlist("orientador_nome")  # Lista de orientadores
 
@@ -196,6 +204,8 @@ def deslogar():
 #  Cadastro de TCC
 @app.route("/post/cadastrar/tcc", methods=["POST"])
 def post_tcc():
+    if 'usuario' not in session:
+        return redirect("/paginalogin")
     # Pegando todas as informações do formulário
     titulo = request.form.get("titulo")
     autores = request.form.get("autores")
@@ -260,6 +270,8 @@ def post_tcc():
 # Excluir TCC
 @app.route("/apagartcc/<codigo>")
 def apagartcc(codigo):
+    if 'usuario' not in session:
+        return redirect("/paginalogin")
     # Chama a função deletar_tcc
     titulo_deletado = Tcc.deletar_tcc(codigo)
 
