@@ -101,7 +101,7 @@ class Tcc:
 
             # SQL modificado para agrupar os orientadores por TCC
             sql_tcc = """
-                SELECT
+               SELECT
                     tcc.codigo,
                     tcc.titulo,
                     tcc.autor,
@@ -114,15 +114,18 @@ class Tcc:
                     GROUP_CONCAT(orientador.nome_orientador SEPARATOR ', ') AS orientadores
                 FROM
                     tbTcc AS tcc
-                INNER JOIN
+				INNER JOIN
                     tbCurso AS curso ON tcc.cod_curso = curso.cod_curso
+                --  Conecta Tcc (tcc) com Orientador (orientador) via a tabela de relacionamento (tto)
                 INNER JOIN 
-                    tbOrientador AS orientador ON curso.cod_curso = orientador.cod_curso
+                    tbTcc_Orientador AS tto ON tcc.codigo = tto.cod_tcc
+                INNER JOIN
+                    tbOrientador AS orientador ON tto.cod_orientador = orientador.cod_orientador
                 -- A cláusula GROUP BY é essencial. Ela agrupa todas as linhas que pertencem ao mesmo TCC em uma só.
                 GROUP BY
                     tcc.codigo
                 ORDER BY
-                    tcc.data DESC;
+                    tcc.data DESC;    
             """
 
             # Executa um único comando SQL de cada vez.
