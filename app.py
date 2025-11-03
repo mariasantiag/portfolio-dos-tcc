@@ -43,6 +43,11 @@ def paginaprincipal():
 def paginalogin():
     return render_template("login.html")  
 
+@app.route("/paginahistorico")
+def paginahistorico():
+    return render_template("historico.html")  
+
+
 # Caminho para pagina de cadastro do admin
 @app.route("/paginacadastro")
 def paginacadastro():
