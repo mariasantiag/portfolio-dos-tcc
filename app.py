@@ -46,20 +46,24 @@ def paginaprincipal():
 def paginalogin():
     return render_template("login.html")  
 
-# <--- MODIFICADO: Rota da página de histórico
+#  Rota da página de histórico
 @app.route("/paginahistorico")
 def paginahistorico():
-    # VERIFICAÇÃO DE SEGURANÇA: Só admin logado pode ver
-    if 'usuario' not in session:
-        flash("Acesso restrito. Faça login como admin.", "danger")
-        return redirect("/paginalogin")
-
-    # Busca os logs do banco de dados
     logs = Historico.recuperar_historico()
-    
-    # Envia os logs para o template
     return render_template("historico.html", logs=logs)
 
+# Rota para limpar o histórico
+@app.route("/historico/limpar")
+def limpar_historico_route():
+    try:
+        # Chama a função do control
+        Historico.limpar_historico()
+        # Mensagem que vai aparecer quando apertar em excluir se for "success"
+    except Exception as e:
+        print(f"Erro ao limpar o histórico: {e}", "danger")
+    
+    # Redireciona de volta para a página de histórico
+    return redirect("/paginahistorico")
 
 # Caminho para pagina de cadastro do admin
 @app.route("/paginacadastro")
@@ -236,14 +240,10 @@ def post_tcc():
 @app.route("/apagartcc/<codigo>")
 def apagartcc(codigo):
     # VERIFICAÇÃO DE SEGURANÇA
-    if 'usuario' not in session:
-        flash("Acesso restrito. Faça login como admin.", "danger")
-        return redirect("/paginalogin")
 
     # Chama a função deletar_tcc (que agora retorna o título)
     titulo_deletado = Tcc.deletar_tcc(codigo)
 
-    # --- NOVO CÓDIGO DE LOG ---
     if titulo_deletado: # Se o TCC foi deletado com sucesso
         try:
             nome_admin = session.get('nome_usuario', 'Admin Desconhecido')
@@ -251,7 +251,7 @@ def apagartcc(codigo):
             Historico.registrar_acao(
                 usuario_nome=nome_admin,
                 acao="Excluiu TCC",
-                detalhes=f"TCC: '{titulo_deletado}' (ID: {codigo})"
+                detalhes=f"TCC: '{titulo_deletado}'"
             )
         except Exception as e:
             print(f"Erro ao salvar log de exclusão: {e}")

@@ -27,9 +27,7 @@ class Historico:
             print(f"Erro ao registrar histórico: {err}")
             conexao.rollback()
         finally:
-            if 'cursor' in locals():
                 cursor.close()
-            if 'conexao' in locals():
                 conexao.close()
 
     def recuperar_historico():
@@ -50,9 +48,7 @@ class Historico:
             print(f"Erro ao recuperar histórico: {err}")
             return [] # Retorna lista vazia em caso de erro
         finally:
-            if 'cursor' in locals():
                 cursor.close()
-            if 'conexao' in locals():
                 conexao.close()
 
     def limpar_historico():
@@ -75,5 +71,4 @@ class Historico:
             conexao.rollback()
         finally:
                 cursor.close()
-
                 conexao.close()

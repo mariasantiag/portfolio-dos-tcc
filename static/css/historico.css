@@ -1,0 +1,84 @@
+/* centralização container */
+main {
+  display: flex;
+  flex-direction: column; /* Organiza flash e card em coluna */
+  align-items: center;    /* Centraliza na horizontal */
+  padding: 40px 20px;
+}
+
+/* Wrapper para as mensagens flash */
+.flash-container {
+  width: 100%;
+  max-width: 800px; /* Mesma largura máx. do card */
+}
+
+/* HEADER PADRONIZADO */
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cor-vermelho-escuroforte);
+  padding: 12px 20px;
+  box-shadow: 0 4px 10px var(--cor-vermelho-escuroforte);
+}
+
+.header h1 {
+  color:  var(--cor-fundo-branco);
+  font-weight: bold;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+
+/* card central */
+.card {
+  width: 100%;
+  max-width: 800px; /* Aumentado para a tabela caber melhor */
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--cor-fundo-branco);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Título principal dentro do card */
+.titulo-principal {
+  color: var(--cor-vermelho-escuroforte) !important;
+  font-weight: bold;
+  font-size: 1.5rem; /* Um pouco menor que o h1 do header */
+}
+
+/* botões */
+.btn {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 18px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Botão de Voltar (copiado do cadastro-tcc.css) */
+.btn-third {
+  background-color: var(--cor-branco-padrao);
+  border: none;
+  color: var(--cor-fundo-preto);
+}
+.btn-third:hover {
+  background-color: var(--cor-vermelho-padrao);
+  color: var(--cor-branco-padrao);
+}
+
+/* Botão de Limpar (Bootstrap já cuida da cor, adicionamos hover) */
+.btn-danger {
+ 
+   padding: 8px 16px; /* Um pouco menor para caber no header do card */
+}
+
+.btn-danger:hover {
+    background-color: #a10b0b; /* Vermelho mais escuro no hover */
+    border-color: #a10b0b;
+}
