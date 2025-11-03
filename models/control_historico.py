@@ -1,5 +1,3 @@
-# models/control_historico.py
-
 from data.conexao import Conexao
 import mysql.connector
 
@@ -14,6 +12,7 @@ class Historico:
             conexao = Conexao.criar_conexao()
             cursor = conexao.cursor()
 
+            # Comando para inserir os dados na tabela histórico
             sql = """
                 INSERT INTO tbHistorico (usuario_nome, acao, detalhes)
                 VALUES (%s, %s, %s)
@@ -59,7 +58,7 @@ class Historico:
             conexao = Conexao.criar_conexao()
             cursor = conexao.cursor()
 
-            # TRUNCATE TABLE é mais rápido que DELETE FROM e reseta o auto-increment
+            # TRUNCATE TABLE é mais rápido que DELETE FROM e reseta o id
             sql = "TRUNCATE TABLE tbHistorico;"
             
             cursor.execute(sql)

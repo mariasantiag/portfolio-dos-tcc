@@ -147,31 +147,30 @@ class Tcc:
 
 
     def deletar_tcc(codigo):
-        """
-        Deleta um TCC e suas associações.
-        MODIFICADO: Agora retorna o título do TCC deletado ou None.
-        """
+       
         conexao = Conexao.criar_conexao()
         cursor = conexao.cursor(dictionary=True) # Usar dictionary=True para fetchone
         titulo_deletado = None # Inicializa o título
 
         try:
-            # 1. Buscar o título ANTES de deletar
+            #  Busca o título ANTES de deletar
             sql_busca = "SELECT titulo FROM tbTcc WHERE codigo = %s;"
             cursor.execute(sql_busca, (codigo,))
             resultado = cursor.fetchone()
             if resultado:
+                # Guarda na variável
                 titulo_deletado = resultado['titulo']
 
-            # 2. Deletar da tabela "filho" (tbTcc_Orientador)
+            # Agora que as ligações foram removidas, define o comando para apagar o registro principal do TCC na tabela `tbTcc` (a tabela "pai").
             sql_filho = "DELETE FROM tbTcc_Orientador WHERE cod_tcc = %s;"
             valores = (codigo,) 
             cursor.execute(sql_filho, valores)
 
-            # 3. Deletar da tabela "pai" (tbTcc)
+            #  Deletar da tabela "pai" tbTcc
             sql_pai = "DELETE FROM tbTcc WHERE codigo = %s;"
             cursor.execute(sql_pai, valores)
 
+            # Efetiva (salva permanentemente) todas as exclusões feitas. Sem o `commit()`, nada seria realmente apagado no banco de dados.
             conexao.commit()
             print(f"TCC com código {codigo} deletado com sucesso.")
 
