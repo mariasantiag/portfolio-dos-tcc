@@ -6,14 +6,12 @@ from models.control_destaques import Destaques
 from models.control_usuario_admin import Usuario
 from models.control_filtro import Ano
 from models.control_palavra_chave import Palavra
+from models.control_historico import Historico 
 import random
 
 from flask import jsonify, request
 
 from flask import session
-# <--- NOVO: Importar o novo control do histórico
-from models.control_historico import Historico 
-
 app = Flask(__name__)
 app.secret_key = "seila2"
 
@@ -46,13 +44,13 @@ def paginaprincipal():
 def paginalogin():
     return render_template("login.html")  
 
-#  Rota da página de histórico
+# Caminho da página de histórico
 @app.route("/paginahistorico")
 def paginahistorico():
     logs = Historico.recuperar_historico()
     return render_template("historico.html", logs=logs)
 
-# Rota para limpar o histórico
+# Caminho para limpar o histórico
 @app.route("/historico/limpar")
 def limpar_historico_route():
     try:
@@ -105,7 +103,7 @@ def post_usuario():
     # Redireciona para o index
     return redirect("/paginalogin")
 
-
+# Caminho para pagina de cadastro de tcc 
 @app.route("/paginacadastrotcc")
 def paginacadastrotcc():
     curso = Curso_orientador.recuperar_curso()  
@@ -113,32 +111,22 @@ def paginacadastrotcc():
 
 # Caminho para para pagina de cadastro de orientador e curso 
 @app.route("/paginaorientadorcurso")
-def paginaorientadorcurso():
-    # <--- NOVO: Verificação de segurança (opcional, mas recomendado)
-    if 'usuario' not in session:
-        flash("Acesso restrito. Faça login como admin.", "danger")
-        return redirect("/paginalogin")
-        
+def paginaorientadorcurso():      
     return render_template("cadastro-curso-orientador.html")
 
 @app.route("/api/orientadores/<int:cod_curso>")
 def api_orientadores(cod_curso):
-    # <--- NOVO: Verificação de segurança (opcional, mas recomendado)
-    if 'usuario' not in session:
-        # Para APIs, é melhor retornar um erro JSON
-        return jsonify({"error": "Acesso não autorizado"}), 401
-        
     orientadores = Curso_orientador.recuperar_orientador(cod_curso)
+    # Exemplo de retorno esperado
+    # orientadores = [
+    #    {"id": 1, "nome_orientador": "Fulano"},
+    #    {"id": 2, "nome_orientador": "Beltrano"},
+    # ]
     return jsonify(orientadores)
 
 # Cadastra o orientador e o curso 
 @app.route("/post/cadastraorientadorcurso", methods=["POST"])
 def post_curso_orientador():
-    # <--- NOVO: Verificação de segurança
-    if 'usuario' not in session:
-        flash("Acesso restrito. Faça login como admin.", "danger")
-        return redirect("/paginalogin")
-        
     nome_curso = request.form.get("curso_nome")
     orientadores = request.form.getlist("orientador_nome")  # Lista de orientadores
 
@@ -212,7 +200,7 @@ def post_tcc():
         data, chave1, chave2, chave3, chave4, chave5, destaque
     )
 
-    # --- NOVO CÓDIGO DE LOG ---
+    # Historico 
     try:
         # Pega o nome do admin logado na sessão (que foi salvo no login)
         nome_admin = session.get('nome_usuario', 'Admin Desconhecido')
@@ -225,9 +213,8 @@ def post_tcc():
         )
     except Exception as e:
         print(f"Erro ao salvar log de cadastro: {e}")
-        # O TCC foi salvo, mas o log falhou. Não quebra a aplicação.
-    # --- FIM DO NOVO CÓDIGO ---
-
+        # O TCC foi salvo, mas o histórico(log) falhou. Não quebra a aplicação.
+  
 
     # Remove o arquivo temporário após a cópia
     if os.path.exists(caminho_temporario):
@@ -239,23 +226,24 @@ def post_tcc():
 # Excluir TCC
 @app.route("/apagartcc/<codigo>")
 def apagartcc(codigo):
-    # VERIFICAÇÃO DE SEGURANÇA
-
-    # Chama a função deletar_tcc (que agora retorna o título)
+    # Chama a função deletar_tcc
     titulo_deletado = Tcc.deletar_tcc(codigo)
 
     if titulo_deletado: # Se o TCC foi deletado com sucesso
         try:
+            # pega o nome do usuario ou admin desconhecido (caso não reconheça o usuário)
             nome_admin = session.get('nome_usuario', 'Admin Desconhecido')
             
+            # Cadastra o tcc excluido no histórico
             Historico.registrar_acao(
                 usuario_nome=nome_admin,
                 acao="Excluiu TCC",
                 detalhes=f"TCC: '{titulo_deletado}'"
             )
+        # erro, caso não de para salvar
         except Exception as e:
             print(f"Erro ao salvar log de exclusão: {e}")
-    # --- FIM DO NOVO CÓDIGO ---
+  
 
     return redirect("/paginainicial") 
 
