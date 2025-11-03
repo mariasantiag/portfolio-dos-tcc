@@ -1,10 +1,27 @@
-  /* centralização container */
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 40px 20px;
-  }
+/* centralização container */
+main {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+.btn {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-third {
+  background-color: var(--cor-branco-padrao);
+  border: none;
+  color: var(--cor-fundo-preto);
+}
+.btn-third:hover {
+  background-color: var(--cor-vermelho-padrao);
+  color: var(--cor-branco-padrao);
+}
 
   /* HEADER PADRONIZADO */
 .header {
@@ -22,6 +39,27 @@
     font-weight: bold;
     margin: 0;
     font-size: 1.8rem;
+  }
+
+  .tittle{
+    display: inline-block;
+   
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+  
+    
+    margin-bottom: 15px;
+    font-style: italic;
+  
+  
+    padding-bottom: 5px; 
+    border-bottom: 2px solid var(--cor-vermelho-escuro);
+    
+  }
+  h2{
+  font-size: 25px;
+  font-weight: bold;
   }
   
 
@@ -76,6 +114,7 @@
     font-weight: 600;
     color: #333;
   }
+
   
   /* inputs */
   .form-control {
