@@ -11,6 +11,9 @@ import random
 from flask import jsonify, request
 
 from flask import session
+# <--- NOVO: Importar o novo control do histórico
+from models.control_historico import Historico 
+
 app = Flask(__name__)
 app.secret_key = "seila2"
 
@@ -43,9 +46,19 @@ def paginaprincipal():
 def paginalogin():
     return render_template("login.html")  
 
+# <--- MODIFICADO: Rota da página de histórico
 @app.route("/paginahistorico")
 def paginahistorico():
-    return render_template("historico.html")  
+    # VERIFICAÇÃO DE SEGURANÇA: Só admin logado pode ver
+    if 'usuario' not in session:
+        flash("Acesso restrito. Faça login como admin.", "danger")
+        return redirect("/paginalogin")
+
+    # Busca os logs do banco de dados
+    logs = Historico.recuperar_historico()
+    
+    # Envia os logs para o template
+    return render_template("historico.html", logs=logs)
 
 
 # Caminho para pagina de cadastro do admin
@@ -84,11 +97,11 @@ def post_usuario():
 
     # Cadastrando a mensagem usando a classe mensagem
     Usuario.cadastro_usuario(nome, login, senha)
-   
+    
     # Redireciona para o index
     return redirect("/paginalogin")
 
-# Caminho para pagina de cadastro de tcc 
+
 @app.route("/paginacadastrotcc")
 def paginacadastrotcc():
     curso = Curso_orientador.recuperar_curso()  
@@ -97,21 +110,31 @@ def paginacadastrotcc():
 # Caminho para para pagina de cadastro de orientador e curso 
 @app.route("/paginaorientadorcurso")
 def paginaorientadorcurso():
+    # <--- NOVO: Verificação de segurança (opcional, mas recomendado)
+    if 'usuario' not in session:
+        flash("Acesso restrito. Faça login como admin.", "danger")
+        return redirect("/paginalogin")
+        
     return render_template("cadastro-curso-orientador.html")
 
 @app.route("/api/orientadores/<int:cod_curso>")
 def api_orientadores(cod_curso):
+    # <--- NOVO: Verificação de segurança (opcional, mas recomendado)
+    if 'usuario' not in session:
+        # Para APIs, é melhor retornar um erro JSON
+        return jsonify({"error": "Acesso não autorizado"}), 401
+        
     orientadores = Curso_orientador.recuperar_orientador(cod_curso)
-    # Exemplo de retorno esperado
-    # orientadores = [
-    #    {"id": 1, "nome_orientador": "Fulano"},
-    #    {"id": 2, "nome_orientador": "Beltrano"},
-    # ]
     return jsonify(orientadores)
 
 # Cadastra o orientador e o curso 
 @app.route("/post/cadastraorientadorcurso", methods=["POST"])
 def post_curso_orientador():
+    # <--- NOVO: Verificação de segurança
+    if 'usuario' not in session:
+        flash("Acesso restrito. Faça login como admin.", "danger")
+        return redirect("/paginalogin")
+        
     nome_curso = request.form.get("curso_nome")
     orientadores = request.form.getlist("orientador_nome")  # Lista de orientadores
 
@@ -130,7 +153,7 @@ def post_curso_orientador():
 def post_logar():
     login = request.form.get("login")
     senha = request.form.get("senha")
-   
+    
     esta_logado = Usuario.logar(login, senha)
 
     if esta_logado:
@@ -138,13 +161,13 @@ def post_logar():
     else:
         return redirect("/paginalogin")
 
-# Rota para logoff   
+# Rota para logoff  
 @app.route("/deslogar")
 def deslogar():
     session.clear()
     return redirect("/")
 
-# Cadastro de TCC
+#  Cadastro de TCC
 @app.route("/post/cadastrar/tcc", methods=["POST"])
 def post_tcc():
     # Pegando todas as informações do formulário
@@ -185,6 +208,23 @@ def post_tcc():
         data, chave1, chave2, chave3, chave4, chave5, destaque
     )
 
+    # --- NOVO CÓDIGO DE LOG ---
+    try:
+        # Pega o nome do admin logado na sessão (que foi salvo no login)
+        nome_admin = session.get('nome_usuario', 'Admin Desconhecido')
+        
+        # Registra a ação no histórico
+        Historico.registrar_acao(
+            usuario_nome=nome_admin,
+            acao="Adicionou TCC",
+            detalhes=f"TCC: '{titulo}'"
+        )
+    except Exception as e:
+        print(f"Erro ao salvar log de cadastro: {e}")
+        # O TCC foi salvo, mas o log falhou. Não quebra a aplicação.
+    # --- FIM DO NOVO CÓDIGO ---
+
+
     # Remove o arquivo temporário após a cópia
     if os.path.exists(caminho_temporario):
         os.remove(caminho_temporario)
@@ -195,7 +235,28 @@ def post_tcc():
 # Excluir TCC
 @app.route("/apagartcc/<codigo>")
 def apagartcc(codigo):
-    Tcc.deletar_tcc(codigo)
+    # VERIFICAÇÃO DE SEGURANÇA
+    if 'usuario' not in session:
+        flash("Acesso restrito. Faça login como admin.", "danger")
+        return redirect("/paginalogin")
+
+    # Chama a função deletar_tcc (que agora retorna o título)
+    titulo_deletado = Tcc.deletar_tcc(codigo)
+
+    # --- NOVO CÓDIGO DE LOG ---
+    if titulo_deletado: # Se o TCC foi deletado com sucesso
+        try:
+            nome_admin = session.get('nome_usuario', 'Admin Desconhecido')
+            
+            Historico.registrar_acao(
+                usuario_nome=nome_admin,
+                acao="Excluiu TCC",
+                detalhes=f"TCC: '{titulo_deletado}' (ID: {codigo})"
+            )
+        except Exception as e:
+            print(f"Erro ao salvar log de exclusão: {e}")
+    # --- FIM DO NOVO CÓDIGO ---
+
     return redirect("/paginainicial") 
 
 # Pesquisa por palavra chave, titulo e autores do tcc 
