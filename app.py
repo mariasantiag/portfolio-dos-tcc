@@ -87,8 +87,7 @@ def verificarcodigo():
 # Caminho que cadastra o admin
 @app.route("/post/cadastrarusuario", methods= ["POST"])
 def post_usuario():
-    if 'usuario' not in session:
-        return redirect("/paginalogin")
+ 
     # Peguei as informações vinda do usuário
     nome = request.form.get("nome")
     login  = request.form.get("login")

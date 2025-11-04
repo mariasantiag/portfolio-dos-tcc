@@ -95,6 +95,8 @@
         </figure>
         
         <!-- Seção DESTAQUES -->
+        {% if destaques %}
+
         <section class="sec__destaques">
             <div class="tittle">
                 <h2>Destaques</h2>
@@ -102,6 +104,8 @@
             
             <!-- Jinja que recebe as infos para destaques -->
             <div class="grid__destaque">
+               
+
                 {% for destaque in destaques %}
                 <div onclick="viewpdf('static/pdf/{{ destaque.pdf_nome }}')" class="card__destaque btn-view-tcc">
                     <div class="card__conteudo">
@@ -124,15 +128,20 @@
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+                
+            {% endif %}
             </div>
         </section>
 
         <!-- seção RECENTES -->
         <section class="sec__recentes">
             <div class="tittle">
-                <h2>Recentes</h2>
+                <h2>TCC's</h2>
             </div>
 
+            <!-- Se tiver documentos disponíveis -->
+            {% if tccs %}
             {% for tcc in tccs %}
             <div class="container__func_tccs">
                 
@@ -175,13 +184,6 @@
                 
 
 
-<!-- 
-                        {% if session.usuario %}
-                        <div class="card__actions">
-                            <a href="/apagartcc/{{tcc.codigo}}" class="btn__excluir" ><i class="bi bi-trash-fill"  ></i></a></li>
-                        </div>
-                        {% endif %}
-                  -->
                         {% if session.usuario %}
                         <div class="card__actions">
                             <button type="button" class="btn__excluir" onclick="confirmarExclusao({{ tcc.codigo }})">
@@ -192,6 +194,12 @@
 
                 </div>
             {% endfor %}
+            <!-- Se não tiver documentos disponíveis -->
+            {% else %}
+              <p class="text-center w-100 p-4">
+                Não há documentos disponíveis.
+            </p>
+            {% endif %}
         </section>
         
         <!-- Botão flutuante "+" -->

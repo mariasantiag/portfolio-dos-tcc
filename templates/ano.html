@@ -80,7 +80,7 @@
         <!-- Seção dos recentes -->
       <section class="sec__recentes">
 
-        
+        {% if tccs_ordenados %}
         {% for tcc in tccs_ordenados %}
         <div class="container__func_tccs">
                 
@@ -123,6 +123,11 @@
           </div>
             </div>
           {% endfor %}
+          {% else %}
+            <p class="text-center w-100 p-4">
+                Não há documentos disponíveis.
+            </p>
+          {% endif %}
       </section>
 
       
