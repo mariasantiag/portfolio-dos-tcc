@@ -122,5 +122,5 @@
 /* Efeito de hover para o link */
 .text-center.mt-3 a:hover {
   color: var(--cor-vermelho-escuroforte); /* Escurece a cor no hover */
-  text-decoration: underline;             /* Adiciona o sublinhado ao passar o mouse */
+  
 }
