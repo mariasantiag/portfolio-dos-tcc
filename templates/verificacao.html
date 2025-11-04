@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +9,36 @@
   <link rel="stylesheet" href="/static/css/config.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
+
 <body>
   <div class="container">
     <!--  Form para o código -->
     <form action="/post/verificarcodigo" method="post">
-    <h1 class="titulo">
-      Digite o Código
-      <i class="bi bi-lock-fill icone"></i>
-    </h1>
+      <h1 class="titulo">
+        Digite o Código
+        <i class="bi bi-lock-fill icone"></i>
+      </h1>
 
-    <!-- Input para digitar o codigo -->
-    <input type="text" class="campo-codigo" name="codigo" placeholder="">
+      <!-- Input para digitar o codigo -->
+      <input type="text" class="campo-codigo" name="codigo" placeholder="">
 
-    <!-- Botões enviar e voltar -->
-    <div class="botoes">
-      <a href="/paginalogin"><button class="btn voltar" type="button">Voltar</button></a>
-      <button class="btn enviar" type="submit">Enviar</button>
-    </div>
+
+
+      <div class="text-center">
+
+        <!-- Botões enviar e voltar -->
+        <div class="botoes">
+          <a href="/paginalogin"><button class="btn voltar" type="button">Voltar</button></a>
+          <button class="btn enviar" type="submit">Enviar</button>
+        </div>
     </form>
   </div>
+  <span class="form-text ">
+    Você deve ser um administrador e possuir o código de acesso para fazer cadastro.
+  </span>
+
+
 </body>
+
+
 </html>

@@ -113,3 +113,18 @@
     /* Deixaa a senha com bolinha */
     -webkit-text-security: disc;
   }
+
+/* Para o span */
+.form-text {
+  font-style: italic;
+  margin-top: 20px; /* Aumenta o espaço entre o botão e o texto */
+  color: var(--cor-cinza-padrao); /* Se desejar mudar a cor do texto */
+}
+
+/* Adicionando um pequeno espaçamento no botão "Enviar" */
+.botoes {
+  display: flex;
+  gap: 15px; /* Espaçamento entre os botões */
+  margin-bottom: 30px; /* Espaçamento entre os botões e o input */
+}
+
