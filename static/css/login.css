@@ -115,7 +115,6 @@
 
 .text-center.mt-3 a {
   color: var(--cor-vermelho-escuro); /* Cor primária do link */
-  text-decoration: none;             /* Remove o sublinhado padrão */
   font-weight: 600;                  /* Dá um leve destaque à fonte */
   transition: all 0.3s ease-in-out;  /* Transição suave para o hover */
 }
