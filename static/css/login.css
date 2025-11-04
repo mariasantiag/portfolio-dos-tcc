@@ -111,3 +111,16 @@
   color: var(--cor-vermelho-escuroforte);
 }
 
+
+
+.text-center.mt-3 a {
+  color: var(--cor-vermelho-escuro); /* Cor primária do link */
+  font-weight: 600;                  /* Dá um leve destaque à fonte */
+  transition: all 0.3s ease-in-out;  /* Transição suave para o hover */
+}
+
+/* Efeito de hover para o link */
+.text-center.mt-3 a:hover {
+  color: var(--cor-vermelho-escuroforte); /* Escurece a cor no hover */
+  text-decoration: underline;             /* Adiciona o sublinhado ao passar o mouse */
+}
