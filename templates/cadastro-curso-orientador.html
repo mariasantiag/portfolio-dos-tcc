@@ -9,8 +9,8 @@
  <link rel="stylesheet" href="../static/css/cadastro-curso-orientador.css">
  <link rel="stylesheet" href="/static/css/config.css">
  <script src="/static/js/add_orien_curso.js" defer></script>
-   <script src="/static/js/delete_orien_curso.js" defer></script> 
-
+ <script src="/static/js/delete_orien_curso.js" defer></script> 
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 </head>
 
 <body>
@@ -109,6 +109,32 @@
 
 
      </main>
+
+     <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              {% if category == 'success' %}
+                Swal.fire({
+                  title: 'Sucesso!',
+                  text: '{{ message }}',
+                  icon: 'success',
+                  confirmButtonText: 'OK'
+                });
+              {% elif category == 'error' %}
+                Swal.fire({
+                  title: 'Erro!',
+                  text: '{{ message }}',
+                  icon: 'error',
+                  confirmButtonText: 'Tentar novamente'
+                });
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      });
+    </script>
 
 </body>
 </html>

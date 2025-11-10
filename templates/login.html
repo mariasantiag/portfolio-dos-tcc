@@ -9,6 +9,8 @@
   
   <link rel="stylesheet" href="../static/css/login.css">
   <link rel="stylesheet" href="/static/css/config.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
 </head>
 <body>
 
@@ -56,6 +58,32 @@
       </form>
     </section>
   </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            {% if category == 'error' %}
+              Swal.fire({
+                title: 'Erro!',
+                text: '{{ message }}',
+                icon: 'error',
+                confirmButtonText: 'Tentar novamente'
+              });
+            {% elif category == 'info' %}
+              Swal.fire({
+                title: 'Aviso',
+                text: '{{ message }}',
+                icon: 'info',
+                confirmButtonText: 'OK'
+              });
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    });
+  </script>
 
 </body>
 </html>

@@ -32,3 +32,4 @@ function confirmarExclusao(tccCodigo) {
         }
     });
 }
+
