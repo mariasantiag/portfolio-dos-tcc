@@ -34,12 +34,21 @@
   margin: 0;
   margin-top: 5px;
 }
-  
-.text-center{
-  text-align: center !important;
-  display: flex;
-  gap: 20px;
+
+
+/*  Corrige a classe global .text-center para seu propósito original */
+.text-center {
+  text-align: center !important; /* apenas centraliza o texto */
 }
+
+/*  Cria uma nova classe para os casos em que você quer usar flex */
+.text-flex {
+  display: flex;                  /* ativa o comportamento flex */
+  gap: 20px;                      /* adiciona espaçamento entre itens */
+  justify-content: center;        /* centraliza conteúdo no eixo horizontal */
+  align-items: center;            /* centraliza conteúdo no eixo vertical */
+}
+
   
 /* Texto de saudação */
 .header__user{
