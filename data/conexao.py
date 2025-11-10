@@ -9,10 +9,9 @@ class Conexao:
     #                                     user = "root",
     #                                     password = "root",
     #                                     database = "dbTcc")
-        
-    
 
     #     return conexao
+
 
     def criar_conexao():
         conexao = mysql.connector.connect(
@@ -23,4 +22,3 @@ class Conexao:
         )
 
         return conexao
-    
