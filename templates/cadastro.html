@@ -44,15 +44,15 @@
                 <form action="/post/cadastrarusuario", method="POST">
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite seu nome" name="nome">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Digite seu nome" name="nome" required>
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Login</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite seu e-mail" name="login">
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Digite seu e-mail" name="login" required>
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput3" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="formGroupExampleInput3" placeholder="Digite uma senha (8 caracteres)" name="senha">
+                        <input type="password" class="form-control" id="formGroupExampleInput3" placeholder="Digite uma senha (8 caracteres ou mais)" name="senha" required>
                     </div>
                     
                     <a href="/paginalogin"><button type="button" class="btn btn-secondary">Voltar</button></a>

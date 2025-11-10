@@ -11,8 +11,10 @@
 
     <!-- Link do JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        xintegrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
-        defer></script>
+        xintegrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous" defer></script>
+    <script src="/static/js/mensagem_usuario.js" defer> </script>
+    
 
     <!-- Link dos icones -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -21,6 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js" defer></script>
     <script src="/static/js/vizualizacao-tcc.js" defer></script>
+ 
     <!-- Link do arquivo CSS -->
     <link rel="stylesheet" href="/static/css/tela_inicial.css">
     <link rel="stylesheet" href="/static/css/config.css">
@@ -104,6 +107,8 @@
         </figure>
 
         <!-- Seção DESTAQUES -->
+        {% if destaques %}
+
         <section class="sec__destaques">
             <div class="tittle">
                 <h2>Destaques</h2>
@@ -111,6 +116,8 @@
 
             <!-- Jinja que recebe as infos para destaques -->
             <div class="grid__destaque">
+               
+
                 {% for destaque in destaques %}
                 <div onclick="viewpdf('static/pdf/{{ destaque.pdf_nome }}')" class="card__destaque btn-view-tcc">
                     <div class="card__conteudo">
@@ -133,15 +140,20 @@
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+                
+            {% endif %}
             </div>
         </section>
 
         <!-- seção RECENTES -->
         <section class="sec__recentes">
             <div class="tittle">
-                <h2>Recentes</h2>
+                <h2>TCC's</h2>
             </div>
 
+            <!-- Se tiver documentos disponíveis -->
+            {% if tccs %}
             {% for tcc in tccs %}
             <div class="container__func_tccs">
 
@@ -184,15 +196,22 @@
 
 
 
-                {% if session.usuario %}
-                <div class="card__actions">
-                    <a href="/apagartcc/{{tcc.codigo}}" class="btn__excluir"><i class="bi bi-trash-fill"></i></a></li>
-                </div>
-                {% endif %}
-
+                        {% if session.usuario %}
+                        <div class="card__actions">
+                            <button type="button" class="btn__excluir" onclick="confirmarExclusao({{ tcc.codigo }})">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </div>
+                        {% endif %}
 
             </div>
             {% endfor %}
+            <!-- Se não tiver documentos disponíveis -->
+            {% else %}
+              <p class="text-center w-100 p-4">
+                Não há documentos disponíveis.
+            </p>
+            {% endif %}
         </section>
 
         <!-- Botão flutuante "+" -->
