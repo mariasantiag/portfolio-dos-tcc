@@ -7,6 +7,39 @@
   align-items: center;
   justify-content: center;
   } 
+
+.icone__atalho{
+  width: 60px; 
+  height: 60px; 
+  object-fit: contain;
+}  
+  
+.form__pesquisa{
+  align-items: center !important;
+  width: 100%;
+  gap: 20px !important;
+}
+.header h1 {
+  color:  var(--cor-fundo-branco);
+  font-weight: bold;
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  width: 10%;
+  padding: 12px;
+}
+  
+/* Titulo da pagina de filtro */
+.titulo__filtro{
+  margin: 0;
+  margin-top: 5px;
+}
+  
+.text-center{
+  text-align: center !important;
+  display: flex;
+  gap: 20px;
+}
   
 /* Texto de saudação */
 .header__user{
@@ -17,19 +50,19 @@ font-weight: bold;
 justify-content: center;
 }
 
-/* Titulo da pagina de filtro */
-h1{
-  font-style: italic;
-  font-size: 30px;
-  margin-bottom: 0 !important;
+.container__ano{
+  display: flex;
+  gap: 20px;
 }
-
 
 /* campo de busca */
 .form-control {
 background-color: var(--cor-fundo-branco);
 }
 
+.input-group {
+  width: 45%;
+}
 
 /* botão da busca */
 .input-group .btn {
@@ -45,7 +78,7 @@ color: var(--cor-fundo-branco);
 .bi-list,
 .bi-person-circle,
 .bi-box-arrow-right {
-font-size: 27px;
+font-size: 35px;
 color: var(--cor-fundo-branco);
 }
 
@@ -89,11 +122,6 @@ h2{
 font-size: 24px;
 font-weight: bold;
 }
-
-.Titulo__Pagina{
-  color: var(--cor-branco-padrao);
-}
-
 
 /* seção dos destaques */
 .sec__destaques{

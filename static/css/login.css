@@ -1,13 +1,17 @@
-.header {
+.header__ {
   width: 100%;
-  display: flex;
+  height: 80px;
+  background: var(--cor-gradiente-header);
+  padding: 10px 20px;
   align-items: center;
   justify-content: center;
-  background-color: var(--cor-vermelho-escuroforte); /* vermelho */
-  padding: 12px 20px;
-  box-shadow: 0 4px 10px var(--cor-vermelho-escuro);
-}
+  } 
 
+.icone__atalho{
+  width: 60px; 
+  height: 60px; 
+  object-fit: contain;
+}  
 
 .header h1 {
   color:  var(--cor-fundo-branco);
@@ -15,6 +19,19 @@
   margin: 0;
   font-size: 1.8rem;
   text-align: center;
+  width: 10%;
+  padding: 12px;
+}
+
+.titulo__Login{
+  margin: 0;
+  margin-top: 5px;
+}
+
+.text-center{
+  text-align: center !important;
+  display: flex;
+  gap: 20px;
 }
 
 /* Centralização do card login */
