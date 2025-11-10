@@ -1,3 +1,41 @@
+
+/* 🔝 Header */
+.header__ {
+  width: 100%;
+  height: 80px;
+  background: var(--cor-gradiente-header);
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: center;
+  } 
+
+.icone__atalho{
+  width: 60px; 
+  height: 60px; 
+  object-fit: contain;
+}  
+
+.header h1 {
+  color:  var(--cor-fundo-branco);
+  font-weight: bold;
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  width: 10%;
+  padding: 12px;
+}
+
+.titulo__Curso-Orientdor{
+  margin: 0;
+  margin-top: 5px;
+}
+
+.text-center{
+  text-align: center !important;
+  display: flex;
+  gap: 20px;
+}
+
 /* centralização container */
 main {
   display: flex;
@@ -23,23 +61,6 @@ main {
   color: var(--cor-branco-padrao);
 }
 
-  /* HEADER PADRONIZADO */
-.header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--cor-vermelho-escuroforte);
-    padding: 12px 20px;
-    box-shadow: 0 4px 10px var(--cor-vermelho-escuroforte);
-  }
-  
-  .header h1 {
-    color:  var(--cor-fundo-branco);
-    font-weight: bold;
-    margin: 0;
-    font-size: 1.8rem;
-  }
 
   .tittle{
     display: inline-block;
