@@ -96,6 +96,15 @@ textarea.form-control:focus {
 }
 
 
+.btn-success{
+  background-color: var(--cor-cinza-padrao);
+  border: none;
+}
+
+.btn-success:hover{
+  background-color: var(--cor-cinza-hover);
+}
+
 /* --- ESTILOS DO BOTÃO FLUTUANTE (ADICIONADOS) --- */
 /* (Copiados do seu CSS da tela inicial) */
 

@@ -139,12 +139,12 @@ main {
   
   /* botão principal */
   .btn-primary {
-    background-color: var(--cor-vermelho-escuro);
-    border-color: var(--cor-vermelho-escuroforte);
+    background-color: var(--cor-verde-confirmacao);
+    border-color: var(--cor-verde-confirmacao);
     border: none;
   }
   .btn-primary:hover {
-    background-color: var(--cor-vermelho-escuroforte);
+    background-color: var(--cor-verde-confirmacao-hover);
   }
   
   /* mensagens de erro */
@@ -153,7 +153,14 @@ main {
     color: var(--cor-vermelho-escuroforte);
   }
   
+  .btn-success{
+    background-color: var(--cor-cinza-padrao);
+    border: none;
+  }
 
+  .btn-success:hover{
+    background-color: var(--cor-cinza-hover);
+  }
 
 /* --- ESTILOS DO BOTÃO FLUTUANTE (ADICIONADOS) --- */
 /* (Copiados do seu CSS da tela inicial) */
