@@ -198,7 +198,6 @@ def post_logar():
     esta_logado = Usuario.logar(login, senha)
 
     if esta_logado:
-        flash("Login realizado com sucesso!", "success")
         return redirect("/paginainicial")
     else:
         flash("Login ou senha incorretos. Tente novamente.", "error")
@@ -274,7 +273,8 @@ def post_tcc():
         os.remove(caminho_temporario)
 
     # Redireciona para a página inicial após o cadastro
-    return redirect("/paginainicial")
+    flash("TCC cadastrado com sucesso!", "success")
+    return redirect("/paginacadastrotcc")
 
 # Excluir TCC
 @app.route("/apagartcc/<codigo>")
