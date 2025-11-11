@@ -70,6 +70,18 @@ textarea.form-control:focus {
   outline: none;
 }
 
+.orientador-input{
+  display:ruby;
+  align-items: center;
+  gap: 5px;
+}
+
+.orientador__label-select{
+  margin: auto;
+  width: 535px;
+
+}
+
 /* 🔘 Botões */
 .btn {
   border-radius: 8px;
