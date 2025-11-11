@@ -83,6 +83,12 @@ main {
   font-weight: bold;
   }
   
+  .container__cards-curso-orientador{
+    display: flex;
+    margin-left: 20%;
+    margin-top: 5%;
+    gap: 50px;
+  }
 
   /* card central */
   .card {
