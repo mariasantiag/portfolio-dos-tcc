@@ -10,75 +10,60 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+     <!-- Icone da página -->
+     <link rel="icon" type="image/png" href="/static/img/icon__year.png">
+
     <!-- Link dos icones -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <link rel="stylesheet" href="/static/css/tela_inicial.css">
     <link rel="stylesheet" href="/static/css/config.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js" defer></script> 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js" defer></script>
     <script src="/static/js/vizualizacao-tcc.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous" defer></script>
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
+        defer></script>
 
 </head>
 
 <body>
 
-  <!-- Cabeçalho -->
-  <header class="header__ bg-light p-2">
-    <div class="container-fluid">
-      <div class="row align-items-center">
-        
-        <!-- Titulo da página -->
-        <div class="Titulo__Pagina">
-          <h1>TCC's - ordenados por data</h1>
-        </div>
+    <!-- Cabeçalho -->
+    <header class="header__ ">
+        <div class="container-fluid">
 
+            <div class="row align-items-center">
 
-            <!--  Div para o filtro -->
-            <div class="col-4 col-md-6 d-flex justify-content-end align-items-center gap-3 container__filter__login">
-                <!--  Se o usuário está logado, aparece mensagem de boas vindas -->
-                {% if session.usuario %}
-                <div class="row ">
-                    <div class="col-12"> 
-                        <span class="header__user">Olá, {{session.nome_usuario}}</span>
+                <div class="col text-center">
+                    <!-- Ícone de atalho com link -->
+                    <a href="/paginainicial" class=" icone__atalho me-2 d-flex align-items-center">
+                      <img src="/static/img/icon__atalho.png" alt="icone-atalho-biblioteca" class="img-fluid">
+                    </a>
+                    <h1 class="titulo__filtro">TCC's - ordenados por mais antigos</h1>
+                  </div>
+
+                    </div>
+
+                    <!-- Filtros -->
+                    <div class="dropdown">
+                        <i class="bi bi-list" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                            aria-expanded="false"></i>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="/paginainicial">Página Inicial</a></li>
+                            <li><a class="dropdown-item" href="/tccs_por_data">Mais Antigos</a></li>
+                        </ul>
                     </div>
                 </div>
-                {% endif %}
-                <!-- Menu, onde existe a possibilidade de ir para a página inicial ou página de ano -->
-                <div class="dropdown">
-                     <i class="bi bi-funnel fs-3 text-white" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="/paginainicial">Página Inicial</a></li>
-                        <li><a class="dropdown-item" href="/tccs_por_data">Ano</a></li>
-                     </ul>
-                </div>
-                <!-- Menu para logar e deslogar -->
-                <div class="dropdown">
-                     <button class="btn rounded-circle" id="dropdownLogin" data-bs-toggle="dropdown" aria-expanded="false">
-                         <i class="bi bi-person-circle fs-3 text-white"></i>
-                     </button>
-                     <ul class="dropdown-menu" aria-labelledby="dropdownLogin">
-                         {% if session.usuario %} 
-                         <li><a class="dropdown-item" href="/deslogar">Sair</a></li>
-                         {% else %}
-                         <li><a class="dropdown-item" href="/paginalogin">Entrar</a></li>
-                         <li><hr class="dropdown-divider"></li>
-                         {% endif %}
-                     </ul>
-                </div>
             </div>
-        </div> 
-  </header>
+    </header>
 
     <!-- Conteúdo principal -->
     <main class="main__tccs">
 
         <!-- Seção dos recentes -->
-      <section class="sec__recentes">
+        <section class="sec__recentes">
 
         {% if tccs_ordenados %}
         {% for tcc in tccs_ordenados %}
@@ -97,13 +82,13 @@
                               {{tcc.descricao}}
                           </p>
                           <p class="card__autores">
-                              <strong>Autores: {{tcc.autor}}</strong> 
+                              <strong>Autores:</strong>  {{tcc.autor}}
                           </p>
                           <p class="card__autores">
-                              <strong>Curso: {{tcc.nome_curso}}</strong> 
+                              <strong>Curso: </strong> {{tcc.nome_curso}}
                           </p>
                           <p class="card__autores">
-                              <strong>Professores: {{tcc.nome_orientadores}}</strong> 
+                              <strong>Professores: </strong> {{tcc.orientadores}}
                           </p>
                           
                       </div>
@@ -130,23 +115,23 @@
           {% endif %}
       </section>
 
-      
 
-        
+
+
         <!-- Visualização do pdf do tcc -->
         <div class="tcc_view">
-          <button class="btn-close"><i class="bi bi-x" ></i></button> 
-          <div class="view-pdf">
-              <div class="tcc-renderer">
-              </div> 
-              <div class="no-copy-overlay">
-              </div>
-          </div>
-      </div>
-    </div>
-    
+            <button class="btn-close"><i class="bi bi-x"></i></button>
+            <div class="view-pdf">
+                <div class="tcc-renderer">
+                </div>
+                <div class="no-copy-overlay">
+                </div>
+            </div>
+        </div>
+        </div>
+
     </main>
-    
+
 </body>
 
 </html>

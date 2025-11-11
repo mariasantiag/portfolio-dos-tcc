@@ -1,33 +1,80 @@
 /* header */
 .header__ {
   width: 100%;
-  height: auto;
+  height: 80px;
   background: var(--cor-gradiente-header);
   padding: 10px 20px;
+  align-items: center;
+  justify-content: center;
   } 
+
+.icone__atalho{
+  width: 60px; 
+  height: 60px; 
+  object-fit: contain;
+}  
   
-/* Icone de usuario */
+.form__pesquisa{
+  align-items: center !important;
+  width: 100%;
+  gap: 20px !important;
+}
+
+/*  Corrige a classe global .text-center para seu propósito original */
+.text-center {
+  text-align: center !important; /* apenas centraliza o texto */
+  display: flex;
+  gap: 20px;
+}
+
+.header h1 {
+  color:  var(--cor-fundo-branco);
+  font-weight: bold;
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  width: 10%;
+  padding: 12px;
+}
+  
+/* Titulo da pagina de filtro */
+.titulo__filtro{
+  margin: 0;
+  margin-top: 5px;
+  color: var(--cor-fundo-branco);
+  font-weight: bolder;
+}
+
+/*  Cria uma nova classe para os casos em que você quer usar flex */
+.text-flex {
+  display: flex;                  /* ativa o comportamento flex */
+  gap: 20px;                      /* adiciona espaçamento entre itens */
+  justify-content: center;        /* centraliza conteúdo no eixo horizontal */
+  align-items: center;            /* centraliza conteúdo no eixo vertical */
+}
+
+  
+/* Texto de saudação */
 .header__user{
 color: var(--cor-fundo-branco);
-font-size: 0.9rem;
+font-size: 1rem;
 padding-top: 5px; 
-
+font-weight: bold;
+justify-content: center;
 }
 
-/* Texto de saudação */
-.hello__text{
-  width: 50px;
+.container__ano{
+  display: flex;
+  gap: 20px;
 }
-
-/* Titulo da pagina de filtro */
-h1{
-  font-style: italic;
-}
-
 
 /* campo de busca */
 .form-control {
 background-color: var(--cor-fundo-branco);
+}
+
+.input-group {
+  width: 45%;
 }
 
 /* botão da busca */
@@ -41,31 +88,17 @@ color: var(--cor-fundo-branco);
 }
 
 /* ícones */
-.bi-funnel,
-.bi-person-circle {
-font-size: 30px;
+.bi-list,
+.bi-person-circle,
+.bi-box-arrow-right {
+font-size: 35px;
 color: var(--cor-fundo-branco);
 }
-
-/* Container que exibe as opições do usuario e de filtros */
-.dropdown .dropdown-menu {
-right: 10px;
-}
-.dropdown-menu{
-  font-size: 24px;
-  cursor: pointer;
-  color: var(--cor-fundo-preto);
-}
-.dropdown-menu .dropdown-item:active {
-  background-color: red;
-  color: white;
-}
-
 
 /* Logo do site */
 .logo {
     max-width: 100vw;
-    height: 130px;
+    height: 200px;
     margin: 0;
     padding: 0; 
     text-align: center;
@@ -97,15 +130,11 @@ right: 10px;
   border-bottom: 2px solid var(--cor-vermelho-escuro);
   
 }
+
 h2{
-font-size: 30px;
+font-size: 24px;
 font-weight: bold;
 }
-
-.Titulo__Pagina{
-  color: var(--cor-branco-padrao);
-}
-
 
 /* seção dos destaques */
 .sec__destaques{

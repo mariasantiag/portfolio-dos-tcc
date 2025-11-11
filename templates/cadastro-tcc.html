@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,22 +11,37 @@
   <link rel="stylesheet" href="/static/css/cadastro-tcc.css">
   <link rel="stylesheet" href="/static/css/config.css">
 
+   <!-- Icone da página -->
+   <link rel="icon" type="image/png" href="/static/img/icon__registertcc.png">
+
+  <!-- Link JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+  xintegrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+  crossorigin="anonymous" defer></script>
+  <!-- Link de icones  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
   <script src="/static/js/orientador.js" defer> </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 </head>
+
 <body>
- 
-  <!-- HEADER -->
-  <header class="header">
-    <div>
+
+  <!-- HEADER PADRONIZADO -->
+  <header class="header__">
+    <div class="container-fluid">
       <div class="row align-items-center">
-        <div class="col">
-          <h2 class="text-white">Cadastro de TCCs</h2>
+        <div class="col text-center">
+          <!-- Ícone de atalho com link -->
+          <a href="/paginainicial" class=" icone__atalho me-2 d-flex align-items-center">
+            <img src="/static/img/icon__atalho.png" alt="icone-atalho-biblioteca" class="img-fluid">
+          </a>
+          <h1 class="text-white fw-bold titulo__TCCs">Cadastro de TCC's</h1>
         </div>
       </div>
     </div>
   </header>
- 
+
   <!-- FORMULÁRIO -->
   <div class="form-container">
     <form action="/post/cadastrar/tcc" method="POST" enctype="multipart/form-data">
@@ -40,25 +56,26 @@
       <select name="curso" class="form-select" required>
         <option selected disabled>Selecione o curso</option>
         {% for c in curso %}
-          <option value="{{ c.cod_curso }}">{{ c.nome_curso }}</option>
+        <option value="{{ c.cod_curso }}">{{ c.nome_curso }}</option>
         {% endfor %}
       </select>
-     
+
       <fieldset class="mb-3">
         <legend class="fw-semibold">Orientadores</legend>
         <div id="orientadores-container">
-          <div class="orientador-input mb-2 d-flex align-items-center">
-            <select name="orientador[]" class="form-select orientador-select me-2" required>
+          <div class="orientador-input">
+            <select name="orientador[]" class="form-select orientador-select orientador__label-select" required>
               <option selected disabled>Selecione o orientador</option>
             </select>
-            <button type="button" class="btn btn-danger btn-sm" onclick="removerCampo(this)">Remover</button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="removerCampo(this)">Cancelar</button>
           </div>
         </div>
-        <button type="button" class="btn btn-sm btn-success mt-2" onclick="adicionarCampoOrientador()">+ Adicionar Orientador</button>
+        <button type="button" class="btn btn-sm btn-success mt-2" onclick="adicionarCampoOrientador()">+ Adicionar
+          Orientador</button>
       </fieldset>
 
 
-   
+
 
 
       <!-- Data -->
@@ -67,15 +84,16 @@
       </div>
       <!-- Descrição -->
       <div class="mb-3">
-        <textarea name="descricao" id="descricao" class="form-control" rows="3" placeholder="Descrição" required></textarea>
+        <textarea name="descricao" id="descricao" class="form-control" rows="3" placeholder="Descrição"
+          required></textarea>
       </div>
       <!-- Curso em Destaque -->
       <div class="mb-3">
         <label for="cursoDestaque" class="form-label">Curso em Destaque?</label>
         <select name="destaque" type="select" id="cursoDestaque" class="form-control" required>
-           <option selected disabled>Selecione sim ou não (obrigátorio)</option>
-            <option value="nao">Não</option>
-            <option value="sim">Sim</option>
+          <option selected disabled>Selecione sim ou não (obrigátorio)</option>
+          <option value="nao">Não</option>
+          <option value="sim">Sim</option>
         </select>
       </div>
       <!-- Arquivo PDF -->
@@ -93,21 +111,30 @@
         <input name="chave3" type="text" class="form-control" placeholder="Palavra-chave 3 (Obrigatório)" required>
       </div>
       <div class="mb-3">
-        <input name="chave4" type="text" class="form-control" placeholder="Palavra-chave 4 (Opcional)" >
+        <input name="chave4" type="text" class="form-control" placeholder="Palavra-chave 4 (Opcional)">
       </div>
       <div class="mb-3">
         <input name="chave5" type="text" class="form-control" placeholder="Palavra-chave 5 (Opcional)">
       </div>
       <!-- Botões -->
       <div class="d-flex justify-content-between">
-        <a href="/paginainicial"><button type="button" class="btn btn-third">Voltar</button></a>
         <button type="reset" class="btn btn-secondary">Cancelar</button>
         <button type="submit" class="btn btn-primary">Confirmar</button>
       </div>
     </form>
+     <!-- Botão flutuante "+" -->
+     {% if session.usuario %}
+     <div class="add__tcc dropdown__add">
+         <i class="bi bi-plus-circle fs-1" role="button" id="dropdownAddButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAddButton">
+             <li><a class="dropdown-item" href="/paginaorientadorcurso">Adicionar Orientador e Curso</a></li>
+             <li><a class="dropdown-item" href="/paginahistorico">Histórico</a></li>
+         </ul>
+     </div>
+     {% endif %}
 
-   
   </div>
+    
 
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
@@ -127,4 +154,5 @@
 {% endwith %}
 
 </body>
+
 </html>

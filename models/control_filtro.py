@@ -9,37 +9,31 @@ class Ano:
 
             # SQL para buscar os TCCs e ordenar por data (assumindo que "data" é uma coluna do tipo DATE)
             sql_tccs = """
-                SELECT
-                    tbTcc.titulo,
-                    tbTcc.autor,
-                    tbTcc.descricao,
-                    tbTcc.data,
-                    tbCurso.nome_curso,
-                    tbTcc.cod_curso,
-                    tbTcc.codigo,
-                    tbTcc.pdf_nome,
+              SELECT
+                    tcc.codigo,
+                    tcc.titulo,
+                    tcc.autor,
+                    tcc.descricao,
+                    tcc.data,
+                    curso.nome_curso,
+                    tcc.pdf_nome,
+                    -- A função GROUP_CONCAT junta os nomes dos orientadores em uma única string, separados por vírgula e espaço.
+                    -- Damos a esta nova coluna o nome de 'orientadores'.
                     GROUP_CONCAT(orientador.nome_orientador SEPARATOR ', ') AS orientadores
                 FROM
-                    tbTcc
+                    tbTcc AS tcc
+				INNER JOIN
+                    tbCurso AS curso ON tcc.cod_curso = curso.cod_curso
+                --  Conecta Tcc (tcc) com Orientador (orientador) via a tabela de relacionamento (tto)
+                INNER JOIN 
+                    tbTcc_Orientador AS tto ON tcc.codigo = tto.cod_tcc
                 INNER JOIN
-                    tbCurso ON tbTcc.cod_curso = tbCurso.cod_curso
-                INNER JOIN
-                    tbTcc_Orientador AS tccorientador ON tbTcc.codigo = tccorientador.cod_tcc
-
-                INNER JOIN
-                    tbOrientador AS orientador ON tccorientador.cod_orientador = orientador.cod_orientador
-                WHERE
-                    palavrachave1 LIKE %s OR palavrachave2 LIKE %s OR palavrachave3 LIKE %s OR palavrachave4 LIKE %s OR palavrachave5 LIKE %s OR titulo LIKE %s OR autor LIKE %s
+                    tbOrientador AS orientador ON tto.cod_orientador = orientador.cod_orientador
+                -- A cláusula GROUP BY é essencial. Ela agrupa todas as linhas que pertencem ao mesmo TCC em uma só.
                 GROUP BY
-                    tbTcc.codigo, -- Use a chave primária do TCC aqui para agrupar corretamente
-                    tbTcc.titulo,
-                    tbTcc.autor,
-                    tbTcc.descricao,
-                    tbTcc.data,
-                    tbCurso.nome_curso,
-                    tbTcc.cod_curso,
-                    tbTcc.pdf_nome;
-                
+                    tcc.codigo
+                ORDER BY
+                    tcc.data ASC;
             """  # DESC para obter os mais recentes primeiro
 
             cursor.execute(sql_tccs)

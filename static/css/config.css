@@ -10,7 +10,10 @@
     --cor-vermelho-escuro: #E82626;
     --cor-vermelho-padrao: #FF5858;
     --cor-cinza-padrao: #B1AEAE;
+    --cor-cinza-hover: #747272;
     --cor-branco-padrao: #E5E5E5;
+    --cor-verde-confirmacao: #038509;
+    --cor-verde-confirmacao-hover: #025806;
   }
   
 *{

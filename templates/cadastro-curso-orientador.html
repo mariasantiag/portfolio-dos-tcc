@@ -1,114 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Cadastro de Curso e Orientador</title>
 
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
- <link rel="stylesheet" href="../static/css/cadastro-curso-orientador.css">
- <link rel="stylesheet" href="/static/css/config.css">
- <script src="/static/js/add_orien_curso.js" defer></script>
- <script src="/static/js/delete_orien_curso.js" defer></script> 
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Cadastro de Curso e Orientador</title>
+
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="../static/css/cadastro-curso-orientador.css">
+   <link rel="stylesheet" href="/static/css/config.css">
+   <script src="/static/js/add_orien_curso.js" defer></script>
+ <script src="/static/js/delete_orien_curso.js" defer></script>
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+   <!-- Icone da página -->
+   <link rel="icon" type="image/png" href="/static/img/icon__courseregistration.png">
+
+   <!-- Link do JavaScript -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      xintegrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
+      defer></script>
+
+   <!-- Link dos icones -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
 </head>
 
 <body>
 
-  <header class="header">
-  <div class="container-fluid">
-   <div class="row align-items-center">
-    <div class="col text-center">
-     <h1 class="text-white fw-bold">Cadastro de Curso e Orientador</h1>
-    </div>
-   </div>
-  </div>
- </header>
+   <!-- HEADER PADRONIZADO -->
+   <header class="header__">
+      <div class="container-fluid">
+         <div class="row align-items-center">
+            <div class="col text-center">
+               <!-- Ícone de atalho com link -->
+               <a href="/paginainicial" class=" icone__atalho me-2 d-flex align-items-center">
+                  <img src="/static/img/icon__atalho.png" alt="icone-atalho-biblioteca" class="img-fluid">
+               </a>
+               <h1 class="text-white fw-bold titulo__Curso-Orientdor">Cadastro de Curso e Orientador</h1>
+            </div>
+         </div>
+      </div>
+   </header>
 
-  <main class="container">
-    <div class="d-flex justify-content-between">
-      <a href="/paginainicial"><button type="button" class="btn btn-third">Voltar</button></a>
-    </div>
+   <div class="container__cards-curso-orientador">
+      <section class="card p-4">
+         <div class="tittle">
+            <h2> Cadastro De Curso e Orientador </h2>
+         </div>
 
-  <section class="card p-4">
-   <div class="tittle">
-    <h2> Cadastro De Curso e Orientador </h2>
-   </div>
- 
-   <form method="POST" action="/post/cadastraorientadorcurso" id="cadastroForm" novalidate>
-                <fieldset class="mb-3">
-     <legend class="fw-semibold">Curso</legend>
-     <div class="mb-3">
-      <label for="curso-nome" class="form-label">Nome</label>
-      <input type="text" class="form-control" id="curso-nome" name="curso_nome" required>
-      <div class="invalid-feedback">Informe o nome do curso.</div>
-     </div>
-    </fieldset>
+         <form method="POST" action="/post/cadastraorientadorcurso" id="cadastroForm" novalidate>
+            <fieldset class="mb-3">
+               <legend class="fw-semibold">Curso</legend>
+               <div class="mb-3">
+                  <label for="curso-nome" class="form-label">Nome</label>
+                  <input type="text" class="form-control" id="curso-nome" name="curso_nome" required>
+                  <div class="invalid-feedback">Informe o nome do curso.</div>
+               </div>
+            </fieldset>
 
-       <fieldset class="mb-3">
-    <legend class="fw-semibold">Orientadores</legend>
-    <div id="orientadores-container">
-          <div class="orientador-input mb-2">
-      <input type="text" class="form-control" name="orientador_nome" placeholder="Nome do Orientador" required>
-     </div>
-    </div>
+            <fieldset class="mb-3">
+               <legend class="fw-semibold">Orientadores</legend>
+               <div id="orientadores-container">
+                  <div class="orientador-input mb-2">
+                     <input type="text" class="form-control" name="orientador_nome" placeholder="Nome do Orientador"
+                        required>
+                  </div>
+               </div>
 
-        <button type="button" class="btn btn-sm btn-success mt-2" onclick="adicionarCampo()">+ Adicionar Orientador</button>
-   </fieldset>
+               <button type="button" class="btn btn-sm btn-success mt-2" onclick="adicionarCampo()">+ Adicionar
+                  Orientador</button>
+            </fieldset>
 
-        <div class="text-center">
-     <button type="submit" class="btn btn-primary px-4">Cadastrar</button>
-    </div>
+            <div class="text-center">
+               <button type="submit" class="btn btn-primary px-4">Cadastrar</button>
+            </div>
 
-   </form>
-  </section>
+         </form>
+      </section>
 
       <section class="card p-4">
-   <div class="tittle">
-    <h2>Excluir Curso ou Orientador</h2>
+         <div class="tittle">
+            <h2>Excluir Curso ou Orientador</h2>
+         </div>
+
+         <form method="POST" action="/post/excluirorientadorcurso" id="excluirForm" novalidate>
+
+            <fieldset class="mb-3">
+               <legend class="fw-semibold">Curso</legend>
+               <div class="mb-3">
+                  <label for="curso-delete" class="form-label">Selecione o Curso</label>
+                  <select name="curso_delete" id="curso-delete" class="form-select me-2" required>
+                     <option value="" selected disabled>Selecione o curso</option>
+                     {% for c in curso %}
+                     <option value="{{ c.cod_curso }}">{{ c.nome_curso }}</option>
+                     {% endfor %}
+                  </select>
+               </div>
+            </fieldset>
+
+            <fieldset class="mb-3">
+               <legend class="fw-semibold">Orientador (Opcional)</legend>
+               <div id="orientadores-container-delete">
+                  <div class="orientador-input mb-2 d-flex align-items-center">
+                     <select name="orientador_delete" id="orientador-delete" class="form-select orientador-select me-2">
+                        <option selected disabled>Selecione o curso primeiro</option>
+                     </select>
+                  </div>
+               </div>
+            </fieldset>
+            <div class="form-text mb-3">
+               - Para excluir um orientador, selecione o curso e o orientador.<br>
+               - Para excluir um curso, selecione APENAS o curso (isso só funcionará se não houver TCCs cadastrados
+               nele).
+            </div>
+
+            <div class="text-center">
+               <button type="submit" class="btn btn-danger px-4">Excluir</button>
+            </div>
+
+         </form>
+
+      </section>
    </div>
 
-   <form method="POST" action="/post/excluirorientadorcurso" id="excluirForm" novalidate>
 
-        <fieldset class="mb-3">
-     <legend class="fw-semibold">Curso</legend>
-     <div class="mb-3">
-      <label for="curso-delete" class="form-label">Selecione o Curso</label>
-      <select name="curso_delete" id="curso-delete" class="form-select me-2" required>
-       <option value="" selected disabled>Selecione o curso</option>
-       {% for c in curso %}
-        <option value="{{ c.cod_curso }}">{{ c.nome_curso }}</option>
-       {% endfor %} 
-      </select>
-     </div>
-    </fieldset>
+   <!-- Botão flutuante "+" -->
+   {% if session.usuario %}
+   <div class="add__tcc dropdown__add">
+      <i class="bi bi-plus-circle fs-1" role="button" id="dropdownAddButton" data-bs-toggle="dropdown"
+         aria-expanded="false"></i>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAddButton">
+         <li><a class="dropdown-item" href="/paginacadastrotcc">Adicionar TCC</a></li>
+         <li><a class="dropdown-item" href="/paginahistorico">Histórico</a></li>
+      </ul>
+   </div>
+   {% endif %}
 
-    <fieldset class="mb-3">
-     <legend class="fw-semibold">Orientador (Opcional)</legend>
-               <div id="orientadores-container-delete">
-      <div class="orientador-input mb-2 d-flex align-items-center">
-                     <select name="orientador_delete" id="orientador-delete" class="form-select orientador-select me-2">
-        <option selected disabled>Selecione o curso primeiro</option>
-       </select>
-      </div> 
-     </div>
-    </fieldset>
-        <div class="form-text mb-3">
-            - Para excluir um orientador, selecione o curso e o orientador.<br>
-            - Para excluir um curso, selecione APENAS o curso (isso só funcionará se não houver TCCs cadastrados nele).
-        </div>
-
-        <div class="text-center">
-     <button type="submit" class="btn btn-danger px-4">Excluir</button>
-    </div>
-
-   </form>
-
-  </section>
-
-
-
-     </main>
+   </main>
 
      <script>
       document.addEventListener("DOMContentLoaded", function() {
@@ -137,4 +166,5 @@
     </script>
 
 </body>
+
 </html>
