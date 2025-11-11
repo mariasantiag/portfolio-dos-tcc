@@ -23,7 +23,7 @@
 /*  Corrige a classe global .text-center para seu propósito original */
 .text-center {
   text-align: center !important; /* apenas centraliza o texto */
-  display: flex;
+  display: flex !important;
   gap: 20px;
 }
 
@@ -195,8 +195,6 @@ padding: 0 15px;
 width: 100%;
 }
 
-
-
 .add__tcc {
 position: fixed; /* fixa na tela */
 bottom: 30px; /* distância inferior */
@@ -246,9 +244,6 @@ box-shadow: 0 6px 15px var(--cor-vermelho-escuroforte);
 
   margin-right: 5px;
 }
-
-
-
 
 /* --- Conteúdo de Texto do Card --- */
 .card__conteudo {
