@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="/static/css/cadastro-tcc.css">
   <link rel="stylesheet" href="/static/css/config.css">
 
+   <!-- Icone da página -->
+   <link rel="icon" type="image/png" href="/static/img/icon__registertcc.png">
+
   <!-- Link JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
   xintegrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
@@ -64,7 +67,7 @@
             <select name="orientador[]" class="form-select orientador-select me-2" required>
               <option selected disabled>Selecione o orientador</option>
             </select>
-            <button type="button" class="btn btn-danger btn-sm" onclick="removerCampo(this)">Remover</button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="removerCampo(this)">Cancelar</button>
           </div>
         </div>
         <button type="button" class="btn btn-sm btn-success mt-2" onclick="adicionarCampoOrientador()">+ Adicionar
@@ -115,7 +118,6 @@
       </div>
       <!-- Botões -->
       <div class="d-flex justify-content-between">
-        <a href="/paginainicial"><button type="button" class="btn btn-third">Voltar</button></a>
         <button type="reset" class="btn btn-secondary">Cancelar</button>
         <button type="submit" class="btn btn-primary">Confirmar</button>
       </div>

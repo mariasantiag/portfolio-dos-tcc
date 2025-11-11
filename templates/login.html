@@ -10,6 +10,10 @@
 
   <link rel="stylesheet" href="../static/css/login.css">
   <link rel="stylesheet" href="/static/css/config.css">
+
+  
+    <!-- Icone da página -->
+    <link rel="icon" type="image/png" href="/static/img/icon__login.png">
 </head>
 
 <body>
@@ -38,20 +42,19 @@
         <!-- nome -->
         <div class="mb-3">
           <label for="login" class="form-label">E-mail</label>
-          <input type="text" class="form-control" id="login" name="login" required>
+          <input type="text" class="form-control" id="login" placeholder="Digite seu e-mail" name="login" required>
           <div class="invalid-feedback">Por favor, insira seu login.</div>
         </div>
 
         <!-- senha -->
         <div class="mb-3">
           <label for="senha" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="senha" name="senha" required>
+          <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" name="senha" required>
           <div class="invalid-feedback">Por favor, insira sua senha.</div>
         </div>
 
         <!-- botões -->
         <div class="d-flex justify-content-between">
-          <a href="/paginainicial"><button type="button" class="btn btn-secondary">Voltar</button></a>
           <button type="submit" class="btn btn-primary">Entrar</button>
         </div>
 
