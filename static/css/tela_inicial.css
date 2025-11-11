@@ -19,6 +19,14 @@
   width: 100%;
   gap: 20px !important;
 }
+
+/*  Corrige a classe global .text-center para seu propósito original */
+.text-center {
+  text-align: center !important; /* apenas centraliza o texto */
+  display: flex;
+  gap: 20px;
+}
+
 .header h1 {
   color:  var(--cor-fundo-branco);
   font-weight: bold;
@@ -33,12 +41,8 @@
 .titulo__filtro{
   margin: 0;
   margin-top: 5px;
-}
-
-
-/*  Corrige a classe global .text-center para seu propósito original */
-.text-center {
-  text-align: center !important; /* apenas centraliza o texto */
+  color: var(--cor-fundo-branco);
+  font-weight: bolder;
 }
 
 /*  Cria uma nova classe para os casos em que você quer usar flex */

@@ -12,8 +12,8 @@
    <script src="/static/js/add_orien_curso.js" defer></script>
    <script src="/static/js/delete_orien_curso.js" defer></script>
 
-    <!-- Icone da página -->
-    <link rel="icon" type="image/png" href="/static/img/icon__courseregistration.png">
+   <!-- Icone da página -->
+   <link rel="icon" type="image/png" href="/static/img/icon__courseregistration.png">
 
    <!-- Link do JavaScript -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -28,22 +28,22 @@
 
 <body>
 
-<!-- HEADER PADRONIZADO -->
-  <header class="header__">
-   <div class="container-fluid">
-     <div class="row align-items-center">
-       <div class="col text-center">
-         <!-- Ícone de atalho com link -->
-         <a href="/paginainicial" class=" icone__atalho me-2 d-flex align-items-center">
-           <img src="/static/img/icon__atalho.png" alt="icone-atalho-biblioteca" class="img-fluid">
-         </a>
-         <h1 class="text-white fw-bold titulo__Curso-Orientdor">Cadastro de Curso e Orientador</h1>
-       </div>
-     </div>
-   </div>
- </header>
+   <!-- HEADER PADRONIZADO -->
+   <header class="header__">
+      <div class="container-fluid">
+         <div class="row align-items-center">
+            <div class="col text-center">
+               <!-- Ícone de atalho com link -->
+               <a href="/paginainicial" class=" icone__atalho me-2 d-flex align-items-center">
+                  <img src="/static/img/icon__atalho.png" alt="icone-atalho-biblioteca" class="img-fluid">
+               </a>
+               <h1 class="text-white fw-bold titulo__Curso-Orientdor">Cadastro de Curso e Orientador</h1>
+            </div>
+         </div>
+      </div>
+   </header>
 
-
+   <div class="container__cards-curso-orientador">
       <section class="card p-4">
          <div class="tittle">
             <h2> Cadastro De Curso e Orientador </h2>
@@ -122,17 +122,20 @@
          </form>
 
       </section>
+   </div>
 
-        <!-- Botão flutuante "+" -->
-        {% if session.usuario %}
-        <div class="add__tcc dropdown__add">
-            <i class="bi bi-plus-circle fs-1" role="button" id="dropdownAddButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAddButton">
-                <li><a class="dropdown-item" href="/paginacadastrotcc">Adicionar TCC</a></li>
-                <li><a class="dropdown-item" href="/paginahistorico">Histórico</a></li>
-            </ul>
-        </div>
-        {% endif %}
+
+   <!-- Botão flutuante "+" -->
+   {% if session.usuario %}
+   <div class="add__tcc dropdown__add">
+      <i class="bi bi-plus-circle fs-1" role="button" id="dropdownAddButton" data-bs-toggle="dropdown"
+         aria-expanded="false"></i>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAddButton">
+         <li><a class="dropdown-item" href="/paginacadastrotcc">Adicionar TCC</a></li>
+         <li><a class="dropdown-item" href="/paginahistorico">Histórico</a></li>
+      </ul>
+   </div>
+   {% endif %}
 
    </main>
 
