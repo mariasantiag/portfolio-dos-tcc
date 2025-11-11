@@ -4,10 +4,10 @@ import mysql.connector
 class Historico:
 
     def registrar_acao(usuario_nome, acao, detalhes):
-        """
-        Registra uma nova ação no histórico.
-        Ex: registrar_acao("Admin Zé", "Adicionou TCC", "TCC: 'O Impacto...'")
-        """
+       
+        # Registra uma nova ação no histórico.
+        # Ex: registrar_acao("Admin Zé", "Adicionou TCC", "TCC: 'O Impacto...'")
+      
         try:
             conexao = Conexao.criar_conexao()
             cursor = conexao.cursor()
@@ -30,9 +30,9 @@ class Historico:
                 conexao.close()
 
     def recuperar_historico():
-        """
-        Recupera todos os registros do histórico, do mais novo para o mais antigo.
-        """
+        
+        # Recupera todos os registros do histórico, do mais novo para o mais antigo.
+        
         try:
             conexao = Conexao.criar_conexao()
             cursor = conexao.cursor(dictionary=True) # dictionary=True é essencial
@@ -51,9 +51,9 @@ class Historico:
                 conexao.close()
 
     def limpar_historico():
-        """
-        Deleta TODOS os registros da tabela de histórico.
-        """
+    
+        # Deleta TODOS os registros da tabela de histórico.
+    
         try:
             conexao = Conexao.criar_conexao()
             cursor = conexao.cursor()
