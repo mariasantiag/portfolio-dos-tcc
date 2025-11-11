@@ -12,7 +12,6 @@ class Conexao:
 
     #     return conexao
 
-
     def criar_conexao():
         conexao = mysql.connector.connect(
                         host = "bibliotccabd.mysql.database.azure.com",
@@ -22,3 +21,4 @@ class Conexao:
         )
 
         return conexao
+    

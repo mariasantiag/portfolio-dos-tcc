@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
   <script src="/static/js/orientador.js" defer> </script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 </head>
 
 <body>
@@ -135,6 +135,23 @@
 
   </div>
     
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        {% for category, message in messages %}
+          Swal.fire({
+            title: "{{ 'Sucesso!' if category == 'success' else 'Erro!' }}",
+            text: "{{ message }}",
+            icon: "{{ 'success' if category == 'success' else 'error' }}",
+            confirmButtonText: 'OK'
+          });
+        {% endfor %}
+      });
+    </script>
+  {% endif %}
+{% endwith %}
 
 </body>
 

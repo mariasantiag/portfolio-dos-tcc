@@ -95,14 +95,16 @@ def post_usuario():
     
     # Validação: se a senha for menor que 8
     if len(senha) < 8:
-        flash("A senha deve ter pelo menos 8 caracteres.")
+        flash("A senha deve ter pelo menos 8 caracteres.", "error")
         return redirect("/paginacadastro")
 
     # Cadastrando a mensagem usando a classe mensagem
     Usuario.cadastro_usuario(nome, login, senha)
     
+    flash("Cadastro efetuado com sucesso!", "success")
     # Redireciona para o index
-    return redirect("/paginalogin")
+    
+    return redirect("/paginacadastro")
 
 # Caminho para pagina de cadastro de tcc 
 @app.route("/paginacadastrotcc")
@@ -170,16 +172,31 @@ def post_curso_orientador():
     nome_curso = request.form.get("curso_nome")
     orientadores = request.form.getlist("orientador_nome")  # Lista de orientadores
 
-    # Cadastra o curso e pega o ID
-    cod_curso = Curso_orientador.cadastro_curso(nome_curso)
-    
+    try:
+        # Cadastra o curso e pega o ID
+        cod_curso = Curso_orientador.cadastro_curso(nome_curso)
 
-    # Insere cada orientador individualmente
-    for nome_orientador in orientadores:
-        if nome_orientador.strip():
-            Curso_orientador.cadastro_orientador(nome_orientador.strip(), cod_curso)
+        # Insere cada orientador individualmente
+        for nome_orientador in orientadores:
+            if nome_orientador.strip():
+                Curso_orientador.cadastro_orientador(nome_orientador.strip(), cod_curso)
+        if nome_curso == '':
+            flash("Erro ao cadastrar curso e orientadores. Verifique os dados e tente novamente.", "error")
+            Curso_orientador.cadastro_curso()
+            Curso_orientador.cadastro_orientador()
+            return  redirect("/paginaorientadorcurso")
+        if orientadores == '':
+            flash("Erro ao cadastrar curso e orientadores. Verifique os dados e tente novamente.", "error")
+            Curso_orientador.cadastro_curso()
+            Curso_orientador.cadastro_orientador()
+            return  redirect("/paginaorientadorcurso")
+        flash("Curso e orientadores cadastrados com sucesso!", "success")
 
-    return redirect("/paginainicial")
+    except Exception as e:
+        print(f"Erro ao cadastrar curso e orientadores: {e}")
+        flash("Erro ao cadastrar curso e orientadores. Verifique os dados e tente novamente.", "error")
+
+    return redirect("/paginaorientadorcurso")
 
 # Verifica se o admin está logado 
 @app.route("/post/logar", methods=["POST"])
@@ -192,6 +209,7 @@ def post_logar():
     if esta_logado:
         return redirect("/paginainicial")
     else:
+        flash("Login ou senha incorretos. Tente novamente.", "error")
         return redirect("/paginalogin")
 
 # Rota para logoff  
@@ -234,14 +252,21 @@ def post_tcc():
 
     print(f"Arquivo salvo temporariamente em: {caminho_temporario}")
 
+    
+    try:
     # Instanciando a classe Tcc
-    tcc = Tcc()
+        tcc = Tcc()
 
-    # Chama o método completo que salva o PDF e registra no banco
-    tcc.salvar_tcc(
-        titulo, autores, orientadores_ids, curso, descricao, caminho_temporario,
-        data, chave1, chave2, chave3, chave4, chave5, destaque
-    )
+        # Chama o método completo que salva o PDF e registra no banco
+        tcc.salvar_tcc(
+            titulo, autores, orientadores_ids, curso, descricao, caminho_temporario,
+            data, chave1, chave2, chave3, chave4, chave5, destaque
+        )
+        flash("TCC cadastrado com sucesso!", "success")
+    except Exception as e:
+        flash("Erro ao cadastrar tcc!", "error")
+        
+        
 
     # Historico 
     try:
@@ -264,7 +289,8 @@ def post_tcc():
         os.remove(caminho_temporario)
 
     # Redireciona para a página inicial após o cadastro
-    return redirect("/paginainicial")
+    
+    return redirect("/paginacadastrotcc")
 
 # Excluir TCC
 @app.route("/apagartcc/<codigo>")
