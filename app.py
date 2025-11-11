@@ -180,7 +180,16 @@ def post_curso_orientador():
         for nome_orientador in orientadores:
             if nome_orientador.strip():
                 Curso_orientador.cadastro_orientador(nome_orientador.strip(), cod_curso)
-
+        if nome_curso == '':
+            flash("Erro ao cadastrar curso e orientadores. Verifique os dados e tente novamente.", "error")
+            Curso_orientador.cadastro_curso()
+            Curso_orientador.cadastro_orientador()
+            return  redirect("/paginaorientadorcurso")
+        if orientadores == '':
+            flash("Erro ao cadastrar curso e orientadores. Verifique os dados e tente novamente.", "error")
+            Curso_orientador.cadastro_curso()
+            Curso_orientador.cadastro_orientador()
+            return  redirect("/paginaorientadorcurso")
         flash("Curso e orientadores cadastrados com sucesso!", "success")
 
     except Exception as e:
@@ -243,14 +252,21 @@ def post_tcc():
 
     print(f"Arquivo salvo temporariamente em: {caminho_temporario}")
 
+    
+    try:
     # Instanciando a classe Tcc
-    tcc = Tcc()
+        tcc = Tcc()
 
-    # Chama o método completo que salva o PDF e registra no banco
-    tcc.salvar_tcc(
-        titulo, autores, orientadores_ids, curso, descricao, caminho_temporario,
-        data, chave1, chave2, chave3, chave4, chave5, destaque
-    )
+        # Chama o método completo que salva o PDF e registra no banco
+        tcc.salvar_tcc(
+            titulo, autores, orientadores_ids, curso, descricao, caminho_temporario,
+            data, chave1, chave2, chave3, chave4, chave5, destaque
+        )
+        flash("TCC cadastrado com sucesso!", "success")
+    except Exception as e:
+        flash("Erro ao cadastrar tcc!", "error")
+        
+        
 
     # Historico 
     try:
@@ -273,7 +289,7 @@ def post_tcc():
         os.remove(caminho_temporario)
 
     # Redireciona para a página inicial após o cadastro
-    flash("TCC cadastrado com sucesso!", "success")
+    
     return redirect("/paginacadastrotcc")
 
 # Excluir TCC
