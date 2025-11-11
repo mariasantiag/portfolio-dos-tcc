@@ -436,7 +436,9 @@ max-width: 100vw;
 .Titulo__Pagina{
   max-width: 900px;
 }
-
+.text-center {
+  display: block;
+}
 
 /* Responsividade */
 
