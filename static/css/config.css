@@ -1,7 +1,8 @@
+/* Fonte do sistema */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-  
+  /* Cores do sistema */
   :root {
     --cor-fundo-branco: #ffffff;
     --cor-fundo-preto: #000000;
@@ -16,6 +17,7 @@
     --cor-verde-confirmacao-hover: #025806;
   }
   
+/* Formatação geral */
 *{
 font-family: "Montserrat", sans-serif;
 margin: 0;
