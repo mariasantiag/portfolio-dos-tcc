@@ -1,33 +1,38 @@
 /* header */
 .header__ {
+  /* Container do cabeçalho que ocupa toda a largura da página */
   width: 100%;
   height: 80px;
   background: var(--cor-gradiente-header);
   padding: 10px 20px;
   align-items: center;
   justify-content: center;
-  } 
+} 
 
 .icone__atalho{
+  /* Ícone clicável que leva à página inicial */
   width: 60px; 
   height: 60px; 
   object-fit: contain;
 }  
   
 .form__pesquisa{
+  /* Formulário de busca do cabeçalho */
   align-items: center !important;
   width: 100%;
   gap: 20px !important;
 }
 
-/*  Corrige a classe global .text-center para seu propósito original */
+/* Corrige a classe global .text-center */
 .text-center {
-  text-align: center !important; /* apenas centraliza o texto */
+  /* Centraliza apenas o texto, com exibição flex aplicada na página */
+  text-align: center !important;
   display: flex !important;
   gap: 20px;
 }
 
 .header h1 {
+  /* Título no cabeçalho (não aparece nesta página, mas está previsto) */
   color:  var(--cor-fundo-branco);
   font-weight: bold;
   margin: 0;
@@ -37,7 +42,7 @@
   padding: 12px;
 }
   
-/* Titulo da pagina de filtro */
+/* Título da página de filtro */
 .titulo__filtro{
   margin: 0;
   margin-top: 5px;
@@ -45,397 +50,374 @@
   font-weight: bolder;
 }
 
-/*  Cria uma nova classe para os casos em que você quer usar flex */
+/* Classe usada para centralizar itens com flex */
 .text-flex {
-  display: flex;                  /* ativa o comportamento flex */
-  gap: 20px;                      /* adiciona espaçamento entre itens */
-  justify-content: center;        /* centraliza conteúdo no eixo horizontal */
-  align-items: center;            /* centraliza conteúdo no eixo vertical */
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
-  
-/* Texto de saudação */
+/* Texto de saudação ao usuário logado */
 .header__user{
-color: var(--cor-fundo-branco);
-font-size: 1rem;
-padding-top: 5px; 
-font-weight: bold;
-justify-content: center;
+  color: var(--cor-fundo-branco);
+  font-size: 1rem;
+  padding-top: 5px; 
+  font-weight: bold;
+  justify-content: center;
 }
 
 .container__ano{
+  /* Container usado em páginas específicas para seleção de ano */
   display: flex;
   gap: 20px;
 }
 
-/* campo de busca */
+/* Campo de busca */
 .form-control {
-background-color: var(--cor-fundo-branco);
+  background-color: var(--cor-fundo-branco);
 }
 
 .input-group {
+  /* Grupo da barra de pesquisa */
   width: 45%;
 }
 
-/* botão da busca */
+/* Botão da busca */
 .input-group .btn {
-background-color: var(--cor-fundo-branco);
-border: none;
+  background-color: var(--cor-fundo-branco);
+  border: none;
 }
 .input-group .btn:hover {
-background-color: var(--cor-fundo-preto);
-color: var(--cor-fundo-branco);
+  background-color: var(--cor-fundo-preto);
+  color: var(--cor-fundo-branco);
 }
 
-/* ícones */
+/* Ícones no cabeçalho (menu, login, logout) */
 .bi-list,
 .bi-person-circle,
 .bi-box-arrow-right {
-font-size: 35px;
-color: var(--cor-fundo-branco);
+  font-size: 35px;
+  color: var(--cor-fundo-branco);
 }
 
 /* Logo do site */
 .logo {
-    max-width: 100vw;
-    height: 200px;
-    margin: 0;
-    padding: 0; 
-    text-align: center;
+  max-width: 100vw;
+  height: 200px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
   
-/* Imagem da logo */
+/* Imagem da logo centralizada */
 .logo img {
-  max-height: 200px; 
+  max-height: 200px;
   max-width: 100%;
-  
   margin-top: 20px;
   height: auto;
 }
 
-/* Titulo destaques e recentes */
+/* Título da seção "Destaques" e "TCCs" */
 .tittle{
   display: inline-block;
- 
   background: none;
   box-shadow: none;
   border-radius: 0;
-
-  
   margin-bottom: 15px;
   font-style: italic;
-
-
-  padding-bottom: 5px; 
+  padding-bottom: 5px;
   border-bottom: 2px solid var(--cor-vermelho-escuro);
-  
 }
 
 h2{
-font-size: 24px;
-font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-/* seção dos destaques */
+/* Seção dos Destaques */
 .sec__destaques{
   text-align: center;
   margin: 20px auto;
-
 }
 
-
+/* Grid dos cards de destaque */
 .grid__destaque{
-
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 20px; /* espaçamento entre os cards */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
   max-width: 1500px;
-  margin: 0 auto; /* centralizar */
+  margin: 0 auto;
 }
 
+/* Card dos destaques */
 .card__destaque {
-background: var(--cor-branco-padrao);
-border-radius: 10px;
-padding: 40px;
-font-size: 18px;
-margin-bottom: 5px;
-
-margin-left: 5px;
-margin-right: 10px;
-
-
-border: none;
-border-radius: 20px;
-transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
+  background: var(--cor-branco-padrao);
+  border-radius: 20px;
+  padding: 40px;
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 10px;
+  border: none;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .card__destaque:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 15px var(--cor-vermelho-escuroforte);
-  }
+}
 
-/* section de recentes */
+/* Seção dos TCCs recentes */
 .sec__recentes {
-text-align: center;
-margin: 20px auto;
-
-display: flex;
-flex-direction: column;
-align-items: center; 
+  text-align: center;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
+/* Grid dos tccs recentes */
 .grid__recentes {
-display: grid;
-grid-template-columns: 1fr;
-max-width: 1690px; 
-margin: 0 auto;
-padding: 0 15px;
-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 1690px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
 }
 
+/* Botão flutuante para adicionar TCC */
 .add__tcc {
-position: fixed; /* fixa na tela */
-bottom: 30px; /* distância inferior */
-right: 30px; /* distância da direita */
-z-index: 1000; /* garante estar acima dos elementos */
-cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  cursor: pointer;
 }
 
 .add__tcc i {
-color: var(--cor-vermelho-escuro);
-background-color: var(--cor-fundo-branco);
-border-radius: 50%;
-padding: 10px;
-box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-transition: transform 0.2s ease, background-color 0.2s ease;
+  color: var(--cor-vermelho-escuro);
+  background-color: var(--cor-fundo-branco);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-
-
+/* Card dos TCCs recentes */
 .card__recentes {
-background-color: var(--cor-branco-padrao);
-border: none;
-border-radius: 20px;
-padding: 22px 30px;
-text-align: left;
-
-display: flex;
-justify-content: space-between;
-align-items: center;
-cursor: pointer;
-transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-flex-grow: 1;
-margin-right: 15px;
+  background-color: var(--cor-branco-padrao);
+  border: none;
+  border-radius: 20px;
+  padding: 22px 30px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  flex-grow: 1;
+  margin-right: 15px;
 }
 
 .card__recentes:hover {
-transform: translateY(-4px);
-box-shadow: 0 6px 15px var(--cor-vermelho-escuroforte);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px var(--cor-vermelho-escuroforte);
 }
 
+/* Ícone do arquivo PDF */
 .icone__tcc{
   width: 100px;
   height: 100px;
-
   font-size: 70px;
-
   margin-right: 5px;
 }
 
-/* --- Conteúdo de Texto do Card --- */
+/* Conteúdo textual dentro do card */
 .card__conteudo {
-flex-grow: 1; /* Faz o conteúdo ocupar o espaço disponível */
-margin-right: 15px; /* Cria um espaço para não colar no menu */
+  flex-grow: 1;
+  margin-right: 15px;
 }
 
-/* --- Cabeçalho (Título e Data) --- */
+/* Cabeçalho do card (título e data) */
 .card__header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 12px;
-gap: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 15px;
 }
 
 .card__titulo {
-font-size: 1.2rem;
-font-weight: 800;
-color: var(--cor-vermelho-escuro);
-margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--cor-vermelho-escuro);
+  margin: 0;
 }
 
 .card__data {
-font-size: 0.9rem;
-color: #555;
-white-space: nowrap; 
-flex-shrink: 0; 
+  font-size: 0.9rem;
+  color: #555;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-/* --- Descrição e Autores --- */
+/* Descrição do TCC */
 .card__descricao {
-font-size: 1rem;
-color: #333;
-margin-bottom: 15px;
-max-width: 800px;
-word-wrap: break-word;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 15px;
+  max-width: 800px;
+  word-wrap: break-word;
 }
 
+/* Autores e curso */
 .card__autores {
-font-size: 0.9rem;
-color: #666;
-margin: 0;
-word-wrap: break-word;
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  word-wrap: break-word;
 }
 
 .card__autores strong {
-color: #333;
+  color: #333;
 }
 
 .bi-three-dots-vertical{
-position: absolute;
+  position: absolute;
 }
 
-/* --- ESTADO PADRÃO DO MODAL (ESCONDIDO) --- */
+/* Modal onde o PDF é exibido */
 .tcc_view {
-display: none;
+  display: none;
 }
 
 .tcc_view.is-viewing {
-
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.8);
-z-index: 1000;
-
-animation: fadeIn 0.3s ease-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
 }
 
-/* --- A CAIXA DE CONTEÚDO BRANCA (DENTRO DO MODAL) --- */
+/* Caixa branca onde o PDF aparece */
 .tcc_view.is-viewing .view-pdf {
-display: block; 
-
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-
-width: 90%;
-max-width: 1100px;
-height: 90vh;
-background-color: #fff;
-border-radius: 12px;
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-overflow-y: scroll;
-
-animation: scaleUp 0.4s ease-out;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1100px;
+  height: 90vh;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  animation: scaleUp 0.4s ease-out;
 }
 
+/* Botão de fechar (X) */
 .tcc_view.is-viewing .btn-close {
-display: flex; /* Garante que o ícone 'X' fique centralizado no botão */
-
-/* 4. POSICIONA O BOTÃO NO CANTO SUPERIOR DIREITO DA TELA */
-position: fixed; /* Usamos 'fixed' para ser relativo à tela */
-top: 20px;
-right: 20px;
-
-width: 40px;
-height: 40px;
-background: #fff;
-color: #333;
-border: none;
-border-radius: 50%;
-cursor: pointer;
-z-index: 1020; /* Fica acima de tudo */
-justify-content: center;
-align-items: center;
-font-size: 24px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-transition: transform 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1020;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .tcc_view.is-viewing .btn-close:hover {
-transform: scale(1.1);
-background-color: #f1f1f1;
+  transform: scale(1.1);
+  background-color: #f1f1f1;
 }
 
-/* --- CAMADA DE PROTEÇÃO (No-Copy) --- */
+/* Camada invisível que impede copiar o PDF */
 .no-copy-overlay {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: 10;
-background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: transparent;
 }
 
-/* --- ANIMAÇÕES --- */
+/* Animações do modal */
 @keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes scaleUp {
-from {
+  from {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.9);
-}
-to {
+  }
+  to {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
-}
+  }
 }
 
-
+/* Botões editar/excluir */
 .card__actions {
-display: flex;
-flex-direction: column; /* Empilha os botões verticalmente */
-justify-content: center; /* Centraliza eles no espaço */
-gap: 15px; /* Espaço entre os botões */
-padding: 0 10px; /* Um pequeno respiro nas laterais */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 10px;
 }
 
 .card__actions a {
-font-size: 1.9rem; /* <-- Aumenta o tamanho dos ícones */
-color: #555; /* Cor padrão */
-transition: transform 0.2s ease, color 0.2s ease;
+  font-size: 1.9rem;
+  color: #555;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .card__actions a:hover {
-transform: scale(1.1); /* Efeito de zoom */
+  transform: scale(1.1);
 }
 
-/* Cores personalizadas no hover */
-.card__actions .btn__edit:hover {
-color: var(--cor-vermelho-escuro); 
-}
+
 
 .card__actions .btn__excluir:hover {
-color: var(--cor-vermelho-escuro); 
+  color: var(--cor-vermelho-escuro);
 }
 
+/* Container geral do card recente + ações */
 .container__func_tccs {
-display: flex;
-align-items: center; 
-margin-bottom: 20px; 
-width: 80%;
-max-width: 100vw;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 100vw;
 }
 
 .Titulo__Pagina{
   max-width: 900px;
 }
+
 .text-center {
   display: block;
 }
 
-/* Responsividade */
+/*-------------------------- RESPONSIVIDADE ---------------------------*/
 
 /* Responsividade Desktops */
 @media (max-width: 1100px){
