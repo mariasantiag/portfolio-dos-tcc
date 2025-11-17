@@ -8,7 +8,7 @@ Python: Linguagem de programação principal.
 
 Flask: Framework web para o backend.
 
-SQLite: Banco de dados para armazenamento dos dados.
+MYSQL: Banco de dados para armazenamento dos dados.
 
 HTML/CSS: Estruturação e estilização das páginas.
 
