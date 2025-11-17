@@ -21,6 +21,8 @@ Cadastro de trabalhos de conclusão de curso com informações detalhadas.
 
 Sistema de busca eficiente utilizando palavras-chave.
 
-Filtros por área de estudo, ano e orientador.
+Filtro por ano.
+
+Pesquisa por titulo, palavra-chave e autor.
 
 Interface amigável e responsiva.
