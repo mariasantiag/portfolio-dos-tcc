@@ -121,7 +121,24 @@ def paginaorientadorcurso():
         return redirect("/paginalogin")     
     curso = Curso_orientador.recuperar_curso()  
 
-    return render_template("cadastro-curso-orientador.html", curso=curso)
+    lista_orientadores = Curso_orientador.recuperar_todos_orientadores_com_status()
+
+    return render_template("cadastro-curso-orientador.html", curso=curso, orientadores = lista_orientadores)
+
+@app.route("/post/alterarstatusorientador", methods=["POST"])
+def post_alterar_status_orientador():
+    if 'usuario' not in session:
+        return redirect("/paginalogin")
+        
+    cod_orientador = request.form.get("cod_orientador")
+    acao = request.form.get("acao") # Vai receber 'demitir' ou 'contratar'
+    
+    novo_status = 1 if acao == 'contratar' else 0
+    
+    Curso_orientador.alterar_status_orientador(cod_orientador, novo_status)
+    
+    flash("Status do orientador atualizado com sucesso!", "success")
+    return redirect("/paginaorientadorcurso")
 
 @app.route("/post/excluirorientadorcurso", methods=["POST"])
 def post_excluir_orientador_curso():
