@@ -135,6 +135,27 @@ main {
     color: var(--cor-vermelho-escuroforte);
     padding: 0 8px;
   }
+
+
+
+  /*GESTÃO DE STATUS (Tabela)*/
+.container__gestaostatus {
+
+  margin-left: 20%; 
+  margin-top: 50px; 
+  padding-right: 20px; 
+}
+
+.secao_tabela {
+  width: 100%;
+  max-width: 1150px; 
+  text-align: center;
+  border: none;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--cor-fundo-branco);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
   
   /* labels */
   .form-label {

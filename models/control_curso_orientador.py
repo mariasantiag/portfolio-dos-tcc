@@ -71,8 +71,8 @@ class Curso_orientador:
             cursor = conexao.cursor(dictionary = True)
 
             # Criando o sql que será executado
-            sql = "SELECT nome_orientador, cod_orientador FROM tbOrientador where cod_curso = %s;"
-
+            sql = "SELECT nome_orientador, cod_orientador FROM tbOrientador where cod_curso = %s AND contratado = 1;"
+            
             valores = (cod_curso,)
 
             #Executando o comando sql
@@ -85,28 +85,44 @@ class Curso_orientador:
             conexao.close()
 
             return resultado
-    
-    @staticmethod
-    def excluir_orientador(cod_orientador):
+
+    def recuperar_todos_orientadores_com_status():
+        conexao = Conexao.criar_conexao()
+        cursor = conexao.cursor(dictionary=True)
+        
+        # Busca o orientador e o nome do curso para exibir na tabela
+        sql = """
+        SELECT 
+            o.cod_orientador, 
+            o.nome_orientador, 
+            o.contratado, 
+            c.nome_curso 
+        FROM tbOrientador as o
+        INNER JOIN tbCurso as c ON o.cod_curso = c.cod_curso
+        ORDER BY o.nome_orientador;
+        """
+        
+        cursor.execute(sql)
+        resultado = cursor.fetchall()
+        conexao.close()
+        return resultado
+
+    def alterar_status_orientador(cod_orientador, novo_status):
         conexao = Conexao.criar_conexao()
         cursor = conexao.cursor()
+        
         try:
-            # 1. Remover associações do orientador com TCCs (tabela N:N)
-            sql_tcc_link = "DELETE FROM tbTcc_Orientador WHERE cod_orientador = %s"
-            cursor.execute(sql_tcc_link, (cod_orientador,))
-            
-            # 2. Excluir o orientador
-            sql_orientador = "DELETE FROM tbOrientador WHERE cod_orientador = %s"
-            cursor.execute(sql_orientador, (cod_orientador,))
-            
+            sql = "UPDATE tbOrientador SET contratado = %s WHERE cod_orientador = %s"
+            valores = (novo_status, cod_orientador)
+            cursor.execute(sql, valores)
             conexao.commit()
         except Exception as e:
             conexao.rollback()
-            print(f"Erro ao excluir orientador (ID: {cod_orientador}): {e}")
-            raise e # Re-lança a exceção para ser pega no app.py
+            print(f"Erro ao alterar status: {e}")
         finally:
             cursor.close()
-            conexao.close()
+            conexao.close()        
+
 
     @staticmethod
     def excluir_curso(cod_curso):
