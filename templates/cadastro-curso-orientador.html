@@ -95,83 +95,86 @@
           </div>
         </fieldset>
 
-        <div class="container mt-4 mb-5">
-          <section class="card p-4 shadow-sm">
-            <div class="tittle mb-3">
-              <h2>Gestão de Status (Demitir/Contratar)</h2>
-            </div>
-            
-            <div class="alert alert-info" role="alert">
-              <i class="bi bi-info-circle-fill"></i> 
-              Orientadores "Demitidos" não aparecerão no formulário de novos TCCs, mas seus nomes continuarão visíveis nos projetos antigos.
-            </div>
-      
-            <div class="table-responsive">
-              <table class="table table-hover table-bordered align-middle">
-                <thead class="table-dark">
-                  <tr>
-                    <th>Orientador</th>
-                    <th>Curso Vinculado</th>
-                    <th class="text-center">Status</th>
-                    <th class="text-center">Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% if orientadores %}
-                    {% for orientador in orientadores %}
-                    <tr class="{{ 'table-secondary text-muted' if orientador.contratado == 0 else '' }}">
-                      <td>
-                        <strong>{{ orientador.nome_orientador }}</strong>
-                      </td>
-                      <td>{{ orientador.nome_curso }}</td>
-                      
-                      <td class="text-center">
-                        {% if orientador.contratado == 1 %}
-                          <span class="badge bg-success rounded-pill">Contratado</span>
-                        {% else %}
-                          <span class="badge bg-danger rounded-pill">Demitido/Inativo</span>
-                        {% endif %}
-                      </td>
-      
-                      <td class="text-center">
-                        <form action="/post/alterarstatusorientador" method="POST" style="display: inline;">
-                          <input type="hidden" name="cod_orientador" value="{{ orientador.cod_orientador }}">
-                          
-                          {% if orientador.contratado == 1 %}
-                            <button type="submit" name="acao" value="demitir" class="btn btn-outline-danger btn-sm" title="Remover da lista de novos cadastros">
-                              <i class="bi bi-person-x-fill"></i> Retirar
-                            </button>
-                          {% else %}
-                            <button type="submit" name="acao" value="contratar" class="btn btn-outline-success btn-sm" title="Tornar visível novamente">
-                              <i class="bi bi-person-check-fill"></i> Reativar
-                            </button>
-                          {% endif %}
-                        </form>
-                      </td>
-                    </tr>
-                    {% endfor %}
-                  {% else %}
-                    <tr>
-                      <td colspan="4" class="text-center text-muted py-3">Nenhum orientador cadastrado no sistema.</td>
-                    </tr>
-                  {% endif %}
-                </tbody>
-              </table>
-            </div>
-          </section>
-        </div>
-
+        
         <div class="form-text mb-3">
-          - Para excluir um curso, selecione APENAS o curso (isso só funcionará se não houver TCCs cadastrados nele).
-        </div>
-
-        <div class="text-center">
-          <button type="submit" class="btn btn-danger px-4">Excluir</button>
-        </div>
-
+           - Para excluir um curso, selecione APENAS o curso (isso só funcionará se não houver TCCs cadastrados nele).
+         </div>
+         
+         <div class="text-center">
+            <button type="submit" class="btn btn-danger px-4">Excluir</button>
+         </div>
+         
       </form>
-    </section>
-  </div>
+
+      
+   </section>
+</div>
+
+<div class="mt-4 mb-5 container__gestaostatus">
+  <section class="card p-4 shadow-sm secao_tabela">
+    <div class="tittle mb-3">
+      <h2>Gestão de Status (Demitir/Contratar)</h2>
+    </div>
+    
+    <div class="alert alert-info" role="alert">
+      <i class="bi bi-info-circle-fill"></i> 
+      Orientadores "Demitidos" não aparecerão no formulário de novos TCCs, mas seus nomes continuarão visíveis nos projetos feitos.
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Orientador</th>
+            <th>Curso Vinculado</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if orientadores %}
+            {% for orientador in orientadores %}
+            <tr class="{{ 'table-secondary text-muted' if orientador.contratado == 0 else '' }}">
+              <td>
+                <strong>{{ orientador.nome_orientador }}</strong>
+              </td>
+              <td>{{ orientador.nome_curso }}</td>
+              
+              <td class="text-center">
+                {% if orientador.contratado == 1 %}
+                  <span class="badge bg-success rounded-pill">Contratado</span>
+                {% else %}
+                  <span class="badge bg-danger rounded-pill">Demitido/Inativo</span>
+                {% endif %}
+              </td>
+
+              <td class="text-center">
+                <form action="/post/alterarstatusorientador" method="POST" style="display: inline;">
+                  <input type="hidden" name="cod_orientador" value="{{ orientador.cod_orientador }}">
+                  
+                  {% if orientador.contratado == 1 %}
+                    <button type="submit" name="acao" value="demitir" class="btn btn-outline-danger btn-sm" title="Remover da lista de novos cadastros">
+                      <i class="bi bi-person-x-fill"></i> Retirar
+                    </button>
+                  {% else %}
+                    <button type="submit" name="acao" value="contratar" class="btn btn-outline-success btn-sm" title="Tornar visível novamente">
+                      <i class="bi bi-person-check-fill"></i> Reativar
+                    </button>
+                  {% endif %}
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan="4" class="text-center text-muted py-3">Nenhum orientador cadastrado no sistema.</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
 
   {% if session.usuario %}
   <div class="add__tcc dropdown__add">
