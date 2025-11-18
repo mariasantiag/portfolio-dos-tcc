@@ -35,6 +35,8 @@ nome_orientador VARCHAR(200) NOT NULL,
 cod_curso INT,
 FOREIGN KEY (cod_curso) REFERENCES tbCurso(cod_curso)
 );
+ALTER TABLE tbOrientador ADD COLUMN contratado TINYINT(1) DEFAULT 1;
+
 
 -- NOVA TABELA PARA RELACIONAMENTO MUITOS-PARA-MUITOS
 CREATE TABLE tbTcc_Orientador (
