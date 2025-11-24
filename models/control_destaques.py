@@ -15,7 +15,7 @@ class Destaques:
                     tcc.titulo,
                     tcc.autor,
                     tcc.descricao,
-                    tcc.data,
+                    DATE_FORMAT(data, '%d/%m/%Y') AS data_formatada_br,
                     tcc.pdf_nome, 
                     tcc.palavrachave1,
                     tcc.palavrachave2,
