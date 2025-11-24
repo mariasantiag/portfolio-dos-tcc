@@ -113,12 +113,12 @@
 <div class="mt-4 mb-5 container__gestaostatus">
   <section class="card p-4 shadow-sm secao_tabela">
     <div class="tittle mb-3">
-      <h2>Gestão de Status (Desligar/Contratar)</h2>
+      <h2>Gestão de Status</h2>
     </div>
     
     <div class="alert alert-info" role="alert">
       <i class="bi bi-info-circle-fill"></i> 
-      Orientadores "Demitidos" não aparecerão no formulário de novos TCCs, mas seus nomes continuarão visíveis nos projetos feitos.
+      Orientadores "Desligados" não aparecerão no formulário de novos TCCs, mas seus nomes continuarão visíveis nos projetos feitos.
     </div>
 
     <div class="table-responsive">
@@ -127,7 +127,6 @@
           <tr>
             <th>Orientador</th>
             <th>Curso Vinculado</th>
-            <th class="text-center">Status</th>
             <th class="text-center">Ação</th>
           </tr>
         </thead>
@@ -144,7 +143,7 @@
                 {% if orientador.contratado == 1 %}
                   <span class="badge bg-success rounded-pill">Contratado</span>
                 {% else %}
-                  <span class="badge bg-danger rounded-pill">Demitido/Inativo</span>
+                  <span class="badge bg-danger rounded-pill">Desligado/Inativo</span>
                 {% endif %}
               </td>
 
