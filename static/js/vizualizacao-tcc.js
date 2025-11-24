@@ -3,22 +3,38 @@
 
 document.addEventListener('contextmenu', function(e){
     e.preventDefault();
-    alert('Esta função foi desabilitada para proteger o conteudo do site.')
+    Swal.fire({
+        title: "Esta função foi desabilitada para proteger o conteúdo do site.",
+        icon: "error",
+        draggable: true
+      });
 })
 
 document.addEventListener('keydown', function(e){
     if (e.ctrlKey && (e.key === 'c' || e.key==='u' || e.key === 's' || e.key === 'p')){
         e.preventDefault()
-        alert('Esta função foi desabilitada para proteger o conteúdo do site.')
+        Swal.fire({
+            title: "Esta função foi desabilitada para proteger o conteúdo do site.",
+            icon: "error",
+            draggable: true
+          });      
     }
     if (e.ctrlKey && (e.key === 'Insert')){
         navigator.clipboard.writeText('')
         e.preventDefault()
-        alert('Capturas de tela foram dasabilitadas')       
+        Swal.fire({
+            title: "Capturas de tela foram dasabilitadas",
+            icon: "error",
+            draggable: true
+          });       
     }
     if (e.key === 'F12'){
-        e.preventDefault()
-        alert('Esta função foi desabilitada para proteger o conteúdo do site.')       
+        e.preventDefault() 
+        Swal.fire({
+            title: "Esta função foi desabilitada para proteger o conteúdo do site.",
+            icon: "error",
+            draggable: true
+          });      
     }
     
 }, false); //

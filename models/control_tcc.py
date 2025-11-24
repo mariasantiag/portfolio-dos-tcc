@@ -106,7 +106,7 @@ class Tcc:
                     tcc.titulo,
                     tcc.autor,
                     tcc.descricao,
-                    tcc.data,
+                    DATE_FORMAT(data, '%d/%m/%Y') AS data_formatada_br,
                     curso.nome_curso,
                     tcc.pdf_nome,
                     -- A função GROUP_CONCAT junta os nomes dos orientadores em uma única string, separados por vírgula e espaço.
@@ -125,7 +125,7 @@ class Tcc:
                 GROUP BY
                     tcc.codigo
                 ORDER BY
-                    tcc.data DESC;    
+                    data DESC;    
             """
 
             # Executa um único comando SQL de cada vez.
