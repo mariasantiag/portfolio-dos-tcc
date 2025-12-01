@@ -4,7 +4,7 @@
 document.addEventListener('contextmenu', function(e){
     e.preventDefault();
     Swal.fire({
-        title: "Esta função foi desabilitada para proteger o conteúdo do site.",
+        title: "Esta função foi desabilitada para proteger o conteúdo.",
         icon: "error",
         draggable: true
       });
@@ -14,7 +14,7 @@ document.addEventListener('keydown', function(e){
     if (e.ctrlKey && (e.key === 'c' || e.key==='u' || e.key === 's' || e.key === 'p')){
         e.preventDefault()
         Swal.fire({
-            title: "Esta função foi desabilitada para proteger o conteúdo do site.",
+            title: "Esta função foi desabilitada para proteger o conteúdo.",
             icon: "error",
             draggable: true
           });      
@@ -31,7 +31,7 @@ document.addEventListener('keydown', function(e){
     if (e.key === 'F12'){
         e.preventDefault() 
         Swal.fire({
-            title: "Esta função foi desabilitada para proteger o conteúdo do site.",
+            title: "Esta função foi desabilitada para proteger o conteúdo.",
             icon: "error",
             draggable: true
           });      
